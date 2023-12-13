@@ -44,6 +44,33 @@ alert( `Hello, ${name}`); // you get alerted "Hello, John"
 alert(`the result is ${1+2}`); //you get alerted "the result is 3"
 
 
+//Boolean (logical type) has only 2 values: True or False
+//these are used as Yes/No values often. (Yes=True//No=False)
+let nameFieldChecked = true;//means Yes, the name field is checked
+let ageFieldChecked = false;//means No, the age field is not checked
+
+//Boolean can answer comparisons as well
+let isGreater = 4 > 1;
+alert(isGreater);//alerted "true"
+
+//"Null" is a special value that represents "nothing" "empty" or "value unknown"
+let age = null;//means that the age is unknown
+
+
+
+//"undefined" works just like null. The meaning of "undefined" is "value is not assigned"
+//if a variable is declared but not assigned then its value is "undefined"
+let age;
+
+alert(age);//shows "undefined"
+//you can technically assign "undefined" to a variable
+let age = 100;
+age = undefined;
+
+alert(age); //"undefined"
+//THIS IS NOT RECOMMENDED. NULL IS USED TO ASSIGN "EMPTY" OR "UNKNOWN" VALUES
+//UNDEFINED IS RESERVED AS A DEFAULT INITIAL VALUE FOR UNASSIGNED THINGS
+
 
 
 
