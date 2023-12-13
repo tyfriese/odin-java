@@ -8,7 +8,20 @@
     <header></header>
     <main></main>
     <script>
-      
+      const btn = document.queryselector("button");
+      const txt = document.queryselector("p");
+
+      btn.addEventListener("click", updateBtn);
+
+      function updateBtn() {
+        if (btn.textContent === "Start machine") {
+          btn.textContent = "Stop machine";
+          txt.textContent = "The machine has started!";
+        } else {
+          btn.textContent = "Start machine";
+          txt.textContent = "This machine has stopped.";
+        }
+      }
     </script>
   </body>
 </html>
