@@ -12,20 +12,21 @@
 
     </main>
     <script>
-      const btn = document.queryselector("button");
-      const txt = document.queryselector("p");
+      const btn = document.querySelector("button");
+const txt = document.querySelector("p");
 
-      btn.addEventListener("click", updateBtn);
+btn.addEventListener("click", updateBtn);
 
-      function updateBtn() {
-        if (btn.textContent === "Start machine") {
-          btn.textContent = "Stop machine";
-          txt.textContent = "The machine has started!";
-        } else {
-          btn.textContent = "Start machine";
-          txt.textContent = "This machine has stopped.";
-        }
-      }
+function updateBtn() {
+  if (btn.textContent === "Start machine") {
+    btn.textContent = "Stop machine";
+    txt.textContent = "The machine has started!";
+  } else {
+    btn.textContent = "Start machine";
+    txt.textContent = "The machine is stopped.";
+  }
+}
+
     </script>
   </body>
 </html>
