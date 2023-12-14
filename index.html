@@ -237,6 +237,34 @@ console.log(length)
 //should output "26"
 
 
+//there are 3 methods to EXTRACTING string parts
+slice(start, end) 
+substring(start, end)
+substr(start, length)
+
+//SLICE extracts a part of a string and returns the extracted part in a new string
+//this needs two parameters: start position and end position.(end not included)
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7,13);
+console.log(part);
+//should return "Banana"
+//note that slice counts the first position as 0! 2nd position as 1!
+
+//omitting the second parameter will slice out the rest of the string
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(7);
+console.log(part)
+//should return "Banana"
+
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(-12);
+//using a negative COUNTS BACKWARD from the end of the string 
+//output above should be "Banana, Kiwi"
+
+let text = "Apple, Banana, Kiwi";
+let part = text.slice(-12, -6);
+//two negative act normally as this would slice out position -12 to position -6
+//output should return "Banana"
 
 
 
