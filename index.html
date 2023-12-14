@@ -271,9 +271,27 @@ let part = text.slice(-12, -6);
 
 
 
+
+//SUBSTRING() is similar to slice. 
+//Difference is that start and end values less than 0 are treated as 0 in substring()
+let str = "Apple, Banana, Kiwi";
+let part = str.substring(7,13);
+console.log(part);
+//should return "Banana"
+//substring extracts part of the string and returns it as a new string
+
+//ommiting the second parameter causes the same action to happen (rest of string will be sliced out and returned)
+
+
+
+
+
+
+
 //SUBSTR is another method and is very similar to slice
+
 //
-//the difference is that the second parameter specifies the length of the extracted part
+//the difference is that the second parameter specifies the LENGTH of the extracted part
 let test = "Apple, Banana, Kiwi";
 let part = test.substr(7,6);
 console.log(part); 
