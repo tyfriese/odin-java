@@ -190,7 +190,19 @@ console.log(newline);
 
 //you can also include quotes in your strings
 //but since we use quotes to start strings
+const badQuotes1 = "She said "I think so!"";//does NOT work
+//comon option is to use the other characters (""   ''  ``)
+constgoodQuote1 = 'She said "I think so!"';
+const goodQuote2 = `She said "I'm not going in there!"`;
 
+//another option is 'escaping' the quotation marks
+//'escaping' means that we do something to them to make sure they are recognized as text, not part of the code.
+//we do this by putting a BACKSLASH just before the character
+const bigmouth = 'I\'ve got no right to take the throne...';
+console.log(bigmouth)
+//should output: "I've got no right to take the throne..."
+//YOU CAN ALSO USE DIFFERENT CHARCTERS LIKE QUOTES OUTSIDE OF SINGLE QUOTES
+const bigmouth = "I'VE GOT NO TIME FOR THIS"
 
 
 
