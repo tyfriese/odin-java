@@ -114,10 +114,27 @@ typeof //operator shows which type is stored inside a variable
 
 
 //deeper dive on strings
+const goodString = "Use quotes to make strings";
 
 
+const badString = no quotes;
+const badString2 = 'single sided quote;
+const badString3 = anything other than quotes really';
+//browser will let you know what error(missing; before statement) or (unterminated string literal) 
+//CANNOT USE TWO DIFFERENT CHARACTERS TO START/END A STRING
+//IF YOU START WITH " THEN FINSIH WITH "
+const badQuotes = 'This would not work";
 
 
+//Remember that backticks `are used to embed java in them`
+const name = "Chris";
+const greeting = `Hello, ${name}`;
+console.log(greeting); //will output "Hello, Chris"
+//You can use the same technique to join 2 variables together.
+const one = "Hello, ";
+const two = "how are you?";
+const joined = `${one}${two}`
+console.log(joined); //outputs "Hello, how are you?"
 
 
 
