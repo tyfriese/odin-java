@@ -228,7 +228,9 @@ const myString2 = String(myNum2);
 console.log(typeof myString2);
 //should output string for same function reason as above in line 224
 
-//more string methods!!!
+//more string methods!!! 
+https://www.w3schools.com/js/js_string_methods.asp
+
 
 //the 'length' property returns the length os a string
 let text = "abcdefghijklmnopqrstuvwxyz"
@@ -309,6 +311,42 @@ let str = "Apple, Banana, Kiwi"
 let part = str.substr(-4);
 console.log(part);
 //should return "Kiwi"
+
+
+
+
+
+
+//REPLACING STRING CONTENT
+replace() //is a method that replaces a specified value with another value in a string
+
+let text = "Please visit microsoft and microsoft!"
+let newText = text.replace("microsoft", "w3Schools");
+//shoudl return "Please visit w3Schools and microsoft!"
+//look at notes below as to why it did not change both
+
+//NOTE: the replace() method does not change the string it is called on
+//NOTE: the replace() method returns a new string
+//NOTE: the replace() method replaces ONLY THE FIRST match
+//default: is set to only replace the FIRST MATCH
+//default: replace() method is case sensitive[writing 'MICROSOFT' would not work]
+
+
+
+//TO REPLACE ALL MATCHES, use a regular expression with a /g flag (global)
+let text = "Please visit Microsoft and Microsoft!";
+let newText = text.replace(/Microsoft/g, "W3Schools");
+//should return "Please visit w3Schools and w3Schools"
+
+
+//you can replace case insensitive using a 'regular expression' with an /i flag (insensitive)
+let text = "Please visit Microsoft!";
+let newText = text.replace(/MICROSOFT/i, "w3Schools");
+//should return "Please visit w3Schools"
+
+
+//REGULAR EXPRESSIONS are written without quotes but we will learn more about them later on.
+
 
 
 
