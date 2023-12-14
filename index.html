@@ -205,6 +205,31 @@ console.log(bigmouth)
 const bigmouth = "I'VE GOT NO TIME FOR THIS"
 
 
+//NUMBERS VS STRINGS
+
+//when we try to concatenate strings and numbers they are converted to 2strings put together
+const name = "Front ";
+const number = 242;
+console.log(name + number);
+//should return "Front 242"
+//note the space after front to get the space in the output
+
+//you can convert any string into a number or number into a string using 1 of 2 functions
+Number() 
+String()
+//example
+const myString = "123";
+const myNum = Number(myString);
+console.log(typeof myNum);
+//should output "number" with typeof function showing you TYPE it is
+//OPPOSITE
+const myNum2 = 123;
+const myString2 = String(myNum2);
+console.log(typeof myString2);
+//should output string for same function reason as above in line 224
+
+
+
 
 
 
