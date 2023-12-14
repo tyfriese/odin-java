@@ -271,6 +271,30 @@ let part = text.slice(-12, -6);
 
 
 
+//SUBSTR is another method and is very similar to slice
+//
+//the difference is that the second parameter specifies the length of the extracted part
+let test = "Apple, Banana, Kiwi";
+let part = test.substr(7,6);
+console.log(part); 
+//should return "Banana"
+//It took the 6 characters from the 7th position(B) to get Banana
+
+
+//much like slice, omitting the 2nd parameter slices out the rest of the string.
+let str = "Apple, Banana, Kiwi";
+let part = str.substr(7);
+//should return "Banana, Kiwi"
+
+//and again, much like slice, if the parameter is negative then it counts from the end of the string.
+let str = "Apple, Banana, Kiwi"
+let part = str.substr(-4);
+console.log(part);
+//should return "Kiwi"
+
+
+
+
 
 
 
