@@ -170,7 +170,7 @@ const song = "Fight the Youth"
 const score = 9;
 const highestScore = 10;
 const output = `I like the song ${song}. I gave it a score of ${(score/highestScore) * 100}%.`;
-console.log(output);//should return "I like the song Fight The Youth. I gave it a score of 90%."
+console.log(output);//will return "I like the song Fight The Youth. I gave it a score of 90%."
 
 
 
@@ -180,7 +180,7 @@ console.log(output);//should return "I like the song Fight The Youth. I gave it 
 const newline = `One day you finally knew 
 what you had to do, and began,`;
 console.log(newline);
-//should return WITH the line break. !!!HOLD 'SHIFT' AND HIT 'ENTER' TO LINE BREAK WITHOUT EXECUTING
+//will return WITH the line break. !!!HOLD 'SHIFT' AND HIT 'ENTER' TO LINE BREAK WITHOUT EXECUTING
 // notice the backticks before. now lets use quotes
 const newline = "One day you finally knew\nwhat you had to do, and began,";
 console.log(newline);
@@ -211,7 +211,7 @@ const bigmouth = "I'VE GOT NO TIME FOR THIS"
 const name = "Front ";
 const number = 242;
 console.log(name + number);
-//should return "Front 242"
+//will return "Front 242"
 //note the space after front to get the space in the output
 
 //you can convert any string into a number or number into a string using 1 of 2 functions
@@ -249,14 +249,14 @@ substr(start, length)
 let text = "Apple, Banana, Kiwi";
 let part = text.slice(7,13);
 console.log(part);
-//should return "Banana"
+//will return "Banana"
 //note that slice counts the first position as 0! 2nd position as 1!
 
 //omitting the second parameter will slice out the rest of the string
 let text = "Apple, Banana, Kiwi";
 let part = text.slice(7);
 console.log(part)
-//should return "Banana"
+//will return "Banana"
 
 let text = "Apple, Banana, Kiwi";
 let part = text.slice(-12);
@@ -266,7 +266,7 @@ let part = text.slice(-12);
 let text = "Apple, Banana, Kiwi";
 let part = text.slice(-12, -6);
 //two negative act normally as this would slice out position -12 to position -6
-//output should return "Banana"
+//output will return "Banana"
 
 
 
@@ -279,7 +279,7 @@ let part = text.slice(-12, -6);
 let str = "Apple, Banana, Kiwi";
 let part = str.substring(7,13);
 console.log(part);
-//should return "Banana"
+//will return "Banana"
 //substring extracts part of the string and returns it as a new string
 
 //ommiting the second parameter causes the same action to happen (rest of string will be sliced out and returned)
@@ -297,20 +297,20 @@ console.log(part);
 let test = "Apple, Banana, Kiwi";
 let part = test.substr(7,6);
 console.log(part); 
-//should return "Banana"
+//will return "Banana"
 //It took the 6 characters from the 7th position(B) to get Banana
 
 
 //much like slice, omitting the 2nd parameter slices out the rest of the string.
 let str = "Apple, Banana, Kiwi";
 let part = str.substr(7);
-//should return "Banana, Kiwi"
+//will return "Banana, Kiwi"
 
 //and again, much like slice, if the parameter is negative then it counts from the end of the string.
 let str = "Apple, Banana, Kiwi"
 let part = str.substr(-4);
 console.log(part);
-//should return "Kiwi"
+//will return "Kiwi"
 
 
 
@@ -336,13 +336,13 @@ let newText = text.replace("microsoft", "w3Schools");
 //TO REPLACE ALL MATCHES, use a regular expression with a /g flag (global)
 let text = "Please visit Microsoft and Microsoft!";
 let newText = text.replace(/Microsoft/g, "W3Schools");
-//should return "Please visit w3Schools and w3Schools"
+//will return "Please visit w3Schools and w3Schools"
 
 
 //you can replace case insensitive using a 'regular expression' with an /i flag (insensitive)
 let text = "Please visit Microsoft!";
 let newText = text.replace(/MICROSOFT/i, "w3Schools");
-//should return "Please visit w3Schools"
+//will return "Please visit w3Schools"
 
 
 //REGULAR EXPRESSIONS are written without quotes but we will learn more about them later on.
@@ -353,7 +353,7 @@ let newText = text.replace(/MICROSOFT/i, "w3Schools");
 let text = "I love cats. Cats are so cool and fun. Cats are soft"
 text = text.replaceAll("cats","dogs");
 text = text.replaceAll("Cats","Dogs");
-//should return "I love dogs. Dogs are so cool and fun. Dogs are soft"
+//will return "I love dogs. Dogs are so cool and fun. Dogs are soft"
 //note I did it for both capitalized versions and lowercase versions
 
 //replaceAll() method allows you to specify a regular expression instead of a string to be replaced
@@ -374,12 +374,12 @@ toLowerCase()
 let text1 = "Hello World!";
 let text2 = text1.toUpperCase();
 console.log(text2)
-//should return "HELLO WORLD!"
+//will return "HELLO WORLD!"
 
 let text1 = "Good Day Here Mate!";
 let text2 = text1.toLowerCase();
 console.log(text2);
-//should return "good day here mate"
+//will return "good day here mate"
 
 
 
@@ -393,14 +393,14 @@ concat() //joins two or more strings
 let text1 = "Hello";
 let text2 = "world!";
 let text3 = text1.concat(" ", text2)
-//should return "Hello World!"
+//will return "Hello World!"
 //note, again, the space inbetween the quotes 
 
 //concat() can be used instead of the + operator
 text = "Hello" + " " + "World!"; //note the quotes around each operand
 text = "Hello".concat(" ", "World!");
 console.log(text)
-//both should return "Hello World!"
+//both will return "Hello World!"
 
 //NOTE: ALL STRING METHODS RETURN A NEW STRING. THEY DO NOT MODIFY THE ORIGINAL STRING
 //Strings are immutable: Strings cannot be changed, only replaced.
@@ -415,22 +415,22 @@ trim() //method removes whitespace from both sides of a string
 let text1 = "         Hello World!      ";
 let text2 = text1.trim();
 console.log(text2);
-//should return "Hello World";
+//will return "Hello World";
 console.log(text1);
-//should return "         Hello World!      "
+//will return "         Hello World!      "
 
 trimStart() //method works like trim(), but removes whitespaces only from the start of the string
 let text1 = "       Hello World!       ";
 let text2 = text1.trimStart();
 console.log(text2)
-//should return "Hello World           "
+//will return "Hello World           "
 
 trimEnd() // works just the opposite and removes whitespaces from the end of the string
 
 let text1 = "    Hello World!       ";
 let text2 = text1.trimEnd();
 console.log(text2)
-//should return "      Hello World!"
+//will return "      Hello World!"
 
 
 
@@ -447,13 +447,13 @@ padEnd()
 let text = "5";
 let padded = text.padStart(4,"0");
 console.log(padded);
-//should return "0005"
+//will return "0005"
 
 //pad a string with "x" until it reaches the length 4:
 let text = "5";
 let padded = text.padStart(4,"x");
 console.log(padded);
-//should return "xxx5"
+//will return "xxx5"
 
 
 //padStart() and padEnd() are string methods. meaning to pad a number, you must convert that number to a string first
@@ -461,7 +461,7 @@ let numb = 5
 let text = numb.toString();
 let padded = text.padStart(4,"0");
 console.log(padded);
-//should return "0005"
+//will return "0005"
 
 //padEnd() is not supported in Internet Explorer
 
@@ -480,7 +480,7 @@ charAt // method returns the character at a specified index (position) in a stri
 let text = "Hello World!";
 let char = text.charAt(0);
 console.log(char);
-//should return "H"
+//will return "H"
 //charAt (character at) [remember that the first position is 0]
 
 
@@ -489,7 +489,7 @@ charCodeAt() //method returns the unicode of the character at a specified index 
 let text = "Hello World!";
 let char = text.charCodeAt(0);
 console.log(char);
-//should return "72"
+//will return "72"
 //more on unicode in the doc below:
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
 
@@ -500,7 +500,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 let text = "Hello World!";
 let char = text[0];
 console.log(char)
-//should return "H"
+//will return "H"
 //meaning the first character (0)
 //NOTE: PROPERTY ACCESS IS A LITTLE UNPREDICTABLE
 //- it makes strings look like arrays (they are not)
@@ -601,17 +601,17 @@ a != b //means "NOT equals to" in Java
 
 //COMPARISON operators return a boolean value.(see line 47 for boolean)
 alert(2>1);
-//should return "true"
+//will return "true"
 alert(2==1);
-//should return "false"
+//will return "false"
 alert(2!=1);
-//should return "true"
+//will return "true"
 
 
 //a COMPARISON result can be assigned to a varibale, just like any value.
 let result = 5>4;
 alert(result);
-//should return "true"
+//will return "true"
 
 
 
@@ -621,11 +621,11 @@ alert(result);
 //To see whether a string is greater than another, Java uses the so-called "dictionary" or "lexicographical" order
 //in other words strings are compared letter-by-letter
 EXAMPLE1: alert ( 'Z' > 'A' );
-//should return "true"
+//will return "true"
 EXAMPLE 2: alert( 'Glow' > 'Glee' );
-//should return "true"
+//will return "true"
  EXAMPLE 3: alert( 'Bee' > 'Be' );
-//should return "true"
+//will return "true"
 
 //ASKING WHY?^?^?
 //The algorithm to compare two strings is simple:
@@ -644,23 +644,89 @@ o is greater than e. Stop here. The first string is greater.
 
 //When comparing values of different types, Java converts them to numbers.
 alert( '2' > 1); 
-//should return "true". because string becomes a number in java^^^^
+//will return "true". because string becomes a number in java^^^^
 alert( '01' == 1 );
-//should return "true". becuase the string'01' becomes a number 1.
+//will return "true". becuase the string'01' becomes a number 1.
 
 //BOOLEAN VALUES BECOME NUMBERS AS WELL. true is equal to 1. false is equal to 0
 alert( true==1 );
-//should return "true"
+//will return "true"
 alert( false == 0);
-//should return "true"
+//will return "true"
 
 
 
 
 
+//STRICT EQUALITY
+//a regular equality check (==) has a problem. It CANNOT differentiate 0 from false.
+alert( 0 == false);
+//will return "true"
+alert( '' == false);
+//will return "true"
+//NOTE: this happens becuase operands are converted to numbers by the ==. 
+//An empty string, just like "false", becomes a zero.
+
+
+//to differentiate 0 from false. use a STRICT EQUALITY(===) operator.
+// === checks the equality without type conversion.
+//in other words, if a and b are of different types, then a === b immediately returns "false" without an attempt to convert them
+alert( 0 === false );
+//will return "false". because the types are different.
+
+
+//NOTE: THERE IS A 'STRICT NON-EQUALITY' OPERATOR. !== 
+// The 'strict non-equality' makes it obvious whats going on, leaving less room for errors.
 
 
 
+
+
+//COMPARISONS with null and undefined;
+alert( null === undefined );
+//will return "false". because they are two different types.
+alert( null == undefined );
+//will return "true". becuase these two have a "sweet couple" relationship
+//NOTE:they equal each other in the sense of == but not any other value.
+
+//for maths and other comparisons (<, >, <=, >=), null12 and undefined are converted to numbers.
+//NULL becomes 0. UNDEFINED becomes NaN(not a number)0
+
+alert( null > 0 );  
+//will return "false"
+alert( null == 0 ); 
+// will return "false"
+alert( null >= 0 ); 
+// will return "true"
+
+//Mathematically, that’s strange. The last result states that "null is greater than or equal to zero", so in one of the comparisons above it must be true, but they are both false.
+//The reason is that an equality check == and comparisons > < >= <= work differently. Comparisons convert null to a number, treating it as 0. That’s why (3) null >= 0 is true and (1) null > 0 is false.
+//On the other hand, the equality check == for undefined and null is defined such that, without any conversions, they equal each other and don’t equal anything else. That’s why (2) null == 0 is false.
+
+
+
+
+
+//AN INCOMPARABLE UNDEFINED
+//the value 'undefined' shouldn't be compared to other values:
+alert( undefined > 0 ); 
+// will return "false"
+alert( undefined < 0 ); 
+// will return "false" 
+alert( undefined == 0 ); 
+// will return "false" 
+
+//NOTE: 1st and 2nd example are false becuase undefined gets converted to NaN(which returns false for all comparisons)
+//NOTE: 3rd example equality check returns false because 'undefined' only equals 'null', 'defined', and no other value.
+
+
+
+
+
+//THESE STRANGE EXAMPLES WILL COME UP ENOUGH TO BECOME FAMILIAR OVER TIME. USE THESE TO AVOID PROBLEMS WITH THEM:
+// 
+//Treat any comparison with undefined/null except the strict equality (===) with exceptional care.
+//Don’t use comparisons >=, >, <, <= with a variable which may be null/undefined, unless you’re really sure of what you’re doing. If a variable can have these values, check for them separately.
 
 
 
