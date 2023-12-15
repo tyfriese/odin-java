@@ -513,6 +513,32 @@ text[0] = "A";
 
 
 
+//CONVERTING A STRING TO AN ARRAY
+//like converting numbers, if you want to work with strings as an array, you must convert it to an array
+
+//JAVA STRING SPLIT() METHOD
+split() //can be used to convert strings to arrays
+
+text.split(",") //means to Split on commas
+text.split(" ") //means to Split on spaces
+text.split("|") //means to Split on pipe
+
+
+let text = "a,b,c,d,e,f";
+const myArray = text.split(",");
+console.log(myArray[0]);
+//returns "a"
+//NOTE that the [] after myArray specifies which character
+//console.log(myArray); would return "a b c d e f" 
+
+
+
+Complete string reference guide:
+
+https://www.w3schools.com/jsref/jsref_obj_string.asp
+
+
+
 
 
 
