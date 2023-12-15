@@ -589,6 +589,85 @@ https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_string_methods
 
 
 
+//COMPARISONS
+//we know many comparison operators in math:    greater than, less than, equals to
+//they are written as the following in Java:
+a > b, a < b
+a >= b, a <= b //"greater than or equals to", "less than or equals to"
+a == b //NOTE  THE DOUBLE EQUALS MEANS THE EQUALITY TEST/ NOT AN ASSIGNMENT LIKE SINLGE =
+a != b //means "NOT equals to" in Java
+
+//BY THE END, YOU SHOULD FIND A GOOD RECIPE TO AVOID "JAVASCRIPT QUIRKS"-RELATED ISSUES
+
+//COMPARISON operators return a boolean value.(see line 47 for boolean)
+alert(2>1);
+//should return "true"
+alert(2==1);
+//should return "false"
+alert(2!=1);
+//should return "true"
+
+
+//a COMPARISON result can be assigned to a varibale, just like any value.
+let result = 5>4;
+alert(result);
+//should return "true"
+
+
+
+
+
+////STRING COMPARSION 
+//To see whether a string is greater than another, Java uses the so-called "dictionary" or "lexicographical" order
+//in other words strings are compared letter-by-letter
+EXAMPLE1: alert ( 'Z' > 'A' );
+//should return "true"
+EXAMPLE 2: alert( 'Glow' > 'Glee' );
+//should return "true"
+ EXAMPLE 3: alert( 'Bee' > 'Be' );
+//should return "true"
+
+//ASKING WHY?^?^?
+//The algorithm to compare two strings is simple:
+// 1- Compare the first character of both strings.
+// 2- If the first character from the first string is greater (or less) than the other string’s, then the first string is greater (or less) than the second. We’re done.
+// 3- Otherwise, if both strings’ first characters are the same, compare the second characters the same way.
+// 4- Repeat until the end of either string.
+// 5- If both strings end at the same length, then they are equal. Otherwise, the longer string is greater.
+EXAMPLE2: G is the same as G.
+l is the same as l.
+o is greater than e. Stop here. The first string is greater.
+
+
+
+
+
+//When comparing values of different types, Java converts them to numbers.
+alert( '2' > 1); 
+//should return "true". because string becomes a number in java^^^^
+alert( '01' == 1 );
+//should return "true". becuase the string'01' becomes a number 1.
+
+//BOOLEAN VALUES BECOME NUMBERS AS WELL. true is equal to 1. false is equal to 0
+alert( true==1 );
+//should return "true"
+alert( false == 0);
+//should return "true"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
   </body>
 </html>
