@@ -406,6 +406,32 @@ text = "Hello".concat(" ", "World!");
 
 
 
+//JAVA STRING TRIM()
+trim() //method removes whitespace from both sides of a string
+
+let text1 = "         Hello World!      ";
+let text2 = text1.trim();
+console.log(text2);
+//should return "Hello World";
+console.log(text1);
+//should return "         Hello World!      "
+
+trimStart() //method works like trim(), but removes whitespaces only from the start of the string
+let text1 = "       Hello World!       ";
+let text2 = text1.trimStart();
+//should return "Hello World           "
+
+trimEnd() // works just the opposite and removes whitespaces from the end of the string
+
+let text1 = "    Hello World!       ";
+let text2 = text1.trimEnd();
+//should return "      Hello World!"
+
+
+
+
+
+
 
 
 
