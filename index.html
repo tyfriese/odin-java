@@ -363,6 +363,10 @@ text = text.replaceAll(/cats/g,"dogs")
 //NOTE: replaceAll() does NOT work on Internet Explorer.
 
 
+
+
+
+
 //Java string to uppercase or lower case
 toUpperCase()
 toLowerCase()
@@ -374,6 +378,31 @@ let text2 = text1.toUpperCase();
 let text1 = "Good Day Here Mate!";
 let text2 = text1.toLowerCase();
 //should return "good day here mate"
+
+
+
+
+
+
+
+//JAVA STRING CONCAT()
+concat() //joins two or more strings
+
+let text1 = "Hello";
+let text2 = "world!";
+let text3 = text1.concat(" ", text2)
+//should return "Hello World!"
+//note, again, the space inbetween the quotes 
+
+//concat() can be used instead of the + operator
+text = "Hello" + " " + "World!"; //note the quotes around each operand
+text = "Hello".concat(" ", "World!");
+//both should return "Hello World!"
+
+//NOTE: ALL STRING METHODS RETURN A NEW STRING. THEY DO NOT MODIFY THE ORIGINAL STRING
+//Strings are immutable: Strings cannot be changed, only replaced.
+
+
 
 
 
