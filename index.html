@@ -373,10 +373,12 @@ toLowerCase()
 
 let text1 = "Hello World!";
 let text2 = text1.toUpperCase();
+console.log(text2)
 //should return "HELLO WORLD!"
 
 let text1 = "Good Day Here Mate!";
 let text2 = text1.toLowerCase();
+console.log(text2);
 //should return "good day here mate"
 
 
@@ -397,6 +399,7 @@ let text3 = text1.concat(" ", text2)
 //concat() can be used instead of the + operator
 text = "Hello" + " " + "World!"; //note the quotes around each operand
 text = "Hello".concat(" ", "World!");
+console.log(text)
 //both should return "Hello World!"
 
 //NOTE: ALL STRING METHODS RETURN A NEW STRING. THEY DO NOT MODIFY THE ORIGINAL STRING
@@ -419,13 +422,49 @@ console.log(text1);
 trimStart() //method works like trim(), but removes whitespaces only from the start of the string
 let text1 = "       Hello World!       ";
 let text2 = text1.trimStart();
+console.log(text2)
 //should return "Hello World           "
 
 trimEnd() // works just the opposite and removes whitespaces from the end of the string
 
 let text1 = "    Hello World!       ";
 let text2 = text1.trimEnd();
+console.log(text2)
 //should return "      Hello World!"
+
+
+
+
+
+
+//JAVA STRING PADDING
+padStart()
+padEnd()
+//were both added to support padding at the beginning and at the end of a string
+//this pads the string with another string(multiple times) until it reaches a given length. 
+
+//example: pad a string with "0" until it reaches the length 4:
+let text = "5";
+let padded = text.padStart(4,"0");
+console.log(padded);
+//should return "0005"
+
+//pad a string with "x" until it reaches the length 4:
+let text = "5";
+let padded = text.padStart(4,"x");
+console.log(padded);
+//should return "xxx5"
+
+
+//padStart() and padEnd() are string methods. meaning to pad a number, you must convert that number to a string first
+let numb = 5
+let text = numb.toString();
+let padded = text.padStart(4,"0");
+console.log(padded);
+//should return "0005"
+
+//padEnd() is not supported in Internet Explorer
+
 
 
 
