@@ -469,6 +469,43 @@ console.log(padded);
 
 
 
+// Extracting String Characters
+//3 methods for extracting string characters:
+charAt 
+charCodeAt
+Property access []
+
+
+charAt // method returns the character at a specified index (position) in a string:
+let text = "Hello World!";
+let char = text.charAt(0);
+console.log(char);
+//should return "H"
+//charAt (character at) [remember that the first position is 0]
+
+
+charCodeAt() //method returns the unicode of the character at a specified index in a string
+//the method returns a UTF-16 code (an integer between 0 and 65535)
+let text = "Hello World!";
+let char = text.charCodeAt(0);
+console.log(char);
+//should return "72"
+
+
+[...] // allows property access [] on strings.
+
+let text = "Hello World!";
+let char = text[0];
+console.log(char)
+//should return "H"
+//meaning the first character (0)
+//NOTE: PROPERTY ACCESS IS A LITTLE UNPREDICTABLE
+//- it makes strings look like arrays (they are not)
+//- if no chartacter is found, [] returns undefined, (while charAt returns an empty string)
+// - it is read only. str[0]="A" gives no error (but does not work)
+let text = "HELLO WORLD";
+text[0] = "A";
+//gives no error but does not work
 
 
 
