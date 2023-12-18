@@ -820,11 +820,9 @@ if (time < 10) {
 
 
 
-
-
-//LOGICAL OPERATORS(there are 4 logical operators in Java)
-|| (OR)
-&& (AND)
+///////////LOGICAL OPERATORS(there are 4 logical operators in Java)
+|| (OR) (lines 833-899)
+&& (AND) (lines 907-)
 ! (NOT)
 ?? (Nullish Coalescing)
 //Although they are called “logical”, they can be applied to values of any type, not only boolean. Their result can also be of any type.
@@ -834,6 +832,7 @@ if (time < 10) {
 
 //the OR operator is represented with two vertical line symbols:
 result = a || b;
+
 //Java makes the || a little trickier and more powerful than classic programming
 //there are four possible logical combos:
 alert( true || true);  //true
@@ -905,10 +904,62 @@ false || alert("printed");
 
 
 
+/////// The && (AND) operator represented by two ampersands. &&
+result = a && b;
+//in classical programming, &&(AND) returns 'true' if both operands are truthy and 'false' otherwise
+alert( true && true);
+// will return 'true'
+alert( false && true);
+//will return 'false'
+alert( true && false);
+//will return 'false'
+alert( false && false);
+//will return 'false';
+//NOTE: BOTH side must be truthy in order to return 'true'
 
+//example using an 'if' statement
 
+let hour = 12;
+let minute = 30;
 
+if (hour == 12 && minute == 30) {
+  alert('The time is 12:30');
+} // this will alert the screen 'The time is 12:30'
 
+//just like with ||(OR), any value is allowed as an operand of &&(AND)
+if (1 && 0) { //<<<<this is evaluated as 'true and false'
+  alert("won't work, because the result is falsy")
+}
+
+// NOTE!!!: &&(AND) find the first falsy value
+result = value1 && value2 && value3;
+// NOTE: THE &&(AND) OPERATOR DOES THE FOLLOWING:
+// Evaluates from left to right
+// for each operand, converts it to a boolean. if the result is 'false' then it stops and returns the original value of the operand
+// if all operands have been evaluated (were all truthy), it returns the last operand
+
+// IN OTHER WORDS!!!   &&(AND) RETURNS THE FIRST FALSY VALUE OR THE LAST VALUE (IF NONE WERE FOUND)
+
+//if the first operand is truthy. then &&(AND) will return the second operand:
+alert( 1 && 0); //will return '0'
+alert ( 1 && 5);// will return '5'
+
+//if the first operand if falsy, then &&(AND) returns it and ignores the second
+alert( null && 5); // will return 'null'
+alert(0 && "no matter what"); //will return '0' / because the first value is falsy
+
+// GOOD TO NOTE THAT THE PRECEDENCE OF &&(AND) IS HIGHER THAN ||(OR)
+// so the code a && b || c && d is just like saying (a && b) || (c && d)
+
+//DO NOT REPLACE 'if' WITH || or &&
+let x = 1;
+(x > 0) && alert('greater than zero');
+// the action on the right side of the && only gets executed if the evaluations reaches it (only if x>0)
+//the above is basically an analogue for:
+let x = 1;
+if (x > 0) alert('greater than zero');
+// Although the variat with && appears shorter, 'if' is more obvious and more readable
+//RECOMMENDED THAT WE USE CONTRUCT FOR THEIR PURPOSE (IF WHEN YOU WANT IF...&& IF YOU WANT AND)
 
 
 
