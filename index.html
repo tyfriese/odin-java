@@ -968,6 +968,30 @@ if (x > 0) alert('greater than zero');
 
 
 
+/////////////The !(NOT) operator is represented with a exclamation sign!
+result = !value;
+//The operator accepts a single arguement and does the following:
+// 1) converts the operand to boolean type.
+// 2) returns the inverse value
+alert( !true ); // will return 'false'
+alert ( !0 ); //will return 'true'
+
+// NOTE: a double not, !!, is sometimes used for converting a value to boolean type.
+alert( !!"non-empty string"); //will return 'true'
+alert( !!null); //will return 'false'. becuase the boolean value of null is returned
+
+// The first NOT ! converts the value to boolean and returns the inverse
+// The second NOT ! inverses it again. In the end, we have a plain vlaue-to-boolean conversion.
+
+// There is a more verbose way to do the same thing. Like a built-in boolean function.
+alert( Boolean("non-empty string")); // will return 'true'
+alert(Boolean(null)); // will return 'false'
+
+//The precenedence of !(NOT) is the highest of all logical operators, so it is ALWAYS executed first. before &&, before ||
+
+
+
+
 
 
 
