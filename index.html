@@ -820,6 +820,118 @@ if (time < 10) {
 
 
 
+
+
+//LOGICAL OPERATORS(there are 4 logical operators in Java)
+|| (OR)
+&& (AND)
+! (NOT)
+?? (Nullish Coalescing)
+//Although they are called “logical”, they can be applied to values of any type, not only boolean. Their result can also be of any type.
+
+
+
+
+//the OR operator is represented with two vertical line symbols:
+result = a || b;
+//Java makes the || a little trickier and more powerful than classic programming
+//there are four possible logical combos:
+alert( true || true);  //true
+alert( flase || true);  //true
+alert ( true || false );  //true
+alert( false || false);  //false
+//the result is always true except for the case when both operands are false
+//if an operand is not a boolean, it is converted to one for the evaluation
+//remember that 1=true and 0=false
+if (1 || 0) {  //this works just like 'if (true||false)'
+  alert( 'the truth!')
+} //this should alert your screen "the truth!"
+
+//NOTE: || (or) is used inside of an 'if' statement to test if any of the given conditions is true.
+let hour = 9;
+
+if (hour < 10 || hour > 18) {
+  alert('the office is closed');
+} // translation:  if the hour is less than 10(1000) OR the hour is greater than 18(1800)
+
+//we can pass more conditions also
+let hour = 12;
+let isWeekend = true;
+
+if (hour < 10 || hour > 18 || isWeekend) {
+  alert('The Office is closed.'); 
+}
+// ||(or) find the first truthy value
+result = value1 || value2 || value3;
+// the ||(or) opertor does the following:
+//evaluates operands from left to right
+//for each operand, converts it to boolean, if the result is 'true', stops and returns the original value of that operand 
+//if all operands have been evaluated (were all false), it will return the last operand.
+//NOTE: a value is returned in its original form without the conversion.
+
+//      A CHAIN OF || WILL RETURN THE FIRST TRUTHY VALUE. OR THE LAST VALUE IF NO TRUTHY VALUES ARE FOUND. 
+alert( 1 || 0);
+ // will return '1' (1 is truthy)
+alert( null || 1);
+//will return '1' becuase 1 is the first truthy value
+alert( null || 0 || 1);
+//will return '1', becuase 1 is the first truthy value
+alert( undefined || null || 0); 
+// will return 0, because it reads left to right and all were false, returning 0(the last value)
+
+//THIS WILL LEAD TO INTERESTING USAGE
+//    1) GETTING THE FIRST TRUTHY VALUE FROM A LIST OF VARIABLES OR EXPRESSIONS
+let firstName = "";
+let lastName = "";
+let nickName = "SuperCoder";
+
+alert( firstName || lastName || nickName || "Anonymous");
+// will return "SuperCoder" . but if all variables were falsy, then "Anonymous" would be returned
+
+//      2) SHORT CIRCUIT EVALUATION
+// the || operator is the so-called "short-circuit" evaluation
+// This means that || processes its arguments until the first truthy value is reached, and then the value is returned immediately, without even touching the other argument
+// This becomes important when the operand isn't just a value, but is an expression with a side effect(variable assignment or function call)
+
+true || alert("not printed");
+false || alert("printed");
+//only the second message would be alerted
+// WHY? in the first line, the || stops evaluating upon seeing true, so the alert is not run
+// people use this feature to execute commands only if the condition on the left part is falsy
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
   </body>
 </html>
