@@ -990,6 +990,48 @@ alert(Boolean(null)); // will return 'false'
 //The precenedence of !(NOT) is the highest of all logical operators, so it is ALWAYS executed first. before &&, before ||
 
 
+//example problem: write an 'if' condition to check that 'age' is between 14 and 90 inclusively 
+if ( age >= 14 && age <= 90 )
+//inclusively means that age can reach the edges 14 or 90. hence the <= >=
+
+
+//ex problem: write an 'if' condition to check that age is NOT between 14 and 90.
+if (! (age 14 && age > 90));
+if (age <14 || age > 90);
+
+
+//ex problem: write a code which asks for login with 'prompt'
+//visitor will enter "admin", then 'prompt' for a password
+//if the input is an empty line or 'Esc'-show  "cancelled", if its another string- show "i dont know you"
+//password is checked as follows: 
+// - if it equals "TheMaster", then show "Welcome!"
+// - another string- show "Wrong password"
+// - for an empty string or cancelled input, show "Cancelled"
+// empty string "", pressing 'Esc' returns null
+
+
+let userName = prompt("Who's there?", "");   //technically do not the ""
+
+if (userName === 'Admin') {
+  let pass = prompt('Password?',"");
+  if ( pass === 'TheMaster') {
+    alert('Welcome!');
+  } else if ( pass === "" || pass === null) {
+    alert('Canceled');
+  } else {
+    alert('Wrong password');
+  }
+} else if (userName === "" || userName === null) {
+  alert('Canceled')
+} else {
+  alert("I don't know you")
+}
+
+
+// if runs if the condition is true
+// else runs if the condition is false
+// else if specifies a new condition to test, if the first is false
+
 
 
 
