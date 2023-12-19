@@ -11,7 +11,7 @@
     </header>
     <main>
       <button>Start machine</button>
-      <p>The machine is stopped.</p>
+      <p id="sunshine">The machine is stopped.</p>
 
     </main>
     <script>
@@ -1032,6 +1032,26 @@ if (userName === 'Admin') {
 // else runs if the condition is false(runs another code instead of your 'if')
 // else if specifies a new condition to test, if the first is false
 
+
+
+const select = document.querySelector("#sunshine")
+//   ^^^ document.querySelector is a method in javascript to recal certain elements of html
+//        in this case, the id="sunshine"
+
+
+
+element.addEventListener("event", function, useCapture);
+// ^element=the HTML element to which the event listener is attached
+// ^^("event")=a string representing the type of event like a click, keydown, or mouseover
+// '( ,function, )'= the function to be called when the event occurs
+// '(,, useCapture)' = is OPTIONAL, a boolean value specifying whether to use event capturing. This parameter is optional and is usually set to 'false' by default 
+
+// .addEventListener is used to attach an event handler function to an HTML element
+//  which allows you to respons to specific events like clicks, keypresses, or mouse movements on that element
+
+select.addEventListener("change", setWeather)
+// translates to:   'select' would be an HTML element from somewhere above in the code
+// translates to:    when someone "changes" 'select', run the function 'setWeather' 
 
 
 
