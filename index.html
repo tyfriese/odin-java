@@ -1060,6 +1060,80 @@ select.addEventListener("change", setWeather)
 
 
 
+//You aboslutely can nest and if...else statement inside another one. 
+if (choice === "sunny") {
+  if (temperature < 86) {
+    para.textContent = `It is $(temperature) degrees outside - nice and sunny. Let's go to the beach!`;
+  } else if (temperature >= 86) {
+    para.textContent = ` It is ${temperature} degrees outside - REALLY HOT.` 
+  }
+}
+
+//REMEMBER logical operators help you write if...else statements without nesting
+// && (AND) chains two or more expressions so all of them evaluates to true to work
+// ||(OR) chains two or more expressions so ONE OR MORE evaluates to true
+if (coice === "sunny" && temperature < 86) {
+  para.textContent = `It is ${temperature} outside! Perfect Day`;
+} else if (choice === "sunny" && temperature >= 86) {
+  para.textContent = `It is ${temperature} outside! HOTHOTHOT`;
+}
+//NOTE that the first code block will only be run if 'sunny' and 'temp > 86' are true
+
+
+if (iceCreamVanOutside || houseStatus === "on fire") {
+  console.log("you should leave now!")
+} else {
+  console.log("Just stay inside I reckon");
+}
+
+// NOTE: it is iceCreamVanOutside !OR! houseStatus then it will execute
+
+
+if (!(inceCreamVanOutside || houseStatus === "on fire")) {
+  console.log("You are okay to stay");
+} else {
+  console.log("Get out!!!")
+}
+// NOTE that the ! around the first line of code will run the "NOT" operator
+// This means that if the OR statement returns 'true' the ! will negate it so it will return false
+
+
+// NOTE that you can also combine logical statements. but REMEMBER the precedence order
+if ((x === 5 || y > 3 || z <= 10) && (loggedIn ||userName === "Steve")) {
+}
+
+
+
+//////WRONG BELOW:
+if ( x === 5 || 7 || 10 || 20) {
+  //run the code
+}
+
+//////CORRECT VERSION:
+if (x === 5 || x === 7 || x === 10 || x === 20) {
+  //run the code
+}
+
+//Note that first(wrong) code is saying 'if x equals 5, or 7'[which is always true]
+//We want to specifiy a complete evaluation on both sides of the operator
+
+
+
+
+
+
+
+
+
+/////BELOW IS ABOUT SWITCH STATEMENTS
+
+
+
+
+
+
+
+
 
 
 
