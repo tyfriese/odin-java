@@ -1126,6 +1126,75 @@ if (x === 5 || x === 7 || x === 10 || x === 20) {
 
 
 /////BELOW IS ABOUT SWITCH STATEMENTS
+// if...else statements do the job well when you have a couple of choices, and each requires a reasonable amount of code to be run and/or has mutliple logical operators
+// when you only want to set a certain choice of value or print a particular statement dpending on a condition use switch
+// Switch statements take a single expression/value as an input, and then looks through several choices until they find one that matches the value. and then executes it
+switch (expression) {
+  case choice1:
+    //run this code
+    break;
+
+  case choice2: 
+  //run this code instead
+  break;
+
+  case choice3:
+    //include as many cases as you would like
+
+  default:
+    //actually, just run this code
+    break;
+}
+// ABOVE EXPLANATION:
+// - keyword of 'switch' followed by parentheses ()
+// - an expression inside the parentheses ()
+// - keyword of 'case', followed by a choice that the expression/value could be
+// - some code to run[only if the value matches]
+// - a 'break' statement, followed by a semicolon; 
+// - if the previous choice matches the expression/value, the browser stops executing the code block there
+// - and then moves on to any code that appears below the  switch (statement) { }
+// - remember you can add as many cases as you want/need
+// - the keyword 'default', followed by a code pattern but DOES NOT have a choice afer it
+// - the DEFAULT option does not need a break after it as there is nothing to run after it
+// - the DEFAULT option will run if none of the above codes match
+// - NOTE: you also do not need to include a default section. UNLESS you are handling unknown cases
+/////////////SAMPLE SWITCH STATEMENT/////////////////////////// HTML then JS
+<label for="weather">Select the weather type today: </label>
+<select id="weather">
+  <option value="">--Make a choice--</option>
+  <option value="sunny">Sunny</option>
+  <option value="rainy">Rainy</option>
+  <option value="snowing">Snowing</option>
+  <option value="overcast">Overcast</option>
+</select>
+
+<p></p>
+//////JS below:
+const select = document.querySelector("select");
+cont para = document.querySelector("p");
+
+select.addEventListener("change", setWeather);
+
+function setWeather() {
+  const choice = select.value;
+
+  switch (choice) {
+    case "sunny":
+      para.textContent = "It is nice and sunny! Wear shorts today.";
+      break;
+    case "rainy":
+      para.textContent = "Bring your umbrella and trench coat!";
+      break;
+    case "snowing":
+      para.textContent = "Snow Shoes and shovels today!";
+      break;
+    case "overcast":
+      para.textContent = "Maybe it will rain, maybe it wont.";
+      break;
+    default:
+      para.textContent = "";
+  }
+}
 
 
 
