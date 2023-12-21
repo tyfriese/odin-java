@@ -1442,6 +1442,77 @@ if (login == 'Employee') {
 
 
 
+//////////// MORE ON THE SWITCH STATEMENT //////////////////////
+// SYNTAX:
+switch(x) {
+  case 'value1': 
+  //code goes here(alert("too small"))
+  break;
+  case 'value2':
+  //different code (alert("perfect size"))
+  break;
+  case 'value3':
+  //3rd code to try(alert("too big!"))
+  break;
+
+  //optional
+  default:
+    //code to run if all other cases fail
+    break;
+    //'break' is also optional when under the 'default' case
+}
+// live example
+let a = 2 + 2;
+
+switch(a) {
+  case 3: 
+  alert("under!");
+  break;
+  case 4: 
+  alert("Nailed it!");
+  break;
+  case 5: 
+  alert("getting too high!");
+  break;
+  default:
+    alert("I dont know any values!");  
+}
+// the 'break' checks the case above it and run it if it returns 'true'
+// case arguments can also be expressions (   case b+1:  )
+
+
+// SEVERAL VARIANTS OF CASE WHICH SHARE THE SAME CODE CAN BE GROUPED.
+// EXAMPLE BELOW: IF WE WANT TO RUN THE SAME CODE FOR 'CASE 3' AND 'CASE 5'
+let a = 3;
+
+switch(a) {
+  case 4:
+    alert("Correct!");
+    break;
+    case3:
+    case5: 
+    alert("Wronnngggg!");
+    alert("take more classes!")
+    break;
+    default:
+      alert("This result is a strange one. Really.");
+}
+//now both 3 and 5 show the same message
+// the ability to 'group' cases is a side effect of how switch/case works without break. 
+// case 3 starts and goes through line 5 becuase there is no break
+// the above, when ran, would alert "wronnggggg!" and then alert "take more classes!"
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
