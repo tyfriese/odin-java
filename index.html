@@ -1280,9 +1280,6 @@ let days = 31;
     days = 30;
   }
 
-
-
-  ////TEST 2 FROM LESSON:
   
 
 
@@ -1290,11 +1287,54 @@ let days = 31;
 
 
 
+  ////TEST 2 FROM LESSON:
+  
+  // Take the ternary operator example from earlier, and covert the ternary operator into a switch statement
+
+// - This should accept the choice variable as its input expression
+// - for each case the choice should equal one of the possible <option> values (white, black, purple, yellow, or psychedelic)
+// - also for each case: the 'update()' function should be run and be passed two color values. 1 for bgColor and the second for textcolor
+// - color value are strings so they must be wrapped in "quotes"
+
+// Test is that the bottom of the website below if you want to try there before scrolling to the answer:
+https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals
 
 
 
+// YOU ARE GIVEN THE FOLLOWING
 
 
+const select = document.querySelector('select');
+const html = document.querySelector('.output');
+
+select.addEventListener('change', () => {
+  const choice = select.value;
+
+//ADD SWITCH STATEMENT HERE
+switch (choice) {
+   case "white": 
+	update("white","black");
+	break;
+   case "black":
+ 	update("black","white");
+	break;
+   case "purple":
+	update("purple","yellow")
+	break;
+   case "yellow":
+	update("yellow","purple")
+	break;
+   case "psychedelic":
+	update("orange","blue")
+	break;
+}
+
+
+
+function update(bgColor, textColor) {
+  html.style.backgroundColor = bgColor;
+  html.style.color = textColor;
+}
 
 
 
