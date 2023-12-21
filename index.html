@@ -1507,6 +1507,73 @@ switch(a) {
 
 
 
+///////TYPE MATTERS/////
+// NOTE THAT THE EQUALITY CHECK IS ALWAYS STRICT. THE VALUES MUST BE OF THE SAME TYPE TO MATCH.
+let arg = prompt("Enter a value?");
+switch(arg) {
+  case '0':
+  case '1':
+    alert("One or Zero");
+    break;
+
+    case '2':
+      alert("Two");
+      break;
+
+    case 3:
+      alert("Three");
+      break;
+      default:
+        alert("An unknown value");
+}
+// '0' and '1', the first alert will run
+// for '2', the second alert will run
+// if you look closer at 3, the result of the prompt is a string, "3". which does not strictly === 3. 
+// so case 3 is technically a dead code and the default variant will execute.
+
+if (browser == 'Edge') {
+  alert("You have got the edge")
+} else if (browser == 'Chrome') ||
+browser == 'Firefox' ||
+browser == 'Safari' ||
+broswer == 'Opera' {
+  alert ("Okay, we support these too.")
+} else {
+  alert (" We hope that this looks okay!")
+}
+
+// REMEMBER THAT == DOES NOT CHECK FOR STRICT EQUALTIY
+// REMEMBER THAT === DOES CHECK FOR STRICT EQUALITY (this will check both value and operand) and return false if they are different types
+
+
+
+
+
+
+
+// practice work
+let a = +prompt('a?','');
+
+switch(a) {
+  case 0:
+    alert(0)
+    break;
+
+  case 1:
+  alert(1);
+  break;
+
+  case 2:
+  case 3:
+  alert(2,3);
+
+}
+
+
+
+
+
+
 
 
 
