@@ -1342,6 +1342,117 @@ function update(bgColor, textColor) {
 
 
 
+//////  RANDOM NOTES TO KNOW:
+
+//   - 0, NULL, "", UNDEFINED, NaN, and FALSE are all 'falsy' value
+
+// you can pre evaluate a boolean
+let cond = (year == 2023); //this evaluates to true or false
+if (cond) {
+  ...
+}
+
+// - 'else if' tests several different variants.
+if (year < 2023) {
+  alert("tooooo early");
+} else if (year > 2023) {
+  alert("tooooo late!");
+} else {
+  alert("Nailed it!");
+}
+
+
+/////////////// ? USE 
+let age = prompt('age?', 18);
+
+let message = (age < 3) ? 'Hi, baby!' :
+  (age < 18) ? 'Hello!' :
+  (age < 100) ? 'Greetings!' :
+  'What an unusual age!';
+
+alert( message );
+////////////////////IS THE SAME AS BELOW:
+if (age < 3) {
+  message = 'Hi, baby!';
+} else if (age < 18) {
+  message = 'Hello!';
+} else if (age < 100) {
+  message = 'Greetings!';
+} else {
+  message = 'What an unusual age!';
+}
+
+
+
+////practice exercise:
+let official = prompt("What is the official name of Javascript?");
+let answer = "ECMAScript" 
+if (official === answer) {
+  message = 'Correct!';
+} else {
+  message = "you dont know? its ECMAScript"
+}
+
+
+
+///practice exercise 2:
+let value = prompt("type a number!");
+if (value > 0) {
+  alert(1);
+} else if (value < 0) {
+  alert(-1);
+}  else {
+  alert(0);
+}
+
+
+
+
+
+////practice exercsie 3
+let result = (a+b<4) ? 'below': 'over!'
+
+
+
+
+/////practice exercise 4:
+let message = (login == Employee) ? "hello" :
+(login == 'Director') ? 'Greetings!' :
+(login == 'No login') ? 'No login' :
+'';
+///is the translation of
+let message;
+
+if (login == 'Employee') {
+  message = 'Hello';
+} else if (login == 'Director') {
+  message = 'Greetings';
+} else if (login == '') {
+  message = 'No login';
+} else {
+  message = '';
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
   </body>
 </html>
