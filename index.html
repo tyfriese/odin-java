@@ -1202,7 +1202,7 @@ function setWeather() {
 
 
 ///TERNARY OPERATOR
-// The Ternary or conditional operator is a bit of syntax that tests a conditionand returns one value/expression if true
+// The Ternary or conditional operator is a bit of syntax that tests a condition and returns one value/expression if true
 // and then returns another if it is false. This takes up less code than 'if...else' if you have two choices that are chosen in a true/false
 condition ? run this code : run THIS code instead
 // more clear
@@ -1566,8 +1566,52 @@ switch(a) {
   case 2:
   case 3:
   alert(2,3);
-
 }
+
+
+
+
+
+
+
+
+
+//////BREAKPOINTS
+// these are used inside the dev tools in a browser therefore will not be used inside vscode or a script
+
+line-of-code   // pauses an exact region of code
+Conditional line-of-code   // pause on an exact region of code, but only when some other condition is true
+logpoint   // log a message to the console without pausing the execution
+DOM   // pause on the code that changes or removes a specific DOM node, or its children
+XHR   // Pause when an XHR URL contains a string pattern
+Event Listener    // Pause on the code that runs after an event, such as a click
+Exception    // Pause on the line of code that is throwing a caught or uncaught exception
+Function    // Pause whenever a specific function is called
+Trusted Type    // Pause on Trusted Type violations
+
+
+
+
+//extra notes to add on the different breakpoints:
+
+
+// DOM change breakpoints (elements tab) has 3 options to click from when you expand it from the right click menu
+subtree modifications: //Triggered when a child of the currently-selected node is removed 
+//or added, or the contents of a child are changed. Not triggered on child node attribute 
+//changes, or on any changes to the currently-selected node.
+
+Attributes modifications: //triggered when an attribute is added or removed on the 
+// currently selected node, or when an attribute value changes
+
+node removal: //triggerd when the currently-selected node is removed
+
+
+
+
+
+//
+
+
 
 
 
