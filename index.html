@@ -1904,6 +1904,113 @@ unmonitorEvents($0, "mousemove");
 
 
 
+// more devtools tips
+
+
+//regular
+console.log('hello');
+
+//Interpolated
+console.log('hello I am a %s string!, '')
+//interpolates whatever is in the second '', into the %s
+//not used much since backticks can input varriables inside `` 
+
+//styled
+console.log('%c I am some good text', 'font-size: 50px')
+//will style the text css style
+
+
+//warning
+console.warn('ohnoo');
+//will return a warning on the console
+
+//error
+console.error('oh nooo')
+//displays an error in the console
+
+
+//info
+console.info('Crocs eat 3-4 people per year')
+//returns an 'info' line in the console
+
+
+//testing
+console.assert(1 === 2, 'You did not select the right element')
+//assert only fires when something returns false(and then it will tell you in the console)
+//This allows you to test for anything, and if it is wrong then it will tell the user in the console
+
+
+//cleaning
+console.clear()
+
+
+//viewing DOM elements
+console.log(p); //logs the dropdown
+console.dir(p); //allows you to open the class list to show anything that lives on the element
+
+
+
+//grouping
+dogs.forEach(dog => {
+  console.group(`${dog.name}`);
+  console.log(`This is ${dog.name}`)
+  console.log(`${dog.name} is ${dog.age * 7}dog years old`)
+  console.groupEnd(`${dog.name}`);
+})
+//this is all a lot of stuff and a mess so the console.group cleans it up a bit
+
+
+
+//counting
+console.count('Wes');
+console.count('Wes');
+console.count('Wes');
+console.count('Steve');
+console.count('Steve');
+console.count('Wes');
+console.count('Wes');
+console.count('Wes');
+console.count('Steve');
+console.count('Steve');
+console.count('Wes');
+console.count('Wes');
+console.count('Wes');
+
+//will log how many you have iterated over the code
+/*wes 1
+  wes 2
+  wes 3
+  steve 1
+  steve 2
+  wes 4 
+  and so on */
+
+
+
+  //timing
+  console.time('fetching data');
+  fetch('https://api.github.com/users/webos')
+    .then(data => data.json())
+    .then(data => {
+      console.timeEnd('fetching data'); //pass the same string you use to start it
+      console.log(data);
+    });
+// will reutrn the time it took to fetch the data 
+
+
+
+
+console.table //remains important to take an array of objects and display them in a nice table
+
+
+
+
+
+
+
+
+
+
 
 
 
