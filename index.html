@@ -1610,6 +1610,9 @@ node removal: //triggerd when the currently-selected node is removed
 
 
 // Short cuts inside the console of devtools
+
+
+
 2+2
 4
 //to get to the previous value, type $_
@@ -1618,12 +1621,12 @@ $_
 
 //you can also select up to the last 5 dom elements in the elements panel.
 to refer to the most recent element, type 
-$0 //most recent
-$1 //next most recent
+$0 //most recent selected element
+$1 //next most recent selected
 $2 //and so on
 $3 //and so on
 $4 //and so on
-
+//$4 is the most you can recall previous selected elements
 
 
 
@@ -1638,13 +1641,22 @@ short alias for .querySelectorAll
 $$('img', $0)
 //this will pull all the "img" elements inside the current node or that belong the main element
 
+//NOTE that you can right click on a returned result and select 'reveal in elements panel' to find it in a DOM
+
+
+
 
 
 
 The x-path shortcut
+$x(path[,startNode])
+
 $x('//p')
-//this will return ALL the 'p' elements on the page
+//this will return ALL the <p> elements on the page
 //this also can have an extra optional argument to specify more
+
+$x("//p[a]")
+// above will return all the <p> elements that contain <a> elements
 
 
 
@@ -1696,6 +1708,194 @@ monitor(sum)
 
 
 
+// deep dive on Console Utilities API reference
+
+//remember: $_ gives the most recent value while $0 selects the most recent element
+
+//NOTE: if the evaluated expression initially contains an array of names. you can use  
+$_.length //to find th length of the array. the value changes to however many names are there
+(4) [john, paul, george, ringo]
+$_.length
+//will reutrn '4'
+
+
+
+
+$$(selector[,startNode])
+$$(selector) //reutrns an array of elements that match the given css selector
+// above is the equivalent of calling 
+Array.from(document.querySelectorAll())
+
+
+//NOTE the parameter startNode, specifies an element or Node from which to search for elements
+
+
+clear()
+//will clear the console. much like 'clear' will clear the terminal screen
+
+
+copy(object)
+// copies a string representation of the specified object to the 'clipboard'
+
+
+debug(function)
+//if a specified function is called, the debugger is invoke and breaks insdie the function on the sources panel
+//this allows you to step through the code and debug it
+undebug(fn)
+//is used to stop breaking on the function, or use the UI to disable all breakpoints
+
+
+dir(object)
+//displays an object-style listing of all the specified object's properties.
+/* this is a short cut for */ console.dir()
+
+
+dirxml(object) 
+//prints an XML representation of the specified object, as seen in the 'elements' panel.
+/* this method is equivalent to the*/ console.dirxml()
+
+
+inspect(object/function)
+//opens and selects the specified element or object in the appropriate panel: 
+// either the 'Elements' panel for DOM elements
+
+
+getEventListeners(object)
+// returns the event listeners registered on the specified object.
+//the return value is an object that contains an array for each registered type(click/keydown)
+getEventListeners(document)
+// above will list all the event listeners registered on the 'document' object.
+
+
+
+keys(object)
+//returns an array containing the names of the properties belonging to the specified object
+values() 
+//will get the associated values of the same properties 
+//for example: lets say your application defined this:
+let player= {
+  "name": "Parzival",
+  "number": 1,
+  "state": "ready",
+  "easterEggs": 3
+};
+//typing the two following commands into the console will result in the following.
+keys(player)
+(4) ['name', 'number', 'state', 'easterEggs']
+  0: "name"
+  1: "number"
+  2: "state"
+  3: "easterEggs"
+  length: 4
+  [[prototype]]: Array(0)
+values(player)
+(4) ['Parzival', '1', 'ready', '3']
+  0: "Parzival"
+  1: "1"
+  2: "ready"
+  3: "3"
+length: 4
+[[prototype]]: Array(0)
+
+//NOTE THAT THE VALUES ARE SPECIFICS
+
+
+
+
+monitor(function)
+//When the function specified is called, a message is logged to the console that indicates 
+//the function name along with the arguments that are passed to the function when it was called.
+/* REMEMBER TO USE*/ unmonitor(function) //to stop monitoring
+
+
+
+monitorEvents(object[,events])
+//when a specified event occurs on the specified object, the Eventis logged to the console.
+monitorEvents(window, "resize");
+//will log every time the window gets resized
+
+//note that you can add to the events
+monitorEvents(window, ["resize","scroll"])
+// you can also specify one of the available event "types", strings that map to predefined sets of events.
+
+//all mouse types
+"mousedown", "mouseup", "click", "dblclick", "mousemove", "mouseover", "mouseout", "mousewheel"
+
+//all key types
+"keydown", "keyup", "keypress", "textInput"
+
+//all touch types
+"touchstart", "touchmove", "touchend", "touchcancel"
+
+//all control types
+"resize", "scroll", "zoom", "focus", "blur", "select", "change", "submit", "reset"
+
+
+
+
+
+monitorEvents($0, "key");
+// uses the "key" event type. All corresponding key events on an input text field currently selected($0)
+
+/* REMEMBER TO USE */ unmonitorEvents(object[,events]) //to stop monitoring something
+
+
+
+
+
+profile([name]) /*and*/ profileEnd([name])
+//profile()starts a javascript CPU profiling session with an optional name. 
+// profileEnd() completes the profile and diplays the results in the 'Performance > Main' track
+//note that these are the shorthand for 'console.profile()' and 'console.profileEnd()'
+
+//to start profiling:
+profile("Profile 1")
+
+//to stop profiling and see results in the 'Performance > Main' track
+profileEnd("Profile 1")
+
+
+
+queryObjects(Constructor)
+//call this from the console to return an array of objects that were created with the specified constructor
+queryObjects(promise) //returns every instance of 'promise'
+queryObjects(HTMLElement) //returns all HTML elements
+queryObjects(foo) // returns all objects that were instantiated via the class foo()
+
+
+
+table(data[,columns])
+//logs an object data with table formatting by passing in a data object in with optional column headings
+/*above is a shortcut for*/ console.table()
+//example:
+let names = [
+  {firstName: "John", lastName: "Smith"},
+  {firstName: "Jane", lastName: "Doe"},
+];
+table(names);
+//would display a table of the names with columns of (index), "first", "last", and any other info you have declared
+
+
+
+undebug(function)
+//stops the debugging of the specified function so that when the function is called
+/*the debugger no longer is invoked. This is also used in concert wih*/ debug(fn)
+
+unmonitor(function)
+// stops the monitoring of the specified function. 
+/* this is used in concert with */ monitor(fn)
+
+
+unmonitorEvents(objects [,events])
+// stops monitoring events for the specified object and events. 
+unmonitorEvents(window)
+//above will stop all event monitoring on the window object
+
+//note that you can also stop specific events on an object
+monitorEvents($0, "mouse");
+unmonitorEvents($0, "mousemove");
+//will start monitoring all 'mouse' events on the current selected element($0)
+// this will also stop monitoring "mousemove" events (probably to reduce the noise in the output)
 
 
 
