@@ -1584,7 +1584,7 @@ Conditional line-of-code   // pause on an exact region of code, but only when so
 logpoint   // log a message to the console without pausing the execution
 DOM   // pause on the code that changes or removes a specific DOM node, or its children
 XHR   // Pause when an XHR URL contains a string pattern
-Event Listener    // Pause on the code that runs after an event, such as a click
+Event Listener    // Pause on the code that runs after an event is fired, such as a click
 Exception    // Pause on the line of code that is throwing a caught or uncaught exception
 Function    // Pause whenever a specific function is called
 Trusted Type    // Pause on Trusted Type violations
@@ -1609,12 +1609,87 @@ node removal: //triggerd when the currently-selected node is removed
 
 
 
-//
+// Short cuts inside the console of devtools
+2+2
+4
+//to get to the previous value, type $_
+$_
+4
+
+//you can also select up to the last 5 dom elements in the elements panel.
+to refer to the most recent element, type 
+$0 //most recent
+$1 //next most recent
+$2 //and so on
+$3 //and so on
+$4 //and so on
 
 
 
 
 
+short alias for .querySelector
+$('selector name')
+// the selector function returns the first element that matches the selector
+$('selector', $0) //this will give you the first matching selector from the current element.
+// the second optional argument in the $( , ) will tell you where are taking the selectors from
+
+short alias for .querySelectorAll
+$$('img', $0)
+//this will pull all the "img" elements inside the current node or that belong the main element
+
+
+
+
+The x-path shortcut
+$x('//p')
+//this will return ALL the 'p' elements on the page
+//this also can have an extra optional argument to specify more
+
+
+
+queryObjects(Promise)
+// the above will specify all 'promise' objects on your page
+
+
+table(player)
+//table is a shortcut to the table function 
+// 'player' in this was already a set information
+
+
+
+//extract object keys and values and copying
+
+keys(player)
+//this will discover the keys of an object. player being the object name
+values(player)
+// this will discover the values of an object. 'player' is still the object
+
+//you can COPY all the value of the object
+copy(value(player))
+// note you still have to select the object name
+
+
+
+
+
+monitoring from the console
+
+//to see all the event listeners registered on a button
+getEventListeners($0)
+//note the $0 still means the current sleceted element
+
+monitorEvents(window, 'resize')
+//note that you must specify object and the event
+
+unmonitorEvents
+//will stop monitoring events
+
+
+// You can also monintor function calls
+//the console will log each function call ALONG with the arguments
+monitor(sum)
+//note in this instance, 'sum' is the argument
 
 
 
