@@ -2179,10 +2179,90 @@ Intl.RelativeTimeFormat
 Intl.Segmenter
 */
 
+custom functions //- are defined in your code, not inside the browser
+
+function draw() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+  for (let i = 0; i < 100; i++) {
+    ctx.beginPath();
+  ctx.fillStyle = "rgb(255 0 0 / 50%)";
+  ctx.arc(random(WIDTH)), random(HEIGHT), random(50), 0, 2 * Math.PI);
+  ctx.fill();
+  } 
+}
+// The function above will draw 100 random circles insdie a (canvas) element.
+// NOTE THAT EVERY TIME YOU WANT TO DO THAT, JUST INVOKE THE FUNCTION WITH:
+draw() 
+
+//functions can be called back to without writing all the code again. and you can even put functions inside functions like the 'random' we added above
+function random(number) {
+  return Math.fllor(Math.random() * number)
+}
+//we add this function because the browser's built in rng only generates a number between 0 and 1
+
+
+
+//To invoke a function. include the name of the function inside the code followed by parentheses ()
+function myfunction() {
+  alert("Hello!");
+}
+
+myfunction();
+//^^^will call the function once.
+
+
+
+//////////////////////////////
+FUNCTION PARAMETERS: 
+
+//Some functions require parameters to be specified when invoking (These are the values that need to be in parentheses)
+// we have learned parameters a bit before and know them by their other names (ARGUMENTS, PROPERTIES, ATTRIBUTES)
+
+const myNumber = Math.random();
+//above function does not require any parameters 
+
+const myText = " I am a string";
+const newString = myText.replace("string", "sausage")
+// the function above here uses multiple parameters
+//NOTE THAT THE MULTIPLE PARAMETERS ARE SEPARATED BY A COMMA ,
 
 
 
 
+
+
+OPTIONAL PARAMETERS
+
+// you do not always need to specify parameters. If you do not, the function will adopt some kind of default behavior.
+const myArray = ["I", "love", "chocolate", "frogs"];
+const MadeAString = myArray.join("");
+console.log(madeAString);
+//this will return "I, love, chocolate, frogs" inside the console
+// also NOTE that since no parameter was included to specify a joining/delimiting, a comma was used by default
+
+
+
+
+DEFAULT PARAMETERS
+
+//if you are writing a function and want to support optional parameters,
+//you can specify default values by adding = after the name of the parameter, followed by the default parameter
+function hello(name = "Chris") {
+  console.log(`Hello $(name)!`);
+}
+
+hello("Ari");  //this will return "hello Ari"
+Hello("Chris");  //This will return "hello Chris" because of the default we made above
+
+
+
+
+ANONYMOUS FUNCTIONS AND ARROW FUNCTIONS
+function myfunction() {
+  alert("Hello!");
+}
+
+//you can also create a function that does NOT have a name
 
 
 
