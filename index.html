@@ -2319,6 +2319,20 @@ function doubleItem(item) {
   return item * 2
 }
 
+// you can also use the same syntax to rewrite the addEventListener example
+textBox.addEventListener("keydown", (event) =>
+  console.log(`You pressed "$(event.key)".`),
+);
+// in this case (above), the value of console.log() [which is undefined], is implicitly returned from the callback function.
+
+// NOTE THAT IT IS RECOMMENDED TO USE ARROW FUNCTIONS, AS THEY CAN MAKE YOUR CODE SHORTER AND MORE READABLE.
+
+
+
+
+
+
+
 
 
 
