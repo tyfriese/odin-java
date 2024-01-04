@@ -2330,14 +2330,63 @@ textBox.addEventListener("keydown", (event) =>
 
 
 
+// MORE NOTES ON FUNCTIONS TO REMEMBER 
+Functions //are first-class objects becuase they can pass through other functions, returned from functions, and assigned to variables and properties
+// THE DIFFERENCE BETWEEN A FUNCTION AND OBJECT IS THAT A FUNCTION CAN BE CALLED
+
+/* NOTE THAT by default, if a function execution doesn't end at a return statement, or if the return keyword does NOT have
+ an expression after it, then the return value is 'undefined'. The return staatement allow you to return an arbitrary value from a function   */
+// one function call will only return one value. but you can simulate the effect of returning multiple values by returning an object or array
+// and then taking the result and destructuring it
+
+// 'Destructuring' is a way to pull multiple arrays, values, or properties from objects into distinct variables
+
+const [a, b] = array;
+const [a , , b] = array;
+const [a = aDefault, b] = array; 
+const [a, b, ...rest] = array;
+const [a , , b, ...rest] = array
+const [a, b, ...{pop, push}] = array 
+const [a, b, ...[c, d]] = array 
+
+const { a,b } = obj;
+const {a: a1, b: b1 } = obj;
+const {a: a1 = aDefault, b: b1 = bDefault} - obj;
+const {a, b, ...rest} = obj;
+const {a: a1, b: b1, ...rest} = obj;
+const { [key]: a} = obj;
+
+let a, b, a1, b1, c, d, rest, pop, push;
+[a, b] = array; 
+[a, , b] = array;
+[a = aDefault, b] = array;
+[a, b, ...rest] = array;
+[a, b, ...{pop, push}] = array;
+[a, b, ...[c, d]] = array;
+
+({ a, b } = obj);  //parentheses are REQUIRED
+({ a: a1, b: b1 } = obj);
+({a: a1 = aDefault, b: b1 = bDefault} = obj);
+({ a, b, ...rest } = obj);
+({ a: a1, b: b1, ...rest} = obj);
 
 
-
-
-
-
-
-
+//The object and array literal expressions provide an easy way to creare ad hoc packages of data
+const x = [1, 2, 3, 4, 5];
+// the destructuring assignment uses similar syntax but uses it on the left-hand side of the assignment instead. 
+// It defines which values to unpack from the sourced variable
+const x = [ 1, 2, 3, 4, 5];
+const [y, z] = x;
+console.log(y); //will return 1
+console.log(z); // will return 2 
+// NOTE that similarly, you vcan destructure objects on the left-hand side of the assignment
+const obj = { a: 1, b: 2};
+const {a,b} = obj;
+/* is equivalent to:
+const a = obj.a;
+const b = obj.b;
+*/
+//This capability is similar to features present in languages such as Perl and Python.
 
 
 
