@@ -2572,14 +2572,85 @@ function getScore() {
 
 
 
-/////
+/////Scope and the function stack
+
+// *****RECURSION******//
+/*NOTE: that a function can refer to and call itself. There are three ways for a function to refer to itself.
+1) the function's name
+2)arguments.callee
+3) an in-scope variable that refers to the function
+(example below)
+*/
+const foo = function bar() {
+  //statements go here
+}
+bar(), arguments.callee(), and foo() //are ALL equivalent
+
+//REMEMBER THAT a function that calls itself is called a recursive function.
+//NOTE that a recursion is analogous to a loop. Both execute the same code mutiple times and both require a condition(to avoid infinite loops/recursion)
+//example below:
+let x = 0;
+//"x<10" is the loop condition
+while( x < 10 ) {
+  //do stuff
+  x++
+}
+//the above can be converted into a recursive function declaration, followed by a call to that function
+function loop(x) {
+  // X>10 is the exit condition(equivalent to '!(x<10)')
+  if ( x >= 10 ) {
+    return;
+  }
+  //do stuff
+  loop ( x + 1 ); //the recursive call
+}
+loop(0);
+
+
+
+//HOWEVER!!! NOTE that some alogirthms cannot be simple iterative loops. For example, getting all the nodes of a tree structure(such as the DOM) is easier via recursion
+function walkTree(node) {
+  if (node === null) {
+    return;
+  }
+  //do something with node
+  for (let i = 0; i < node.childNodes.length; i++) {
+    walkTree(node.childNodes[i]);
+  }
+}
+// NOTE that compared to the function loop, each recursive call makes many recursive calls here
+// IT IS POSSIBLE to convert any recursive algorithm to a non-recursive one, but is often too complex and requires use of a stack.
+//stack can be seen below:
+function foo(i) {
+if ( i < 0 ) {
+  return;
+}
+console.log(`begin: ${i}`);
+foo ( i - i );
+console.log(`end: ${i}`);
+}
+foo(3);
+/*logs:
+begin: 3
+begin: 2
+begin: 1
+begin: 0
+end: 0
+end: 1
+end: 2
+end: 3
+*/
 
 
 
 
 
 
-
+/////// NESTED FUNCTIONS AND CLOSURES
+// REMEMBER that you can nest a function inside another function. The nested(inner) function is private to its containing(outer) function
+/* This also forms a 'CLOSURE. a closure is an expression(most commonly, a function) that can hace free variables together with 
+an environment that binds those variables (or 'closes' the expression)
+*/
 
 
 
