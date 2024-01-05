@@ -2540,12 +2540,39 @@ const square = function (n) {
  a function defined inside another function can also access all variables defined in its parent function, and any other variables ot which the parent has access to
 */
 
+//NOTE THAT THE FOLLOWING IS DEFINED IN A GLOBAL SCOPE
+const num1 = 20;
+const num2 = 3;
+const name = "Tyler";
+
+
+//The function below is also defined in the global scope
+function multiply() {
+  return num1 * num2;
+}
+console.log(multiply()); //will return 60
+
+
+
+//below is a 'nested' function example:
+function getScore() {
+  const num1 = 2;
+  const num2 = 3;
+
+  function add() {
+    return `${name} scored ${num1 + num2}`;
+  }
+  return add();
+}
+
+]console.log(getScore()); // will return "Tyler scored 5"
 
 
 
 
 
 
+/////
 
 
 
