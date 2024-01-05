@@ -2390,6 +2390,173 @@ const b = obj.b;
 
 
 
+
+
+
+
+///////////// MORE ON FUNCTION EXPRESSSIONS
+const square = function (number) {
+  return number * number;
+};
+console.log(square(4)); //will return 16
+// function CAN be previded with a function expression. Providing a name allows the function to refer to itself
+// and it also allows the function to refer to itself and also makes it easier to identify the function in a debugger's stack traces.
+const factorial = function fac(n) {
+  return n < 2 ? 1 : n * fac(n-1);
+};
+console.log(factorial(3)); //will return 6
+/* REMEMBER THAT < ? AND : are all ternary operators and are short for if-else statements; so
+The condition n < 2 checks if n is less than 2.
+If the condition is true (meaning n is 0 or 1), the function returns 1. This is because the factorial of 0 and 1 is 1.
+If the condition is false (meaning n is greater than or equal to 2), the function returns n * fac(n - 1).
+ This is the recursive call, where the function calls itself with n - 1.
+*/
+
+/*FUNCTION EXPRESSIONS are convenient when passing a function as an argument to another function. */
+function map(f, a) {
+  const result = new Array(a.length);
+  for (let i = 0; i < a.length; i++) {
+    result[i] = f(a[i]);
+  }
+  return result;
+}
+/* step by step break down of above:
+1) function declaration:
+'function map'-declares the function with two parameters
+
+2) creating the new Array for results:
+'const result = new Array(a.length);'-initializes the new array names 'result'
+with the same length as the input array `a`. This array will be used to store the 
+results of appplying the function 'f' to each element of 'a'
+
+3) Looping through the array:
+the 'for loop' (for(leti=0...)) iterates over each element of the input array `a`
+'let i = 0' initializes a loop counter `i` to `0`
+'i < a.length' is the loop condition, which continues the loop as long as `i`
+is less than the length of the array `a`
+
+4)applying the function to each element:
+`result[i] = f(a[i]); - inside the loop function `f` is called 
+with the current element of the array `a` as its argument... the result of this function
+call is then reassigned to the corresponding index `i` in the `result` array
+
+5)Returning the result:
+`return result` --once the loop completes, the `result` array, which now contains the
+results of applying `f` to each element of `a` is returned.
+*/
+
+
+///////example 2 (added more to the above code)
+function map(f, a) {
+  const result = new Array(a.length);
+  for (let i = 0; i < a.length; i++) {
+    result[i] = f(a[i]);
+  }
+  return result;
+}
+
+const cube = function (x) {
+  return x * x * x;
+};
+
+const numbers = [0, 1, 2, 5, 10];
+console.log(map(cube, numbers)); // will return [0, 1, 8, 125, 1000]
+// the function above receives a function defined by a function expression and executes it for every element of the array received as a 2nd argument
+
+
+
+//NOTE THAT IN JS: a function can be defined based on a condition. For example: the following function definition defines 'myFunc' only if 'num' = 0
+let myFunc;
+if (num === 0) {
+  myFunc = function (theObject) {
+    theObject.make = 'Toyota';
+  }
+}
+
+
+
+
+////////// MORE NOTES ON 'CALLING FUNCTIONS'
+// NOTE that just becauase you define a function, does not mean you execute it. Defining it NAMES and SPECIFIES what to do when a function is called
+square(5);
+//above calls the function with an 'argument' of 5; the function executes the statement and returns the value of 25
+
+//NOTE: that functions must be in scope when they are called, but the function declaration can be 'hoisted'(which means it appears below the call in the code)
+// the arguments of a function are not limited to strings and numbers. you can pass whole objects to a function. 'showProps' function is an example of that:
+function factorial(n) {
+  if ( n === 0 || n === 1) {
+    return 1;
+  } else {
+    return n * factorial(n-1);
+  }
+}
+// YOU COULD THEN FIGURE OUT THE FACTORIAL RETURNS OF 1-5 LIKE BELOW:
+console.log(factorial(1)); // will return 1
+console.log(factorial(2)); // will return 2
+console.log(factorial(3)); // will return 6
+console.log(factorial(4)); // will return 24
+console.log(factorial(5)); // will return 120
+// NOTE that there are other ways to call functions as well. There are often cases where a function needs to be called dynamically,
+// or the number of arguments to a function vary, or in which the context of the function call needs to be set to a sepcific object 
+// NOTE that functions are 'objects', and in turn, these objects have methods. call() and apply() methods can be used to achieve this goal
+
+
+
+
+
+///////   FUNCTION HOISTING
+console.log(square(5)); //returns 25
+
+function square(n) {
+  return n * n;
+}
+// the code above will run without any error, despite the square() function being called before its declared.
+//This is because the Javascript interpreter hoists the entire function declaration to the top of the current scope. 
+// the above code is equivalent to:
+function square(n) {
+  return n * n;
+}
+console.log(square(5)); //returns 25
+//NOTE THAT: all function declaration are effectively at the top of the scope.
+// BIG NOTE THAT: hoisting only works with function 'declarations'- and NOT with function expression. 
+//The following code below, will NOT work:
+console.log(square(5)); 
+const square = function (n) {
+  return n * n;
+}
+//will return a ReferenceError: cannot access 'square' before initialization 
+
+
+
+
+
+
+//////// FUNCTION SCOPE
+/*NOTE THAT variables defined inside a function cannot be accessed from anywhere outside the function,
+ because the variable is only defined in the scope of the function...
+ REMEMBER that a function can access all variables and functions defined inside the scope in which it is defined.
+
+ In other words: a function defined in the global scope can access all variables defined in the global scope.
+ a function defined inside another function can also access all variables defined in its parent function, and any other variables ot which the parent has access to
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
   </body>
 </html>
