@@ -2682,6 +2682,14 @@ console.log(outside(3)(5));
 
 
 
+//////PERSERVATION OF VARIABLES
+// NOTE that in the above example, the 'x' is preserved when INSIDE is returned. A closure must preserve the arguments and variables in all scopes.
+// NOTE that each call will provide potentially different arguemnts, a new closure is created for each call to 'outside'
+// The memory can be freed only when the returned 'inside is no longer accessible'
+
+
+
+
 
 
 
