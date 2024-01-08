@@ -2648,9 +2648,45 @@ end: 3
 
 /////// NESTED FUNCTIONS AND CLOSURES
 // REMEMBER that you can nest a function inside another function. The nested(inner) function is private to its containing(outer) function
-/* This also forms a 'CLOSURE. a closure is an expression(most commonly, a function) that can hace free variables together with 
+/* This also forms a 'CLOSURE'. a closure is an expression(most commonly, a function) that can have free variables together with 
 an environment that binds those variables (or 'closes' the expression)
 */
+//NOTE that nested functions can "inherit" the arguments and variables of its containing function
+
+//IN OTHER WORDS:
+// 1- THE INNER FUNCTION CAN BE ACCESSED ONLY FROM STATEMENTS IN THE OUTER FUNCTION
+/* 2 - THE INNER FUNCTION FORMS A CLOSURE: THE INNER FUNCTION CAN USE THE ARGUMENTS AND VARIABLES OF THE OUTER FUNCTION, WHILE THE OUTER FUNCTION
+CANNOT USE THE ARGUMENTS AND VARIABLES OF THE INNER FUNCTION */ 
+function addSquares(a,b) {
+  function square(x) {
+    return x * x;
+  }
+  return square(a) + square(b);
+}
+
+console.log(addSquares(2,3)); // will return 13 because x * x makes it (2*2) + (3*3)
+console.log(addSquares(3,4)); // will return 25
+console.log(addSquares(4,5)); // will return 41
+//SINCE the inner functions forms a closure, you can call the outer function and specify arguments for both the outer and inner function
+function outside(x) {
+  function inside(y) {
+    return x + y;
+  }
+  return inside;
+}
+
+const fnInside = outside(3); // think of this like: 'give me a function that adds 3 to whatever you give it'
+console.log(fnInside(5));// will return 8 
+console.log(outside(3)(5));
+
+
+
+
+
+
+
+
+
 
 
 
