@@ -2836,6 +2836,29 @@ console.log(getCode()); //will return OJEal(eh&2
 
 
 
+
+
+///////// USING THE ARGUMENTS OBJECT (the arguments of a function are maintained in an array-like object. Within a function, you can address the arguments:)
+arguments[i];
+// where 'i' is the ordinal number of the arguemnt, starting at 0. So, the first argument passed to a function would be arguments[0].
+//  the total number of arguments is indicated by arguments.length
+
+//NOTE that you can use the arguments object to call a function with more arguments than it is formally declared to accept. 
+// ^^^^^^this is useful if you don't know in advance how many arguments will be passed to the function. 
+function myConcat(separator) {
+  let result = ""; //initialize list
+  //itterate through arguments
+  for (let i = 1); i < arguemnts.length; i++) {
+    result += arguments[i] + seperator;
+  }
+  return result;
+}
+
+
+
+
+
+
     </script>
   </body>
 </html>
