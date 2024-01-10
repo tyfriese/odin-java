@@ -2724,8 +2724,31 @@ A(1);  // will log '6' becuase 1 + 2 + 3 or x + y + z
 
 
 
-//////////// NAME CONFLICTS
+//////////// NAME CONFLICTS (When two arguments or variables in the scopes of a closure have the same name)
+// NOTE that [most] nested scopes take precedence. So, the innermost scope takes the highest precedence, while the outermost scope takes lowest.
+// Above is what is known as a 'SCOPE CHAIN'. 
+// REMEMBER that the first on the chain is the innermost scope, and the last is the outermost scope. :::
+function outside() {
+  const x = 5;
+  function inside(x) {
+    return x * 2;
+  }
+  return inside;
+}
+console.log(outside()(10)); // returns 20 (instead of 10)
+// SEE the name conflict happen at the statement ' return x * 2 ' and is between 'inside's' parameter x and 'outside's' variable x.
+// the scope chain here is {inside, outside, global object}. therefore, inside's X takes precedences over outside's X AND 20(which is inside's X) is returned 
 
+
+
+
+
+
+
+
+
+//////////    CLOSURES    !!!!
+ 
 
 
 
