@@ -2848,12 +2848,35 @@ arguments[i];
 function myConcat(separator) {
   let result = ""; //initialize list
   //itterate through arguments
-  for (let i = 1); i < arguemnts.length; i++) {
+  for (let i = 0); i < arguemnts.length; i++) {
     result += arguments[i] + seperator;
   }
   return result;
 }
+//NOTE that you can pass any number of arguments through the function, and it concatenates each argument into a string "list".
+console.log(myConcat(",", "red", "orange", "blue"));
+//will return 'red, orange, blue'
+console.log(myConcat(";", "elephant", "giraffe", "lion", "cheetah"));
+// will return "elephant; giraffe; lion; cheetah"
+console.log(myConcat(".", "sage", "basil", "oregano", "pepper", "parsley"));
+// will return 'sage. basil. oregano. pepper. parsley'
+//////// NOTE THE FIRST ARGUMENT CONTROLS HOW THE LISTS ARE SEPARATED.
 
+
+
+
+
+
+
+
+/////////MORE ON FUNCTION PARAMETERS
+
+
+
+
+
+//////// FUNCTION SCOPE AND CONFLICTS (CONTINUED)
+ 
 
 
 
