@@ -2869,14 +2869,88 @@ console.log(myConcat(".", "sage", "basil", "oregano", "pepper", "parsley"));
 
 
 
+
+////////////ARROW FUNCTION LIVE EXAMPLE
+//html first:
+<input id="textBox" type="text" />
+<div id="output"></div>
+
+
+//js for this
+const textBox = document.querySelector("#textBox");
+const output = document.querySelector("#output");
+
+textBox.addEventListener("keydown", (event) => {
+  output.textContent = `You pressed "${event.key}".`;
+});
+
+//the "keydown" event triggers the event and makes the text.content of the 'output' "you pressed${event.key}" which in this case (event.key) is the key you pressed down to type
+
+
+
+
+
+
+
+
+
+
 /////////MORE ON FUNCTION PARAMETERS
 
 
 
 
 
-//////// FUNCTION SCOPE AND CONFLICTS (CONTINUED)
- 
+//////// FUNCTION SCOPE AND CONFLICTS
+// When you create a function, the variables and other things defined inside the function are inside their own separate scope.
+// (meaning they are locked away in their own separate compartments, unreachable from code outside the functions.)
+//NOTE: the Top level outside all your functions is called the GLOBAL SCOPE. Values defined in the global scope are accessable from everywhere in the code.
+//JS is set up like this for security and organization. Sometimes you dont want variables accessed from everywhere in the code
+/* TO EXPAND ON FUNCTION SCOPE::
+Function scope is a fundamental concept in programming that refers to the visibility and accessibility of variables and other resources within a function. When a variable is defined inside a function, it is only accessible and modifiable within that function. 
+This localization of variables and other entities to the function in which they are declared helps to:
+
+1- Prevent Naming Conflicts: By ensuring that variables within a function do not interfere with variables outside the function or in other functions,
+function scope reduces the likelihood of accidental interactions between different parts of the code. This is especially important in large codebases where the same variable name might be used in different contexts.
+
+2- Improve Code Modularity: Function scope contributes to cleaner, more modular code. Functions can be written, tested, and debugged more easily when their internal workings are self-contained.
+
+3- Enhance Code Readability and Maintenance: With function scope, developers can understand and maintain code more easily
+because the context of each variable is limited to the function in which it is used. This makes it easier to track the flow of data and the logic of the program.
+
+4- Encourage Good Programming Practices: Function scope encourages developers to think carefully about the design of their functions,
+leading to better programming practices such as avoiding the use of global variables, which can lead to unpredictable code behavior.
+
+Overall, function scope is essential for creating reliable, maintainable, and understandable code, especially as software projects grow in complexity.
+*/
+
+// Excerpt from my HTML
+<script src="first.js"></script>
+<script src="second.js"></script>
+<script>
+  greeting();
+</script>
+
+// first.js
+const name = "Chris";
+function greeting() {
+  alert(`Hello ${name}: welcome to our company.`);
+}
+
+// second.js
+const name = "Zaptec";
+function greeting() {
+  alert(`Our company is called ${name}.`);
+}
+
+//NOTE that both functions you want to call are called 'greeting()' but you can only ever access the 'first.js' file's 'greeting()' (the 2nd is ignored)
+// in addition, an error results when attempting (in the 2nd .js file) to assign a new value to the 'name' variable
+// ^^^^^becuase it was already declared with 'const' and so cant be reassigned.
+
+//zoo keeper is like a global scope. (they have access to each individual variable in the zoo)
+// the Lions, Tigers, Zebras, and Bears all only have access to their own variables inside their own closures.
+
+
 
 
 
