@@ -2893,22 +2893,14 @@ textBox.addEventListener("keydown", (event) => {
 
 
 
-
-
-/////////MORE ON FUNCTION PARAMETERS
-
-
-
-
-
 //////// FUNCTION SCOPE AND CONFLICTS
 // When you create a function, the variables and other things defined inside the function are inside their own separate scope.
 // (meaning they are locked away in their own separate compartments, unreachable from code outside the functions.)
 //NOTE: the Top level outside all your functions is called the GLOBAL SCOPE. Values defined in the global scope are accessable from everywhere in the code.
 //JS is set up like this for security and organization. Sometimes you dont want variables accessed from everywhere in the code
 /* TO EXPAND ON FUNCTION SCOPE::
-Function scope is a fundamental concept in programming that refers to the visibility and accessibility of variables and other resources within a function. When a variable is defined inside a function, it is only accessible and modifiable within that function. 
-This localization of variables and other entities to the function in which they are declared helps to:
+Function scope is a fundamental concept in programming that refers to the visibility and accessibility of variables and other resources within a function.
+When a variable is defined inside a function, it is only accessible and modifiable within that function. This localization of variables and other entities to the function in which they are declared helps to:
 
 1- Prevent Naming Conflicts: By ensuring that variables within a function do not interfere with variables outside the function or in other functions,
 function scope reduces the likelihood of accidental interactions between different parts of the code. This is especially important in large codebases where the same variable name might be used in different contexts.
@@ -2949,6 +2941,80 @@ function greeting() {
 
 //zoo keeper is like a global scope. (they have access to each individual variable in the zoo)
 // the Lions, Tigers, Zebras, and Bears all only have access to their own variables inside their own closures.
+
+
+
+
+
+
+///////TEST QUESTIONS WITH GPT ANSWERS/NOTES TO REMEMBER
+
+// after variables are accessed in their own functions, they become invisible/inaccessible to functions below that 
+/* function scope is a key concept in programming that contributes significantly to:
+Security: limits the accessability of variables to the functions where they are defined. reduces risk of bugs and vulnerabilities
+
+Organization: encourages devs to think of discrete, self-contained units of code. 
+
+Maintainability: It is easier to track down variables when they are scoped to functions. more readable and easier to use code is made
+
+prevention of side effects: function scope helps in redcing side effects by keeping variables local to functions. minimize any potential sideeffect
+
+Modular Design: each function can be developed, tested, and debuged idependently. This is vital for scalability and reusability of code in large-scale projects
+
+*/
+
+
+
+
+
+//////////// FUNCTION RETURN VALUES!!!!
+// return values are exactly what it sounds like. They are the values that a function returns when it completes.
+const myText = "The weather is cold";
+const newString = myText.replace("cold", "warm");
+console.log(newString); // Should print "The weather is warm"
+// the replace() string function takes a string,
+// replaces one substring with another, and returns
+// a new string with the replacement made
+
+
+//NOTE that some functions do NOT return any value. a 'displayMessage()' function does not have a reutrn value becuase the function just displays a textbox
+// generally a reutrn value is used where the function is an itnermediate step in a calculation of some kind. You want to get a final result
+// which involves some values that need to be calculated by a function. After the function calculates the value, it can return the result,
+// so it can be stored in a variable; and you can use this variable in the next stage of the calculation.
+
+/////////USING REUTRN VALUES IN YOUR OWN FUNCTIONS
+//    To return a value from a custom function; you need to use the 'return' keyword. (we seen this used in the random-canvas-circles example)
+function draw() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+  for (let i = 0; i < 100; i++) {
+    ctx.beginPath();
+    ctx.fillStyle = "rgb(255 0 0 / 50%)";
+    ctx.arc(random(WIDTH), random(HEIGHT), random(50), 0, 2 * Math.PI);
+    ctx.fill();
+  }
+}
+// inside each loop iteration, three calls are made to the random() function, to generate a random value for the current circle's x, y, and radius
+// the random() function takes one parameter[a whole number]and returns a whole random number between 0 and that number.
+function random(number) {
+  return Math.floor(Math.random() * number);
+}
+//can be written like this:
+function random(number) {
+  const result = Math.floor(Math.random() * number);
+  return result;
+}
+//but we use the first version, becuase it is quicker and much more compact to write.
+// we are returning the result of the calculation 'Math.floor(Math.random() * number)'
+// this return value appears at the point the function was called, and the code continues. so when you execute the follwing:
+ctx.arc(random(WIDTH), random(HEIGHT), random(50), 0, 2 * Math.PI);
+// if the three random() calls return the values 500, 200, and 35 =, respectively, the line would actually be run as if it were this:
+ctx.arc(500, 200, 35, 0, 2 * Math.PI);
+// the function calls on the line are run first, and their return values are substituted for the function calls, before the line itself is then executed
+
+
+
+
+
 
 
 
