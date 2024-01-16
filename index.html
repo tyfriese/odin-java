@@ -2293,7 +2293,28 @@ textBox.addEventListener("keydown", function (event) {
 
 
 ARROW FUNCTIONS
-// if you pass an anonymous function like above
+param => param * param// basic syntax for an arrow function that takes a parameter and squares it
+() => 10 // is syntax for an arrow function with no parameters(this happen to return the number 10)
+(a,b) => a + b //syntax for a function that returns the sum of two parameters
+// If a an arrow function has a block body meaning its enclosed in {}, you must include a 'return'  ex:
+const add = (a,b) => {
+  return a + b;
+};
+
+(x, y) => x + y //is an arrow function with an implicit return value. Since the function exists inside a single expression, it implicitly returns the result
+() => ({a: 1, b: 2}) //When returning an object literal directly from an arrow function without using a block body, you need (parentheses) becuase {} denote starts and delimiters
+// " This " in the context of an arrow function refers to the scope in which the arrow function was defined!
+// Arrow functions can NOT be effectively used as methods in object literals to handle object properties because "this" inside an arrow function doesnt refer to the object its a method of
+// If you try to access the 'arguments' object inside an arrow function, it refers to the arguments of the nearest non-arrow parent function.
+x => x * 2 // is equivalent of writing:
+function double(x) {
+  return x * 2;
+}
+//// 
+
+
+
+// if you pass an anonymous function like above this(arrow) section
 //there's an alternative form you canuse, called an arrow function. instead of 'function(event)' you write =>
 textBox.addEventListener("keydown", (event) => {
   console.log(`You pressed "$(event.key)".`)
