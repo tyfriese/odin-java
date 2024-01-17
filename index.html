@@ -2356,7 +2356,7 @@ Functions //are first-class objects becuase they can pass through other function
 // THE DIFFERENCE BETWEEN A FUNCTION AND OBJECT IS THAT A FUNCTION CAN BE CALLED
 
 /* NOTE THAT by default, if a function execution doesn't end at a return statement, or if the return keyword does NOT have
- an expression after it, then the return value is 'undefined'. The return staatement allow you to return an arbitrary value from a function   */
+ an expression after it, then the return value is 'undefined'. The return statement allow you to return an arbitrary value from a function   */
 // one function call will only return one value. but you can simulate the effect of returning multiple values by returning an object or array
 // and then taking the result and destructuring it
 
@@ -2390,6 +2390,85 @@ let a, b, a1, b1, c, d, rest, pop, push;
 ({a: a1 = aDefault, b: b1 = bDefault} = obj);
 ({ a, b, ...rest } = obj);
 ({ a: a1, b: b1, ...rest} = obj);
+
+
+
+
+const [a, b] = array;
+//This line extracts the first two elements of array and assigns them to a and b, respectively.
+
+const [a, , b] = array;
+//This extracts the first and third elements of array, skipping the second element. a gets the first element, b gets the third.
+
+const [a = aDefault, b] = array;
+//Here, a is assigned the first element of array, but if the first element is undefined, a defaults to aDefault. b gets the second element.
+
+const [a, b, ...rest] = array;
+//This extracts the first two elements as a and b, and the rest of the array elements are gathered into an array called rest.
+
+const [a, , b, ...rest] = array;
+//a receives the first element, the second element is skipped, b gets the third element, and the rest are collected in rest.
+
+const [a, b, ...{pop, push}] = array;
+//This line attempts to destructure pop and push methods (presumably from Array.prototype) from the remaining elements of array. However, this is not a valid JavaScript syntax and will result in a syntax error.
+
+const [a, b, ...[c, d]] = array;
+//a and b receive the first two elements, and then it attempts to destructure the remaining elements as an array [c, d]. However, this is not typical usage and may not work as expected in JavaScript.
+
+
+//-------Object Destructuring
+const { a, b } = obj;
+//Extracts the properties a and b from obj and assigns them to variables a and b.
+const { a: a1, b: b1 } = obj;
+//Extracts properties a and b from obj, renaming them to a1 and b1.
+
+const { a: a1 = aDefault, b: b1 = bDefault } = obj;
+//Extracts a and b from obj, renaming them to a1 and b1. If a or b are undefined, they default to aDefault and bDefault, respectively.
+
+const { a, b, ...rest } = obj;
+//Extracts a and b, and gathers the rest of the properties of obj into an object rest.
+
+const { a: a1, b: b1, ...rest } = obj;
+//Similar to above but renames a to a1 and b to b1.
+
+const { [key]: a } = obj;
+//This uses the value of the variable key as the property name to extract from obj, and assigns it to a. The key must be defined elsewhere in the scope.
+
+//----------Destructuring with Assignment
+[a, b] = array;
+//This assumes a and b are already declared. Assigns the first two elements of array to a and b.
+
+[a, , b] = array;
+//Assigns the first and third elements of array to a and b, skipping the second element.
+
+[a = aDefault, b] = array;
+//Assigns the first element to a, defaulting to aDefault if it's undefined. b gets the second element.
+
+[a, b, ...rest] = array;
+//Assigns the first two elements to a and b, and the rest to rest.
+
+[a, b, ...{pop, push}] = array;
+//This is an invalid syntax in JavaScript and will result in an error.
+
+[a, b, ...[c, d]] = array;
+//Assigns the first two elements to a and b, and attempts to destructure the rest as [c, d], which is unusual and may not work as expected.
+
+//----------Destructuring with Object Assignment
+({ a, b } = obj);
+//Parentheses are required when using object destructuring assignment outside a declaration. Extracts a and b from obj.
+
+({ a: a1, b: b1 } = obj);
+//Extracts a and b from obj, renaming them to a1 and b1.
+
+({ a: a1 = aDefault, b: b1 = bDefault } = obj);
+//Extracts a and b, renaming and defaulting them as necessary.
+
+({ a, b, ...rest } = obj);
+//Extracts a and b, and assigns the rest of obj's properties to rest.
+
+({ a: a1, b: b1, ...rest } = obj);
+//Extracts and renames a and b, and assigns the rest of obj's properties to rest.
+
 
 
 //The object and array literal expressions provide an easy way to creare ad hoc packages of data
@@ -3202,6 +3281,43 @@ function showMessage(from, text = anotherFunction()) {
 
 // DESTRUCTING: In languages that support destructuring, like modern JavaScript, you can pass an object to a function and 
 //    then destructure its properties within the function's parameter list.
+function modifyArray(arr) {
+  arr.push(4); // This will modify the original array
+}
+
+function sum(...numbers) {
+  return numbers.reduce((a, b) => a + b, 0);
+}
+
+let myArray = [1, 2, 3];
+modifyArray(myArray); // Passed by reference
+console.log(myArray); // Outputs: [1, 2, 3, 4]
+
+console.log(sum(1, 2, 3, 4)); // Using rest parameters, outputs: 10
+
+//ABOVE: 'modifyArray' modifies the orginal array becuase arrays are passed by reference
+// 'sum' uses rest parameters to accept any number of arguments
+
+
+
+//--- Immutable types such as strings and numbers receive a copy of the value when passed.
+//--- Mutable types such as objects and arrays receive a reference to the original, not a copy
+function modifyObject(obj) {
+  obj.newProperty = 'Added in function';
+}
+
+let myObject = { property: 'Original' };
+modifyObject(myObject);
+console.log(myObject); // Outputs: { property: 'Original', newProperty: 'Added in function' }
+//above: 'myObject' is passed to 'modifyObject'. Since objects are mutable and passed by reference, the function adds a new property to the same object,
+//    which is then reflected in the original 'myObject'.
+
+
+
+
+
+//return MULTIPLE VALUES by destructuring. (which is a way to pull multiple arrays, values, or properties from objects into distinct variables)
+
 
 
 
