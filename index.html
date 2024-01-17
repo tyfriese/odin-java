@@ -3058,7 +3058,150 @@ console.log('Goat') //this is where we call the function to pass a value. 'Goat'
 
 
 
+/////////////////function/parameter/return values review:
+function declaration (parameter1, parameter2) {
+  function body 
+}
 
+// ----a variable declared inside a function is only visible inside that function
+function showMessage() {
+  let message = "Hello, I'm JavaScript!"; // local variable
+  alert( message );
+}
+showMessage(); // Hello, I'm JavaScript!
+alert( message ); // <-- Error! The variable is local to the function
+
+
+//----a function can access an outer variable as well:
+let userName = 'John';
+
+function showMessage() {
+  let message = 'Hello, ' + userName;
+  alert(message);
+}
+showMessage(); // Hello, John
+
+
+//----the function has full access to the outer variable. It can modify it as well:
+let userName = 'John';
+
+function showMessage() {
+  userName = "Bob"; // (1) changed the outer variable
+
+  let message = 'Hello, ' + userName;
+  alert(message);
+}
+alert( userName ); // John before the function call
+showMessage();
+alert( userName ); // Bob, the value was modified by the function
+
+//-- the outer variable is only used if there's no local one.
+
+
+//----if a same-named variable is declared inside the function, then it shadows the outer one. 
+let userName = 'John';
+function showMessage() {
+  let userName = "Bob"; // declare a local variable
+  let message = 'Hello, ' + userName; // Bob
+  alert(message);
+}
+// the function will create and use its own userName
+showMessage();
+alert( userName ); // John, unchanged, the function did not access the outer variable
+
+//----Global variables are visible from any function(unless shadowed by locals)
+
+
+
+
+
+
+
+
+//----We can pass arbitrary data to functions using PARAMETERS
+
+function showMessage(from, text) { // parameters are: from, text
+  alert(from + ': ' + text);
+}
+showMessage('Ann', 'Hello!'); // Ann: Hello! (*)
+showMessage('Ann', "What's up?"); // Ann: What's up? (**)
+//translation: "the function showMessage() is declared with two parameters, then called with two arguments 'from' and 'hello' " 
+
+//when the function is called in lines (*) and (**), the given values are copied to local variables 'from' and 'text'. then the function uses them.
+
+
+
+//---when a value is passed as a function parameter, it is also called an ARGUMENT
+//- A PARAMETER is the variable listed inside the parentheses in the 'function declaration' (it is a declaration time term)
+//- An ARGUMENT is the value that is passed to the function when it is called. (it is a call time term)
+
+// ORDER OF EVENTS: declare functions(listing their parameters), then call them passing arguments
+
+
+
+
+
+///////////////DEFAULT VALUES
+
+//-----if a function is called, but an argument is not provided, then the corresponding value becomes 'undefined'
+showMessage("Ann") //from before, can be called using a single argument
+
+//---we can specify the "default" (to use if ommited) value for a parameter in the function declaration using, =
+function showMessage(from, text = "no text given") {
+  alert( from + ": " + text );
+}
+showMessage("Ann"); // Ann: no text given
+// note that if the 'text' parameter is not passed, it will get the value "no text given"
+// - EXTRA NOTE: that the default value also jumps in if the parameter exists, but strictly equals 'undefined'
+showMessage("Ann", undefined); //Ann: no text given
+// above: "no text given" is a string, but it can be a more complex expression, which is only evaluated and assigned if the parameter is missing
+function showMessage(from, text = anotherFunction()) {
+  //anotherFunction() is only executed if no text given
+  //its result becomes the value of text
+}
+
+
+//return values are important because they have the ability to pass data back from a function to the point where the function was called.
+// allows for modular, flexible code where one function can perform a specific task and then communicate the result back to other parts of the program
+
+
+//---VOID FUNCTIONS: refers to a function that does not return any value. When we say a function is void, it means that its purpose is to
+//                   perform an action rather than calculate a value to be returned. The term "void" is used in some programming languages
+//                   to explicitly indicate that a function does not return anything.
+
+// Void function are often used for their side effects, such as printing to the console, modifying global variables, writing to a file, or updating a U.I.
+// These function do their job and then exit without providing a return value.
+
+
+
+
+//---- Local variables are defined inside of a function. and can only be accessed within the function where they are declared.
+//---- Global variables are declared outside of any function. they can be accessed and modified from any part of the program, including within functions.
+
+
+
+
+
+
+
+//----Different ways to pass arguments to a function:
+
+// - by VALUE:This is the most common way of passing arguments and is used for immutable data types like strings and numbers. 
+//    When data is passed by value, the function receives a copy of the argument, not the original value. 
+//    Any changes made to the argument inside the function do not affect the original value outside the function.
+
+// by REFERENCE: This method is used for mutable data types, like objects and arrays in JavaScript. When an object or an array is passed as an argument,
+//    the function receives a reference to the original data, not a copy. This means that changes made to the object or array within the function 
+//    will affect the original object or array outside the function.
+
+// using REST PARAMETERS: In some languages like JavaScript, you can use rest parameters to pass an indefinite number of arguments to a function. 
+//    This is done using the '...' syntax. The function treats these arguments as an array.
+
+// PASSING FUNCTIONS AS ARGUMENTS: Functions can also be passed as arguments to other functions. 
+//    This is a common pattern in JavaScript, particularly in higher-order functions.
+
+// DESTRUCTING: In languages that support destructuring, like modern JavaScript, you can pass an object to a function and 
+//    then destructure its properties within the function's parameter list.
 
 
 
