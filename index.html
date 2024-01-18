@@ -2313,7 +2313,70 @@ function double(x) {
 }
 const message = () => alert("Hello World"); // arrow function with no arguments and returns a string
 
-//// 
+
+
+////////////////////// more on arrow functions:
+let func = (arg1, arg2, ..., argN) => expression;
+// this creates a function(func) that accepts arguments(arg1 to argN), then evaluates the 'expression' on the right sidr with their use and returns the result
+// above is a shorter version of 
+let func = function(arg1, arg2, ..., argN) {
+  return expression;
+};
+///////more concrete example:
+let sum = (a, b) => a + b; // translation: a function that accepts two arguments named 'a' and 'b'. Upon execution, it evaluates a+b and returns the result
+/* This arrow function is a shorter form of:
+let sum = function(a, b) {
+  return a + b;
+};
+*/
+alert( sum(1, 2) ); // 3
+
+
+// If we have only one argument, then parentheses around parameters can be omitted. ( making it shorter)
+let double = n => n * 2
+alert( double(3)); //will return 6
+
+// With no arguments, parentheses must be present! They are also empty!
+let sayHi = () => alert("Hello!");
+
+
+//arrow functions can be used in the same way as Function Expressions. 
+// for example: to dynamically create a function:
+let age = prompt("What is your age?", 18);
+let welcome = (age < 18) ? //ternary operator meaning if age < 18 return 'true', then alert Hello! 
+  () => alert("Hello!") : //ternary operator that if returns 'falsy' then alert greetings.
+  () => alert("Greetings!");
+
+welcome();
+
+
+
+
+
+
+////////// MULTILINE ARROW FUNCTIONS
+// the arrow functions we have seen above are very simple. Take the arguments from the left of => (the arrow), evaluated and returned the right-side expression.
+// ---sometimes we need a more complex function, with multiple expressions and statements. We enclose them in curly braces, which require a return, 
+let sum = (a, b) => {  // the curly brace opens a multiline function
+  let result = a + b;
+  return result; // if we use curly braces, then we need an explicit "return"
+};
+alert( sum(1, 2) ); // 3
+
+
+
+
+
+
+
+///////SUMMARY ON ARROW FUNCTIONS (SO FAR. MORE TO COME!)
+//---- Arrow functions come in 2 features, without curly braces {}. and with curly braces {}
+//--without curly braces; the right side is evaluated and returned.
+// -- with curly braces {}: we are allowed to write multiple statements inside the function. but we need an explicit 'return' inside the code
+
+
+
+
 
 
 
@@ -3653,6 +3716,13 @@ function name(parameters, delimited, by, comma) {
 // - a function may access outer variables. But it works only from inside out. 
 // - a function can return a value. If it doesn't, then the result in 'undefined'
 // - names should be easy to understand and clearly describe what the function does. 
+
+
+
+
+
+
+
 
 
 
