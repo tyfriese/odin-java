@@ -1858,6 +1858,7 @@ profileEnd("Profile 1")
 
 queryObjects(Constructor)
 //call this from the console to return an array of objects that were created with the specified constructor
+
 queryObjects(promise) //returns every instance of 'promise'
 queryObjects(HTMLElement) //returns all HTML elements
 queryObjects(foo) // returns all objects that were instantiated via the class foo()
@@ -2293,7 +2294,7 @@ textBox.addEventListener("keydown", function (event) {
 
 
 ARROW FUNCTIONS
-param => param * param// basic syntax for an arrow function that takes a parameter and squares it
+parameter => parameter * parameter // basic syntax for an arrow function that takes a parameter and squares it
 () => 10 // is syntax for an arrow function with no parameters(this happen to return the number 10)
 (a,b) => a + b //syntax for a function that returns the sum of two parameters
 // If a an arrow function has a block body meaning its enclosed in {}, you must include a 'return'  ex:
@@ -2310,6 +2311,8 @@ x => x * 2 // is equivalent of writing:
 function double(x) {
   return x * 2;
 }
+const message = () => alert("Hello World"); // arrow function with no arguments and returns a string
+
 //// 
 
 
@@ -2971,6 +2974,8 @@ console.log(myConcat(".", "sage", "basil", "oregano", "pepper", "parsley"));
 
 
 ////////////ARROW FUNCTION LIVE EXAMPLE
+//NOTE that it is problematic to use an arrow function as an event holder in the DOM
+// because it will not have its own 'this'. 'this' is arrow functions refer to the surrounding lexical context
 //html first:
 <input id="textBox" type="text" />
 <div id="output"></div>
@@ -3133,6 +3138,14 @@ function favoriteAnimal(animal) {    //function definition(PARAMETER)     //the 
 }
 console.log('Goat') //this is where we call the function to pass a value. 'Goat' here is the ARGUMENT
 //ALWAYS CONSOLE.LOG AT THE END OF A FUNCTION!! IF YOU DO NOT, NOTHING APPEARS IN THE CONSOLE, BUT THE FUNCTION STILL RETURNS THE STRING/VALUE
+
+
+
+
+
+
+
+
 
 
 
@@ -3322,6 +3335,324 @@ console.log(myObject); // Outputs: { property: 'Original', newProperty: 'Added i
 
 
 
+
+// ----- REMEMBER THAT arrow functions can NOT be used as constructors in javascript.
+
+//---in js, constructor functions are used to create objects. They are defined using regular function expressions or function declarations.
+//    This creates a new object that inherits properties and methods from the constructor's prototype. 
+
+// 1-- there is no 'this' binding in arrow functions. the binding is crutial because it refers to the new object that is being created
+// 2-- no "new" target. Arrow function DO NOT have a construct method(which is required for a function to be called with 'new')
+// 3-- no 'prototype' property. arrow functions do NOT have a 'prototype' property, making them unsuitable for use as constructors
+// Regular function as a constructor
+function RegularFunction() {
+    this.property = 'value';
+}
+const obj1 = new RegularFunction();
+console.log(obj1.property); // Outputs: 'value'
+
+// Attempting to use an arrow function as a constructor
+const ArrowFunction = () => {
+    this.property = 'value';
+};
+try {
+    const obj2 = new ArrowFunction();
+} catch (e) {
+    console.log(e.message); // TypeError: ArrowFunction is not a constructor
+}
+
+
+
+
+//////// NOTE THAT ARROW FUNCTIONS handle the 'arguments' object different than traditional functions. 
+
+// -- in a traditional function(one declared using the keyword 'function'), you have access to an 'arguemnts' object. This is an array like object that contains all of the arguments
+function traditionalFunction() {
+    console.log(arguments);
+}
+traditionalFunction(1, 2, 3); // Output: [1, 2, 3]
+
+/////ARROW FUNCTIONS do not provide their own 'arguemnts' object. If you try to access 'arguments' inside an arrow function, it will take the value from the global or local scope 
+//- NOTE that if you need to work with a variable number of arguments in an arrow function, you should use rest parameters instead:
+const arrowFunction = () => {
+    console.log(arguments);
+}
+arrowFunction(1, 2, 3); // This will throw a ReferenceError or log the `arguments` from a higher scope, if any
+
+
+
+const arrowFunctionWithRest = (...args) => {
+    console.log(args);
+}
+arrowFunctionWithRest(1, 2, 3); // Output: [1, 2, 3]
+
+
+//SUMMARY: -traditional functions have access to an 'arguemnts object' reflecting the parameters passed to them
+//         - arrow functions do not have this feature^^. Arrow functions should use rest parameters (...args) to handle an arbitrary # of arguments
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////ALTERNATIVE DEFAULT PARAMETERS
+//sometimes it makes sense to assign default value for parameters at a later stage after the function declaration. We can check if the parameter is passed using 'undefined'
+function showMessage(text) {
+  // ...
+  if (text === undefined) { // if the parameter is missing
+    text = 'empty message';
+  }
+  alert(text);
+}
+showMessage(); // empty message
+
+//----OR we could use the OR operator:
+function showMessage(text) {
+  //if text is undefined or otherwise falsy, set it to 'empty'
+  text = text || 'empty';
+  ...
+}
+
+
+
+
+/////MODERN DAY JS AND SUPPORTING 'nullish coalescing operator'
+function showCount(count) {
+  // if count is undefined or null, show "unknown"
+  alert(count ?? "unknown");
+}
+
+showCount(0); // 0
+showCount(null); // unknown
+showCount(); // unknown
+
+
+
+/////-----NULLISH COALESCING OPERATOR. written as ??
+/* 
+the result of 'a ?? b' is:
+-if 'a' is defined(not 'null' or 'undefined'), then 'a'
+- if 'a' is null or undefined, then 'b'
+
+in other words, ?? returns the first argument if it's not null/undefined. Otherwise, it returns the second one.
+-The nullish coalescing operator isn't anything completely new. It's just a nice syntax to get the first "defined" value of the two. 
+
+we can then rewrite 'result = a ?? b' using operators we already know: */
+result = (a !== null && a !== undefined) ? a : b;
+// remember that ? and : are used as ternary operators. (if not a, then b "? a : b" )
+
+// The common use case for '??' is to provide a default value.
+let user;
+alert(user ?? "Anonymous"); 
+// will return Anonymous becuase user is not defined above it. 
+let user = "John";
+alert(user ?? "Anonymous");
+//will return 'John' becuase it is defined. (if not A, then B)(if user is undefined, then(??) write anonymous)
+
+
+// we can also use a sequence of ?? to select the first value from a list that isn't 'null/undefined'
+let firstName = null;
+let lastName = null;
+let nickName = "Supercoder";
+
+alert(firstName ?? lastName ?? nickName ?? "Anonymous");
+// notice that two of variables are not defined(maybe the user did not put them in). 
+// We would like to display the user name using one of these variables, or show "Anonymous" if all are undefined. so we use ?? to select the first defined value
+
+
+
+
+//---- The 'or' || operator can be used in the same way as ??
+let firstName = null;
+let lastName = null;
+let nickName = "Supercoder";
+// shows the first truthy value:
+alert(firstName || lastName || nickName || "Anonymous"); // will return "Supercoder"
+
+/*NOTE: the 'or' || operator has been around since the start of js. but ?? was made becuase people were not happy with ||.
+-   || returns the first 'truthy' value
+-   ?? returns the first 'defined' value
+
+- || does NOT distinguish between false, 0, an empty string, "", and null/undefined. They are all 'falsy' values to ||
+*/
+// we may want to use default value only when the variable is null/defined. That is, when the value is really unknown/not set
+let height = 0;
+
+alert(height || 100); //will return 100 
+alert(height ?? 100); // will return 0
+// notice that because the height(even though it was defined) is set to 0. || reads that as 'falsy' and alerts you then "or" option.(100)
+
+
+// the PRECEDENCE of the ?? operator is the same as ||. They both equal to 3 in MDN table. 
+// This means that, just like ||, the ??(nullish coalescing operator) is evaluated before = and ? but after most other operations like * +
+// so we might have to add parentheses in expressions like this. 
+let height = null;
+let width = null;
+// important: use parentheses
+let area = (height ?? 100) * (width ?? 50);
+alert(area); // 5000
+
+//if we omit the parentheses, then as * would have higher precedence than ??, it would execute first, leading to incorrect results.
+let area = height ?? 100 * width ?? 50;
+//another example:
+let area = height ?? (100 * width) ?? 50; 
+//the above would work but it would not give us the answer we want.
+
+
+
+//----USING ?? with && or ||
+// JAVASCRIPT FORBIDS!!! using ?? together with && and ||, unless the precedence is explicitly specifeied with parentheses
+let x = 1 && 2 ?? 3; // will return syntax error
+
+let x = (1 && 2) ?? 3;
+alert(x);// will return 2
+
+
+
+/////// SUMMARY ON ??
+/*
+---- the nullish coalescing operator, ??, provides a short way to choose the first 'defined' value from a list. 
+- it is used to assign default values to variables.
+--this operator has a low precedence( a bit higher than ? and =), so use parentheses when using it in an expresssion.
+*/
+
+
+
+
+
+
+
+
+////////// RETURNING A VALUE
+// --- A function can return a value back into the calling code as the result. 
+function sum(a, b) {
+  return a + b;
+}
+let result = sum(1, 2);
+alert( result ); // 3
+
+// the return can be in any place of the function. // there can be many occurances of 'return' in a single function:
+function checkAge(age) {
+  if (age >= 18) {
+    return true;
+  } else {
+    return confirm('Do you have permission from your parents?');
+  }
+}
+let age = prompt('How old are you?', 18);
+if ( checkAge(age) ) {
+  alert( 'Access granted' );
+} else {
+  alert( 'Access denied' );
+}
+
+
+// It is possible to use 'return' without a value. That causes the function to immediately exit.
+function showMovie(age) {
+  if ( !checkAge(age) ) { //translation: if checkAge() returns 'falsy',
+    return; // then showMovie won't proceed to the alert.
+  }
+  alert( "Showing you the movie" ); // (*)
+  // ...
+}
+
+
+
+/*  NOTE That a function with an empty 'return' or without it returns 'undefined'
+- If a function does not return a value, it is the same as if it returns 'undefined' */
+function doNothing() {
+   /* empty */
+}
+alert( doNothing() === undefined ); // will return true
+
+// AN EMPTY RETURN IS THE SAME AS 'return undefined'
+function doNothing() {
+  return;
+}
+alert( doNothing() === undefined ); // will return true
+
+
+
+// NEVER ADD A NEW LINE BETWEEN 'return' and the value
+//-----for a long expression in return, it might be tempting to put it on a separate line. DO NOT DO THAT. JS assumes a semicolon after 'return'
+//- start the expression on the same line as the return or add opening parentheses:
+return (
+  some + long + expression 
+  + or +
+  whatever * f(a) + f(b)
+)
+
+
+
+
+
+////////NAMING A FUNCTION
+//----a function is an action so their name is usually a verb. It should be brief, as accurate as possible and describe what the function does.
+//-- It is a widespread practice to start a function with a prefix that describes the action
+showMessage(..) //the 'show' prefix is used to show something
+getExample(..) // 'get' prefix returns the example
+calcSum(..) //calculates something (in this case, a sum)
+createForm(..) //creates (and usually returns) a form.
+checkPermission(..) // checks a permissions, returns true/false
+
+////// THERE ARE SOME VERY SHORT FUNCTIONS THAT ARE USED OFTEN
+// the jQuery frame work defines a function with $
+
+
+
+///////////    FUNCTIONS == COMMENTS
+// ---- If you have a big, long function, it might be easier and should be practiced splitting up the 1 big function into a few smaller ones.
+function showPrimes(n) {
+  nextPrime: for (let i = 2; i < n; i++) {
+
+    for (let j = 2; j < i; j++) {
+      if (i % j == 0) continue nextPrime;
+    }
+
+    alert( i ); // a prime
+  }
+}
+// ABOVE: uses a label 
+// while BELOW uses an additional function 'isPrime(n)' to test for primality:
+function showPrimes(n) {
+for (let i = 2; i < n; i++) {
+  if (!isPrime(i)) continue;
+  alert(i);  // a prime
+}
+}
+function isPrime(n) {
+for (let i = 2; i < n; i++) {
+  if ( n % i == 0) return false;
+}
+return true;
+}
+
+
+
+
+////////// SUMMARY ON FUNCTIONS:
+// a function declaration:
+function name(parameters, delimited, by, comma) {
+  //code goes here
+}
+// - values passed to a function as parameters are copied to its local variables. 
+// - a function may access outer variables. But it works only from inside out. 
+// - a function can return a value. If it doesn't, then the result in 'undefined'
+// - names should be easy to understand and clearly describe what the function does. 
 
 
 
