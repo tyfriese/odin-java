@@ -2213,6 +2213,22 @@ myfunction();
 
 
 
+
+
+
+
+
+function jackieRob(num) {
+  return num.toString();
+}
+console.log(jackieRob(42));
+// a code that converts a number to a string. (This happens to be 42.)
+
+
+
+
+
+
 //////////////////////////////
 FUNCTION PARAMETERS: 
 
@@ -2628,6 +2644,18 @@ const cube = function (x) {
 const numbers = [0, 1, 2, 5, 10];
 console.log(map(cube, numbers)); // will return [0, 1, 8, 125, 1000]
 // the function above receives a function defined by a function expression and executes it for every element of the array received as a 2nd argument
+
+
+
+// Write a loop in Javascript that repeats 5 times.
+for (let i = 0; i < 5; i++); {
+  //whatever code to be executed for each iteration (1,2,3,4... as long as i < 5. Then it stops.)
+}
+
+
+
+
+
 
 
 
@@ -3853,6 +3881,22 @@ fn(); //stack overflow
 //--- The call stack uses the stack data structure that works based on the LIFO(last-in-first-out) principal.
 
 
+
+
+
+
+
+
+
+
+
+///////THE MODULO OPERATOR %
+function isOdd(n) {
+  return n % 2 !==0;
+}
+//above is an expression that checks if a number(n) is odd using the modulo (%) operator. 
+//-- In this function, 'n % 2' computes the remainder of 'n' divided by 2. For odd numbers, this remainder is always 1(or any non-zero for odd numbers greater than 1)
+// - and for even numbers, its always 0. So, the expression 'n % 2 !== 0' returns 'true' if 'n' is odd and 'false' if it is even. 
 
 
 
