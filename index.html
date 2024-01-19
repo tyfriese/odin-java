@@ -3728,6 +3728,130 @@ function name(parameters, delimited, by, comma) {
 
 
 
+//////////// JAVASCRIPT CALL STACK
+//--Call Stack keeps track of all the functions and all of its place in a code that calls multiple functions. The JS engine uses a call stack to manage 'execution contexts'
+//-the global execution context
+//-Function execution context
+
+/*
+NOTE THAT THE CALL STACK WORKS BASED ON THE " LAST-IN-FIRST-OUT "(LIFO) PRINCIPAL.
+
+- When you execute a script, the JavaScript engine creates a global execution context for the funciton, pushes it on top of the call stack, 
+      and starts executing the function
+
+-If a function calls another function, the JS engine creates a new function execution context for the function being called,
+      and pushes it on top of the call stack.
+
+- When the current function completes, the JS engine pops it off the call stack and resumes the execution where it left off.
+      The script will stop when then call stack is empty.  */
+function add(a, b) {
+  return a + b;
+}
+
+function average(a, b) {
+  add(a,b) / 2
+}
+
+let x = average(10,20);
+//When the JS engine executes this script, it places the global execution context(dennoted by main() or global()) function on the call stack.
+ __________
+|          |
+|Call Stack|
+|          | 
+|          | 
+| -------- | 
+|  Main()  |
+| -------- |
+|__________|
+//-The global execution context enters the creation phase and moves to the execution phase.
+//- The JS engine executes the call to 'average(10,20) function and creates a funciton execution context for the 'average()' function and pushes it on top of the call stack
+ __________
+|          |
+|Call Stack|
+|          | 
+|          |
+| -------- |
+| average()|
+| -------- | 
+| -------- | 
+|  Main()  |
+| -------- |
+|__________|
+// The JS engine starts executing the average() since becuase the average() function is on top of the call stack.
+//The average() function calls add() function. So the JS engine creates another function execution context for add() and places it on top of the call stack.
+ __________
+|          |
+|Call Stack|
+|          | 
+|          |
+| -------- |
+|   add()  |
+| -------- |
+| -------- |
+| average()|
+| -------- | 
+| -------- | 
+|  Main()  |
+| -------- |
+|__________|
+// The JS engine executes the add() function and pops it off the call stack. 
+ __________
+|          |
+|Call Stack|
+|          | 
+|          |
+| -------- |
+| average()|
+| -------- | 
+| -------- | 
+|  Main()  |
+| -------- |
+|__________|
+// Now the average() is on top so the engine executes average() and pops it off the stack
+ __________
+|          |
+|Call Stack|
+|          | 
+|          | 
+| -------- | 
+|  Main()  |
+| -------- |
+|__________|
+//Nos the stack is considered empty so the script stops executing
+ __________
+|          |
+|Call Stack|
+|          | 
+|          | 
+|          | 
+|          |
+|          |
+|__________|
+
+
+
+
+/////// WE ALSO HAVE STACK OVERFLOW.
+//----The call stack has a fixed size, depending on the implementation of the host environment, either the web browser or Node.js
+//-- If the number of execution contexts exceeds the size of the stack, a stack overflow error will occur.
+
+// FOR EXAMPLE: when you execute a 'recursive function' that has no exit condition, the JS engine will issue a stack overflow error!
+function fn() {
+  fn();
+}
+fn(); //stack overflow
+
+
+
+/////// WE ALSO HAVE " Asynchronous JavaScipt"
+//---- JS is a single-threaded programming language. This means that the JS engine has only one call stack. Therefore, it only can do one thing at a time.
+//-- When executing a script, the JS engine executes code from top to bottom, line by line. In other words, it is 'synchronous'
+// - Asynchronous means that the JS engine uses an 'event loop', which will be covered in the following tutorial.
+
+/////SUMMARY :
+//--- JS engine uses a call stack to manage execution contexts.
+//--- The call stack uses the stack data structure that works based on the LIFO(last-in-first-out) principal.
+
 
 
 
