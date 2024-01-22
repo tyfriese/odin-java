@@ -3909,6 +3909,205 @@ function isOdd(n) {
 
 ////////////////////////////////////////////////////////////NEXT ODIN CHAPTER:///////////////////////////////////////////////////////////
 PROBLEM SOLVING!
+/* "Problem solving is writing an original program that preforms a particular set of tasks and meets all stated constraints" -Think like a Programmer - V. Anton Spraul
+   3 bullet points to know by the end :
+--- The 3 steps in the problem solving process and how to explain them
+-- Pseudocode: What it is, and how to use it to solve problems. 
+- How to break down problems into subproblems.
+
+
+
+// -- UNDERSTAND THE PROBLEM!
+// understand the problem enough to be able to explain the problem to someone else.
+
+// -- PLAN!
+   Ask yourself:
+ - does your program have a user interface? what will it look like? what functionality will the interface have?
+ - What inputs will your program have? Will the user enter data or will you get input from somewhere else.
+ - What is the desired output?
+ - Given your inputs, what are the steps necessary to return the desired output?
+
+ // NOTE that the last question is where you will write an algorithm to solve the problem.
+
+
+
+
+
+
+////// PSEUDOCODE!!!
+// Psuedocode is writing out the logic for your program in natural language instead of code:
+
+When the user inputs a number
+Initialize a counter varialbe and set its value to zero
+While counter is smaller than user inputted number increment the couter by one
+Print the value of the counter variable
+
+
+
+
+
+////// DIVIDE AND CONQUER !
+ 
+ -- From planning, you should have identified subproblems of the big problem to solve. 
+ -- NOTE that each step from the algorithm above is an individual problem. 
+ -- pick the smallest or easiest one and start there with coding
+
+ Often times when you know the next subproblem, it gets simpler with the first solve.
+ DO NOT TRY AND SOLVE THE BIG PROBLEM IN ONE GO. YOU WILL GET TIED IN KNOTS DUE TO COMPLEXITY OF CODE AND MAKE IT HARDER IN THE LONG RUN.
+
+
+
+
+
+ ////// SOLVING FIZZ BUZZ
+fizz buzz is a game where you count up and any number divisible by 3 you say 'fizz' and any number divisible by 5, you say 'buzz'... ex:
+1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz, 16, 17, fizz, 19, buzz, ... and so on
+
+FizzBuzz has been used as an interview screening device for computer programmers. Writing a program to output the first 100 FizzBuzz numbers
+  is a realatively trivial problem requiring little more than a loop and conditional statements. However, its value in coding interviews is to 
+  analyze fundamental coding habits that may be indicative of overall coding ingenuity. 
+
+
+USE FIZZBUZZ TO MAKE AN OUTLINE OF A "BIG PROBLEM"
+  
+UNDERSTAND THE PROBLEM:
+ - Write a program that takes a user's input and prints the numbers from one to the number the user entered. 
+  However, for multiples of three print 'Fizz' instead of the number and for the multiples of five print 'Buzz'. 
+  For numbers which are multiples of both three and five print 'FizzBuzz'.
+
+
+PLAN: (remember to ask does it have an interface? what will it look like? What inputs will it have? Will it enter data or pull data from elsewhere? Desired output?)
+ - Our FizzBuzz solution will be a browser console program so no need for an interface. 
+ - The only user interaction will be allowing users to enter a number.
+ - The user will enter a number from a prompt box.
+ - Desired output is a list of numbers from 1 to the number the user entered, but each # divisible by 3 is substitued by 'fizz'
+    and each # divisible by 5 is substituted by 'buzz'. But numbers that are multiples of 3 and 5 are substituted with 'fizzbuzz'.
+  
+
+PSEUDOCODE: (What are the steps necessary to return the desired output? Algorithms for the problem.)
+1: When a user inputs a number
+2: Loop from 1 to the entered number
+3: If the current number is divisible by 3 then print "Fizz"
+4: If the current number is divisible by 5 then print "Buzz"
+5: If the current number is ddivisible by both 3 and 5 then print "FizzBuzz"
+6: Otherwise, print the current number
+
+
+
+DIVIDE AND CONQUER: [implement]
+- We check above at the algorithm and see that we can solve 'getting input from the user.' */
+let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to:"));
+// The above code should create a pop up box (prompt method) 
+// and the input we get back will be stored in the variable 'answer' (let answer=)
+// We also wrapped the prompt call in a parseInt() function so that a number is returned from the user's input. 
+
+
+// - Now we move to the next subproblem: [Loop from 1 to the entered number]
+// the 'for loop' is a very common way to do this. (in java, c++, and Ruby also)
+let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to:"));
+
+for (let i = 1; i <= answer; i++) {    //we have seen this multiple times(declare i and assign it 1: the initial value of the variable 'i' in the group// i <= answer is the condition[loop until i is greater than the answer]// i++ incrememnts by 1.)
+  console.log(i)  // as a result. if the user inputs 10, the loop would print nubmers 1-10
+}
+
+
+// - And we move to the next subproblem once we figured out alogrithm #2.
+// algorithm #3 (if the current # is divisible by 3 then print "Fizz")
+let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to:"));
+
+for (let i = 1; i <= answer; i++) {
+  if (i % 3 === 0) { //use the modulus operator to divide the current number by 3(modulus returns the remainder of a division(so if a remainder is 0, then the number is divisible by 3))
+    console.log("Fizz")
+  } else {
+    console.log(i);
+  }
+}
+//note that the program now will output: 1,2, Fizz, 4, 5, Fizz, 7, 8, Fizz, 10
+
+
+// NEXT SUBPROBLEM (if number is divisible by 5 then print "Buzz")
+let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to:"));
+
+for (let i = 1; i <= answer; i++) {
+  if (i % 3 === 0) {
+    console.log("Fizz")
+  } else if ( i % 5 === 0) {
+    console.log("Buzz")
+  } else {
+    console.log{i};
+  }
+}
+
+
+
+// Next subproblem happens to be the last one here! (If the current # is divisible by 3 and 5 then print "FizzBuzz")
+let answer = parseInt(prompt("Please enter the number you would like to FizzBuzz up to:"));
+
+for ( let i = 1; i <= answer; i++) {
+  if (i % 3 === 0 && i % 5 === 0) {
+    console.log("FizzBuzz");
+  } else if (i % 5 === 0) {
+    console.log("Fizz");
+  } else if (i % 5 === 0) {
+    console.log("Buzz")
+  } else {
+    console.log(i);
+  }
+}
+
+// NOTE THAT IF YOU ADD (i % 3 === 0 && i % 5 ===0) UNDER THE PREVIOUS SUBPROBLEM, it checked that if (i % 3 === 0) and then would move on. 
+// ---So we check if they both are divisible first then move onto INDIVIDUAL conditions.
+
+// -! This program is now complete. If you run it now, you should get the output:
+1
+2
+Fizz
+4
+Buzz
+Fizz
+7
+8
+Fizz
+Buzz
+11
+Fizz
+13
+14
+FizzBuzz
+16
+17
+Fizz
+19
+Buzz
+
+
+
+
+
+
+
+
+////// MORE THINGS TO REMEMBER ON PROBLEM SOLVING:
+
+/* --- 3 things to try when facing a real big problem:
+  - Debug: Go step by step through your solution trying to find out where you went wrong. 
+  - Reassess: Take a step back. Look at the problem from another perspective. Is there anything that can be abstracted to a more general approach?
+      *(Another way of reassessing is to start over and begin with fresh eyes.)
+  - Research: Find other peoples solutions and learn what they did to fix it.
+  -Caveat: Don't look for a solution to the big problem. Only look for solutions to sub-problems. Why? Becuase unless you struggle, you wont learn anything.
+*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                                           
