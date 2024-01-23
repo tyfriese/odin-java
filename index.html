@@ -3890,6 +3890,11 @@ fn(); //stack overflow
 
 
 
+
+
+
+
+
 ///////THE MODULO OPERATOR %
 function isOdd(n) {
   return n % 2 !==0;
@@ -3897,6 +3902,18 @@ function isOdd(n) {
 //above is an expression that checks if a number(n) is odd using the modulo (%) operator. 
 //-- In this function, 'n % 2' computes the remainder of 'n' divided by 2. For odd numbers, this remainder is always 1(or any non-zero for odd numbers greater than 1)
 // - and for even numbers, its always 0. So, the expression 'n % 2 !== 0' returns 'true' if 'n' is odd and 'false' if it is even. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -3935,7 +3952,7 @@ PROBLEM SOLVING!
 
 
 ////// PSEUDOCODE!!!
-// Psuedocode is writing out the logic for your program in natural language instead of code:
+// Psuedocode is writing out the logic for your program in natural language instead of code:::::
 When the user inputs a number
 Initialize a counter varialbe and set its value to zero
 While counter is smaller than user inputted number increment the couter by one
@@ -3948,6 +3965,18 @@ REPEAT-UNTIL: a loop with a condition at the bottom
 FOR: another way of looping
 IF-THEN-ELSE: a conditional statement chaning the flow of the algorithm.
 CASE: the generalization form of 'IF-THEN-ELSE'
+
+
+HOW TO WRITE PSEUDOCODE: 
+1) Always capitalize the initial word (often one of the  main constructs) 
+2) Make only one statement per line
+3) Indent to show hirearchy, improve readability, and show nested constructs.
+4) Always end the multi-line sections using any of the END keywords (ENDIF, ENDWHILE, etc.)
+5) Keep your statements programming language indpendent.
+6) Use the naming domain of the problem, not that of the implementation. (for instance, "Append the last name to the first name" instead of name+first+last)
+7) Keep it simple, concise, and readable.
+
+
 
 
 --'SEQUENCE' constructs--
@@ -4009,14 +4038,25 @@ ENDCASE
 
 
 
-HOW TO WRITE PSEUDOCODE: 
-1) Always capitalize the initial word (often one of the  main constructs) 
-2) Make only one statement per line
-3) Indent to show hirearchy, improve readability, and show nested constructs.
-4) Always end the multi-line sections using any of the END keywords (ENDIF, ENDWHILE, etc.)
-5) Keep your statements programming language indpendent.
-6) Use the naming domain of the problem, not that of the implementation. (for instance, "Append the last name to the first name" instead of name+first+last)
-7) Keep it simple, concise, and readable.
+
+
+
+
+
+
+
+
+BAD PSEUDOCODE EXAMPLES:
+for x = 1 to 100
+for y = 1 to 10
+if gameBoard[x][y] = 0
+  do nothing
+else
+  call theCall(X, Y)(recursively)
+  counter += 1
+   END IF
+  END FOR
+END FOR
 
 
 
@@ -4181,7 +4221,9 @@ Buzz
 
 
 
-////// MORE THINGS TO REMEMBER ON PROBLEM SOLVING:
+////// MORE THINGS TO REMEMBER ON 
+PROBLEM SOLVING:
+
 
 /* --- 3 things to try when facing a real big problem:
   - Debug: Go step by step through your solution trying to find out where you went wrong. 
@@ -4190,6 +4232,117 @@ Buzz
   - Research: Find other peoples solutions and learn what they did to fix it.
   -Caveat: Don't look for a solution to the big problem. Only look for solutions to sub-problems. Why? Becuase unless you struggle, you wont learn anything.
 */
+
+
+
+////////!!!!!!THINGS TO ASK WHEN CREATING A VARIABLE
+
+/* !!!! WHATS ITS NAME? 
+        WHATS ITS STARTING VALUE?
+        WHATS ITS TYPE?
+
+
+INPUT: should never be the first line of the algorithm. 
+you need to have a variable in place and a question being asked of the user    */
+
+//CREATE AN ALGORITHM FOR A PROGRAM THAT ASKS THE USER FOR 2 NUMBERS AND ADDS THEM: (make sure algorithms are comments.)(then ONE LINE AT A TIME, write code)
+
+// create an integer variable for x 
+let x = 0;
+// create an integer variable for y
+let y = 0;
+// create an integer variable for sum
+let sum = 0;
+// ask the user "X: " and put the answer in x
+x = parseInt(prompt("X: "));
+// ask the user "Y: " and put the answer in y
+y = parseInt(prompt("Y: "));
+// put x + y in sum
+sum = x + y;
+// tell user "answer is  " sum
+alert("The sum of x + y is " + sum);
+
+
+
+
+
+//BEST DEBUGGING TIPS
+//--- the best way to debug is to not have bugs
+//--- bad implementation can be googled
+//--- bad algorithms cannot be googled usually
+//--- what are you not understanding?
+//---what tools can you use?
+//--- DONT start with a solution
+//--- start by truly understanding the problem
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////// NEXT ODIN LESSON: UNDERSTANDING ERRORS!!!!!!///////////////
+//    SHOULD BE ABLES TO'S:
+ // -- name at least three kinds of javascript errors.
+ // -- Identify two parts of an error message that help you find where the error originiates. 
+ // -- Be able to understand how to research and resolve errors.
+
+
+ //////// THE ANATOMY OF AN ERROR
+//- Errors are a type of object built into the JavaScript language, consisting of a name/type and a message.
+// - They contain crucial information that can assist you in locating the code responsible for the error, determining why you have this error, and resolving the error.
+const a = "Hello";
+const b = "world";
+
+console.log(c);
+//the code will run but it will generate an error. In technical terms, this is called "throwing" and error. (The error was a "ReferenceError")
+//---The first part of an error displays the type of error. This provides the first clue as to what you're dealing with.
+
+// - a RefereneError is thrown when one refers to a variable that is not declared and/or initialized within the current scope.
+
+//---- THE 2ND PART of the error gives us the name of the file in which you can find the error, along with a line number!   ex:(script.js:4)
+// the example originates from the 4th line of script.js (when you click the error, most browsers will bring you to the code)
+
+
+
+//////////another important part of the error is the STACK TRACE!
+//- this helps you understand when the error was thrown into your application and what functions were called that led up to the error. 
+const a = 5;
+const b = 10;
+
+function add() {
+  return c;
+}
+
+function print() {
+  add();
+}
+
+print();
+
+// our function print() should call on add() , which returns a variable named c , which currently has not been declared. The corresponding error:
+/* 
+> Uncaught ReferenceError: c is not defined.
+        at add (script.js:5)
+        at print (script.js:9)
+        at script.js:12
+ 
+the above STACK TRACE tells us:
+1) c is not defined in scope of add() , which is declared on line 5
+2) add() was called by print() , which was declared on line 9
+3) print() itself was called on line 12.
+
+
+
+*/
+
 
 
 
