@@ -4404,9 +4404,27 @@ const message = str1.push(str2);
 
 
 
-////
+//// more on errors
+
+/*
+"Uncaught TypeError: can't access property "textContent", lowOrHi is null"
+
+Depending on the browser you are using, you might see a different message here. The message above is what Firefox will show you, 
+    
+but Chrome, for example, will show you this:
+
+"Uncaught TypeError: Cannot set properties of null (setting 'textContent')"
+
+It's the same error, but different browsers describe it in a different way.
+*/
 
 
+
+
+
+// Below is an exercise using the devtools and debugging 
+
+//      https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_went_wrong
 
 
 
