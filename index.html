@@ -4341,6 +4341,48 @@ the above STACK TRACE tells us:
 
 
 
+
+
+// ---- Most common types of errors : ---- /////
+
+Syntax error: 
+occurs when the code you are trying to run is not written correctly, i.e. in accordance with the grammatical rules of Javascript. for example:
+function helloWorld() {
+  console.log "Hello World!"
+}
+
+Reference error: 
+occurs when you try to reference a variable that does not exist(within the current scope)
+
+
+type error:
+these errors are thrown for a few different reasons:
+1) an operand or argument passed to a function is incompatible with the type expected by that operator or function.
+2) when attempting to modify a value that cannot be changed.
+3) when attempting to use a value in an inappropriate way.
+[say we have two strings that you would like to combine to create one message, such as below.]   */
+const str1 = "Hello";
+const str2 = "World";
+const message = str1.push(str2);
+// TypeError: str1.push is not a function 
+//        at script.js:3:22
+
+// above we get a type error showing a message that str1.push is not a function. A common error message that confuses learners becuase .push() is a function. but not a string method, its an array method.
+
+
+
+
+/////Tips for resolving errors:
+/*
+1) Read the error CAREFULLY and try to understand it on your own. 
+
+2)Next step is GOOGLE THE ERROR. Find a fix or explanation on StackOverflow or in the documentation. If nothing else; you will gain more clarity as to why you get the error.
+
+3) USE THE DEBUGGER! its great for more involved troubleshooting, and is a critical tool for a dev. Set breakpoints, 
+    view the value of any variable at any point in execution, step through code line by line.
+
+4) MAKE USE OF THE CONSOLE! console.log() is popular for quick debugging. Use the debugger when you have more involved troubleshooting.
+    There are other useful methods like console.table() and console.trace() 
 */
 
 
@@ -4349,6 +4391,12 @@ the above STACK TRACE tells us:
 
 
 
+///// ERRORS VS WARNINGS!
+// ERRORS, will stop the execution of your program or whatever process you may be attempting and prevent further action.
+// WARNINGS, are messages that provide insight on potential problems that may not necessarily crash the program. 
+//    while you should address warnings if possible and as soon as possible, they are notas significant as errors and are more likely informational.
+
+//warnings will be shown in yellow, while errors will be shown in red. 
 
 
 
@@ -4356,8 +4404,13 @@ the above STACK TRACE tells us:
 
 
 
+////
 
-                                          
+
+
+
+
+
 
 
 
