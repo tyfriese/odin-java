@@ -4628,27 +4628,54 @@ function calculateBMI(height, weight) {
     - flow diagrams and pseudocode might come in handy to verify logic behind those lines of code.
 
   2) Clearly expose the structure of the page!
-  
+
+  <div id="main-container">
+    <div id="header">
+        <div id="logo">...</div>
+        <div id="main-menu">...</div>
+    </div>
+    <div id="content">
+        <div id="left-column">...</div>
+ 
+        <div id="center-column">...</div>
+        <div id="right-column">...</div>
+    </div>
+    <div id="footer">
+        <div id="footer-menu">...</div>
+        <div id="disclaimer">...</div>
+    </div>
+</div>  
+
+ - This structure appears evident due to the DIV containers being so concretely named after their destined content. 
+ - The above goes hand-in-hand with the below. 
 
   3) Use the correct indentation!
+    - indentation distinctly displays the opening and closing points of each element used. 
 
   4) Write explanatory comments!
+    - Easy, fast, and straight to the point! Also very efficient considering the fact that they can be read the exact moment of doubt
+    (They can be overused, which brings us to #5)
 
   5) Avoid Abusing Comments
+    - DO NOT: write explanatory notes to yourself(//will finish later), use comments to blame others, write vague statements in comments, 
+            erasing chunks of code: Sometimes people are not sure of erasing things and it's not absolutely evil to comment that code instead.
 
   6) Avoid Extremely Large Functions
+    - break larger function into smaller functions conforming the whole aplication process if some functions repeat themselves. 
 
   7) Use naming standards for functions and variables
+    - Name should be descriptive enough as to give a general idea of what it does or what its for. 
 
   8) Treat changes with caution
+    - There must be an awareness of not meddling with previous efforts for maintaining the code when adding, removing, or changing something. 
 
   9) Avoid indiscriminate mixing of coding languages
+    - In-line CSS styling and scattered JavaScript tags with short procedures withing them are very good examples of incorrect mixing of coding languages
 
   10) Summarize your imports
-
-
-
-
+    -  It is better to have additional coding languages imported through stylesheets. But too many stylesheets gets messy can can be summarized in 1 or 2.
+    - It also saves loading time as each imported file is an HTTP request that tampers with the performance of your application. 
+    - Summarizing makes things more tidy and also is a huge consideration for efficiency in your program.
 */
 
 
