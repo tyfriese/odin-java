@@ -4733,9 +4733,99 @@ Using Node console
 For convenience, Node provides an interactive console which lets you run and edit your JavaScript code right in your terminal, similar to IRB for ruby. This is quite helpful to debug or test small snippets of your code quickly without opening the browser every time.
 
 To run the Node console, open up your terminal and type node. Type .exit to quit the console.
-
-
 */
+
+
+
+
+
+
+
+
+/////////////////////////////// FUNDAMENTALS PART 4!!!! //////////////////
+arrays // data structures that can store multiple values in a single variable.
+// used for organizing and manipulating large amounts of data. 
+
+loops // control structures that allow you to execute a block of code repeatedly. 
+// handy for performing the same oepration on each element of an array.
+
+Test-Driven Development // (TDD) which is the practice of writing tests for your code beofre you write the code itself. 
+
+
+
+
+/////What to know by the end:
+// 1) How to use arrays
+// 2) How to use built-in array methods
+// 3) How to use loops
+// 4) get your hands dirty with TDD exercises.
+
+
+
+
+
+
+
+
+//////// ARRAYS!
+// Although strings and numbers are the building blocks; as your script gets more complex, we need a way to deal with large quantities. (Arrays)
+const cars = ["Saab", "Volvo", "BMW"];
+
+//the above is used to save you from naming each single variable: 
+let car1 = "Saab";
+let car2 = "Volvo";
+let car3 = "BMW";
+// takes too long and clogs up the code.
+
+
+// If you want to loop through the cars to find a specific one(maybe you have 300 and not 3). Use and array!
+// you can access the values by referring to an index number.
+//syntax:
+const array_name = [item1, item2, item3];
+
+
+// note that spaces and line breaks are NOT important. a declaration can span multiple lines. :
+const cars = [
+  "Saab",
+  "Volvo",
+  "BMW"
+];
+
+
+
+
+// you can also creat the array and then provide the elements after:
+const cars = [];
+cars[0]= "Saab";
+cars[1]= "Volvo";
+cars[2]= "BMW";
+
+
+// you can ALSO use the javascript keyword "new" to create an array.
+const cars = new Array("Saab", "Volvo", "BMW");
+
+
+
+//the two above do exactly the same thing but for simplicity, readability, and execution speed, use the array literal method. (first one)
+
+
+
+
+
+
+//////////ACCESSING ARRAY ELEMENTS (by referring to the 'index number')
+const cars = ["Saab", "Volvo", "BMW"];
+let car = cars[0];
+//array indexes always start with 0. The first element in the array is [0], the second element in the array is [1].
+
+
+
+
+
+
+
+
+
 
 
 
