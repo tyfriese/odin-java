@@ -5027,28 +5027,27 @@ fruits instanceof Array;
 
 
 //////LIST OF BASIC ARRAY METHODS:
-
-Array length
-Array toString()
-Array at()
-Array join()
-Array pop()
-Array push()
-Array shift()
-Array unshift()
+Array .length  //Sets or returns the number of elements in an array
+Array toString() //Converts an array to a string, and returns the result
+Array at() //Returns an indexed element of an array
+Array join() //Joins all elements of an array into a string
+Array pop() //Removes the last element of an array, and returns that element
+Array push() //Adds new elements to the end of an array, and returns the new length
+Array shift() //Removes the first element of an array, and returns that element
+Array unshift() //Adds new elements to the beginning of an array, and returns the new length
 Array delete()
-Array concat()
-Array copyWithin()
-Array flat()
-Array splice()
+Array concat() //Joins arrays and returns an array with the joined arrays
+Array copyWithin() //Copies array elements within the array, to and from specified positions
+Array flat() //Concatenates sub-array elements
+Array splice()	//Adds/Removes elements from an array. ex) fruits.splice(1, 2) would splice the 2nd and 3rd element out
 Array toSpliced()
-Array slice()
-
-
+Array slice() //Selects a part of an array, and returns the new array
 
 //////EXPANDED LIST OF ARRAY METHODS AND PROPERTIES
 
+at()	//Returns an indexed element of an array
 constructor	//Returns the function that created the Array object's prototype
+copyWithin()	//Copies array elements within the array, to and from specified positions
 entries()	//Returns a key/value pair Array Iteration Object
 every()	//Checks if every element in an array pass a test
 fill()	//Fill the elements in an array with a static value
@@ -5073,14 +5072,71 @@ prototype	//Allows you to add properties and methods to an Array object
 reduce()	//Reduce the values of an array to a single value (going left-to-right)
 reduceRight()	//Reduce the values of an array to a single value (going right-to-left)
 reverse()	//Reverses the order of the elements in an array
+shift()	
 some()	//Checks if any of the elements in an array pass a test
 sort()	//Sorts the elements of an array
 valueOf()	//Returns the primitive value of an array
 with()	//Returns a new array with updated elements
 
 
+/////note that if you push([1, 2]) for example, it will add an array to the array you added[1, 2] to. 
 
 
+
+
+
+
+
+
+
+
+//////////// LOOPS!
+// for of loop 
+// The 'for ... of' loop is the basic tool for looping through a collection (array, set, or map)
+const cats = ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"];
+
+for (const cat of cats) {
+  console.log(cat);
+}
+//translation: given the collection(cats), get the first item in the collection
+//   --assign it to the variable 'cat' and then run the code between the curly bracecs {}
+// -- Get the next item, and repeat(2) until you've reached the end of the collection.
+
+
+
+// JS has more specialized loops for collections
+map()
+//and
+filter()
+
+
+
+//////// You can use map() to do something to each item in a collection and create a new collection containing the changed items. 
+function toUpper(string) {
+  return string.toUpperCase();
+}
+const cats = ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"];
+const upperCats = cats.map(toUpper);
+console.log(upperCats);   //will return [ "LEOPARD", "SERVAL", "JAGUAR", "TIGER", "CARACAL", "LION" ]
+// the above passes a function into cats.map and map() calls the function once for each item in the array, passing the item.
+// It then adds the return value from each function call to a new array, and finally returns it the new array. (in this case, the function we provided changed it to uppercase)
+
+
+/////// you can use filter() to test each item in a collection, and create a new collection containing only items that match.
+function lCat(cat) {
+  return cat.startsWith("L");
+}
+const cats = ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"];
+const filtered = cats.filter(lCat);
+console.log(filtered);  // will return [ "Leopard", "Lion" ]
+
+// The difference with filter() to map() is that this returns a boolean value when we pass through things.
+
+//NOTE THAT WE CAN USE AN ARROW FUNCTION TO REWRITE THIS ABOVE EXAMPLE TO BE MORE COMPACT.
+const cats = ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"];
+const filtered = cats.filter((cat) => cat.startsWith("L"));
+console.log(filtered);
+// [ "Leopard", "Lion" ]
 
 
 
