@@ -5310,7 +5310,32 @@ console.log(myFavoriteCats); // "My cats are called Pete, Biggles, and Jasmine."
 
 
 
-////do...while loop    -   is very similar but provides a variation on the while structures
+////do...while loop    -   is very similar but provides a variation on the while structures:
+initializer
+do {
+  // code to run
+  final-expression
+} while (condition)
+/* in this case, the initializer comes first again, before the loop starts. The main difference between a do...while loop and a 'while' loop
+is that the code inside a do...while loop is always executed at least once. (becuase the condition comes after the code inside the loop). 
+In the 'while' and 'for' loops, the check comes first, so the code might never get executed
+*/
+
+
+
+/////cat example using a do...while loop
+const cats = ["Pete", "Biggles", "Jasmine"];
+let myFavoriteCats = "My cats are called ";
+let i = 0;
+do {
+  if (i === cats.length - 1) {
+    myFavoriteCats += `and ${cats[i]}.`;
+  } else {
+    myFavoriteCats += `${cats[i]}, `;
+  }
+  i++;
+} while (i < cats.length);
+console.log(myFavoriteCats); // "My cats are called Pete, Biggles, and Jasmine."
 
 
 
@@ -5318,6 +5343,22 @@ console.log(myFavoriteCats); // "My cats are called Pete, Biggles, and Jasmine."
 
 
 
+////////LAUNCH COUNTDOWN EXERCISE
+//In this exercise, we want you to print out a simple launch countdown to the output box, from 10 down to Blastoff. Specifically, we want you to:
+
+//Loop from 10 down to 0. We've provided you with an initializer — let i = 10;.
+
+//For each iteration, create a new paragraph and append it to the output <div>, which we've selected using const output = document.querySelector('.output');. 
+//In comments, we've provided you with three code lines that need to be used somewhere inside the loop:
+const para = document.createElement('p'); //creates a new paragraph.
+output.appendChild(para); // appends the paragraph to the output <div>.
+para.textContent = // makes the text inside the paragraph equal to whatever you put on the right-hand side, after the equals sign.
+Different iteration numbers require different text to be put in the paragraph for that iteration (you'll need a conditional statement and multiple para.textContent = lines):
+// If the number is 10, print "Countdown 10" to the paragraph.
+// If the number is 0, print "Blast off!" to the paragraph.
+//For any other number, print just the number to the paragraph.
+//Remember to include an iterator! However, in this example we are counting down after each iteration,
+//     not up, so you don't want i++ — how do you iterate downwards?
 
 
 
