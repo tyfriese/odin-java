@@ -5135,8 +5135,184 @@ console.log(filtered);  // will return [ "Leopard", "Lion" ]
 //NOTE THAT WE CAN USE AN ARROW FUNCTION TO REWRITE THIS ABOVE EXAMPLE TO BE MORE COMPACT.
 const cats = ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"];
 const filtered = cats.filter((cat) => cat.startsWith("L"));
-console.log(filtered);
-// [ "Leopard", "Lion" ]
+console.log(filtered);  // will return [ "Leopard", "Lion" ]
+
+
+
+
+/////THE STANDARD FOR LOOP: 
+for (intitializer; condition; final-expression) {
+  //code to run
+}
+/* Above we have:
+1) the keyword 'for', followed by some parentheses 
+
+2) inside the parentheses: 
+  i) an initialier- it is usually a variable set to a number, which is incremented to count the number of times the loop has run. (also called a 'counter variable')
+  ii) a condition- this defines when the loop should stop looping(generally an expression featuring a comoparison operator to test if a condition is met)
+  iii) a final-expression- this is always evaluated each time the loop has gone through a full iteration. Usually serves to increment (sometimes decrement)
+                           the counter-variable, to bring it closer to the point where the condition is no longer 'true'
+
+3)Some curly braces that contain a block of code - this code will be run each time the loop iterates.
+
+*/
+// NOTE that for something like the 100 random circles, you do not have a collection of items to loop through,
+//      - you only want to repeat the same code 100 times. So for that, you use the 'for' loop like above.
+
+
+
+
+
+
+
+///////CALCULATING SQUARES
+const results = document.querySelector("#results");
+
+function calculate() {
+  for (let i = 1; i < 10; i++) {   // 'i' starts at 1; i++ means we add 1 to i every iteration UNTIL it is no longer '< 10'
+    const newResult = `${i} x ${i} = ${i * i}`;
+    results.textContent += `${newResult}\n`;
+  }
+  results.textContent += "\nFinished!";
+}
+
+const calculateBtn = document.querySelector("#calculate");
+const clearBtn = document.querySelector("#clear");
+
+calculateBtn.addEventListener("click", calculate);
+clearBtn.addEventListener("click", () => (results.textContent = ""));
+//////
+
+
+
+// SOMETIMES WE USE THE 'FOR' LOOP TO LOOP THROUGH ARRAYS
+const cats = ["Pete", "Biggles", "Jasmine"];
+
+let myFavoriteCats = "My cats are called ";
+
+for (const cat of cats) {
+  myFavoriteCats += `${cat}, `;
+}
+console.log(myFavoriteCats); // "My cats are called Pete, Biggles, Jasmine, "
+// obviously that sentence does not very well-formed. If we want to change it to a better sounding sentece, we need to know when we are on 
+//    the final loop iteration, and to do that we can use a 'for' loop and examine the value of '1'.
+
+const cats = ["Pete", "Biggles", "Jasmine"];
+
+let myFavoriteCats = "My cats are called ";
+
+for (let i = 0; i < cats.length; i++) {
+  if (i === cats.length - 1) {
+    // We are at the end of the array so you want a clear end of the sentence.
+    myFavoriteCats += `and ${cats[i]}.`;
+  } else {
+    myFavoriteCats += `${cats[i]}, `;
+  }
+}
+console.log(myFavoriteCats); // "My cats are called Pete, Biggles, and Jasmine."
+
+
+
+
+
+
+
+///////EXITING LOOPS WITH BREAK
+// you can use the 'break' statement to exit a loop before the iteration completes(like in a switch statement)
+const contacts = [ //created an array full of contacts
+  "Chris:2232322",
+  "Sarah:3453456",
+  "Bill:7654322",
+  "Mary:9998769",
+  "Dianne:9384975",
+];
+const para = document.querySelector("p");
+const input = document.querySelector("input");
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", () => {    //attach the eventlistener to the BTN so that when its pressed, code is ran
+  const searchName = input.value.toLowerCase(); //store the value of the text input into 'searchName'
+  input.value = ""; // then emptying it
+  input.focus(); //then focusing it again, so it is ready for the next search
+  para.textContent = "";
+  for (const contact of contacts) {
+    const splitContact = contact.split(":"); //when inside the loop, first, we split the current contact at the colon character and store the resulting 2 values in an array 
+    if (splitContact[0].toLowerCase() === searchName) { //makes the searches case-insensitive with toLowerCase() //and use a conditional statement to test whether splitContact[0] matches the search input
+      para.textContent = `${splitContact[0]}'s number is ${splitContact[1]}.`; //if it does match then we return that in a sentence
+      break;  //then we break to end the loop
+    }
+  }
+  if (para.textContent === "") {  // after the loop, we check whether we set a contact, and if not,
+    para.textContent = "Contact not found."; // we set the paragraph text to "Contact not found"
+  }
+});
+
+
+
+
+
+///////SKIPPING ITERATIONS WITH CONTINUE
+// the 'continue' statement works similarly to 'break', but instead of exiting the iteration, it skips to the next iteration. 
+const para = document.querySelector("p");
+const input = document.querySelector("input");
+const btn = document.querySelector("button");
+
+btn.addEventListener("click", () => { 
+  para.textContent = "Output: ";
+  const num = input.value;
+  input.value = "";
+  input.focus();
+  for (let i = 1; i <= num; i++) { //starts at 1 becuase we are not interested in 0. loop will stop when the counter becomes bigger than the input. 
+    let sqRoot = Math.sqrt(i);  // finds the square root of each number
+    if (Math.floor(sqRoot) !== sqRoot) {  //then check whether the square root in an interger by testing whether it is the same as itself after being rounded (Math.floor())
+      continue; //if the square root and rounded down square root do not equal one another(!==), then it means we arent interested becuase its not a square root. 'continue' skips to the next iteration
+    }
+    para.textContent += `${i} `; //if the square root was an integer, we skip the if block entirely and 'continue' is not executed. Instead, we concatenate the current 'i' value
+  }
+});
+
+
+
+
+
+
+
+
+//////////WHILE AND DO...WHILE
+
+// while loop syntax:
+initializer
+while (condition) {
+  // code to run
+  final-expression
+}
+/* works similarly to the 'for' loop, except that the intializer variable is set before the loop, and the final-expression is included inside 
+the loop after the code to run, rather than these two items being included inside the parentheses. The condition is included inside the parentheses, 
+which are preceded by the 'while' keyword rather than 'for'
+
+- The same three items are still present, and still defined in the same order as they are in the 'for' loop.
+*/
+// cat example rewritten using a while loop. 
+const cats = ["Pete", "Biggles", "Jasmine"];
+let myFavoriteCats = "My cats are called ";
+let i = 0;
+while (i < cats.length) {
+  if (i === cats.length - 1) {
+    myFavoriteCats += `and ${cats[i]}.`;
+  } else {
+    myFavoriteCats += `${cats[i]}, `;
+  }
+  i++;
+}
+console.log(myFavoriteCats); // "My cats are called Pete, Biggles, and Jasmine."
+
+
+
+
+
+////do...while loop    -   is very similar but provides a variation on the while structures
+
+
 
 
 
