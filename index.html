@@ -5368,11 +5368,11 @@ let i = 10;
 while (i >= 0) {
   const para = document.createElement('p');
   if (i === 10) {
-    para.textContent = `Countdown ${i}`;
+    para.textContent = 'Countdown: 10!';
   } else if (i === 0) {
     para.textContent = 'Blast off!';
   } else {
-    para.textContent = i;
+    para.textContent = `${i}`;
   }
 
   output.appendChild(para);
@@ -5381,16 +5381,11 @@ while (i >= 0) {
 }
 
 
-
-
-
-
-
-// my guess
+// my guess. (now touched up)
 for (let i = 10; i < 0; i--) {
   if (i === 10) {
     print("Countdown: 10!");
-  } else { 
+  } else if { 
     print(`${output}`) 
  } else {
     if (i === 0) {
