@@ -5400,6 +5400,52 @@ for (let i = 10; i < 0; i--) {
 
 
 
+
+
+///////// GUEST LIST ACTIVITY:
+// - write a loop that will iterate through the people array.
+// - during each loop: - check if the current array item is equal to "Phil" or "Lola" using a conditional.
+// - if it is, concatenate the array item to the end of teh refused paragraph's textContent, followed by a comma and a space.
+// provided:
+const people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+
+const admitted = document.querySelector('.admitted');
+const refused = document.querySelector('.refused');
+admitted.textContent = 'Admit: ';
+refused.textContent = 'Refuse: ';
+
+// loop starts here
+for (const person of people) {
+  if (person === "Phil" || person === "Lola") {
+    refused.textContent += `${person}, `;
+  } else {
+    admitted.textContent += `${person}`;
+  }
+}
+
+for (let i = 0; i < admitted.length; i++) {
+  if (i = admitted.length - 1) {
+    admitted += `and ${admitted[i]}`;
+ }
+}
+
+for (let i = 0; i < refused.length; i++) {
+  if (i = refused.length - 1) {
+    admitted += `and ${refused[i]}`;
+ }
+}
+
+
+
+
+
+// refused.textContent += ;
+// admitted.textContent += ;
+
+
+
+
+
     </script>
   </body>
 </html>
