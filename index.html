@@ -5693,6 +5693,35 @@ do {
 
 
 
+////// USE 'NPM TEST' inside the terminal to test functions and see exactly what went wrong and what the terminal expected to see.
+
+
+//
+// takes two parameters and repeats the given word the specified number of times. 
+
+const repeatString = function (word, times) { 
+  if (times < 0) return "ERROR"; // translation: if the number of times is less than 0. return "error"
+  let string = ""; //initialize an empty string to store the repeated word
+  for (let i = 0; i < times; i++) { // for loop to concatenate the 'word' to the 'string' 'times' the number of times
+    string += word;
+  }
+  return string; //return the resulting string
+};
+module.exports = repeatString;  // exports the function for testing
+
+
+
+
+
+////////WRITE A FUNCTION THAT TAKES A STRING AND RETURNS IT BUT REVERSED.
+const reverseString = function(string) {
+    return string.split("").reverse().join("");
+};
+
+
+
+
+
 
 
 
