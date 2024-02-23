@@ -6084,9 +6084,32 @@ Object literals ({ ...obj, key: 'value' })
 ///// Element Creation
 document.createElement(tagName, [options])
  // creates a new element of tag type tagName. [options] in this case means you can add some optional parameters to the function. 
+ 
+
+ /////You can place the element into the DOM with one of the following methods.
+ //append: 
+parentNode.appendChild(childNode)  // - appends childNode as the last child of parentNode.
+parentNode.insertBefore(newNode, referenceNode) // - inserts newNode into parentNode before referenceNode.
+ //remove elements
+parentNode.removeChild(child) // - removes child from parentNode on the DOM and returns a reference to child.
 
 
 
+//// ALTERING ELEMENTS
+// - When you have a reference to an element, you can use that reference to alter the element’s own properties. 
+//    This allows you to do many useful alterations, like adding/removing and altering attributes, changing classes, adding inline style information and more.
+const div = document.createElement('div');                     
+// creates a new div referenced in the variable 'div'
+
+//add css style
+div.style.color = 'blue';                                      
+// adds the indicated style rule
+
+div.style.cssText = 'color: blue; background: white;';          
+// adds several style rules
+
+div.setAttribute('style', 'color: blue; background: white;');    
+// adds several style rules
 
 
 
