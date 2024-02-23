@@ -6114,6 +6114,19 @@ div.setAttribute('style', 'color: blue; background: white;');
 
 
 
+///// EDITING ELEMENTS 
+div.setAttribute('id', 'theDiv');                              
+// if id exists, update it to 'theDiv', else create an id
+// with value "theDiv"
+
+div.getAttribute('id');                                        
+// returns value of specified attribute, in this case
+// "theDiv"
+
+div.removeAttribute('id');                                     
+// removes specified attribute
+
+// more available attributes at https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes
 
 
 
@@ -6122,6 +6135,30 @@ div.setAttribute('style', 'color: blue; background: white;');
 
 
 
+/////// WORKING WITH CLASSES is often standard(and cleaner) to toggle a CSS style rather than adding and removing inline CSS.
+div.classList.add('new');                                      
+// adds class "new" to your new div
+
+div.classList.remove('new');                                   
+// removes "new" class from div
+
+div.classList.toggle('active');                                
+// if div doesn't have class "active" then add it, or if
+// it does, then remove it
+
+
+
+// adding text content
+div.textContent = 'Hello World!'                               
+// creates a text node containing "Hello World!" and
+// inserts it in div
+
+
+// adding HTML content
+div.innerHTML = '<span>Hello World!</span>';                   
+// renders the HTML inside div
+
+////// NOTE THAT textContent IS PREFERRED FOR ADDING TEXT BUT innerHTML SHOULD BE USED SPARINGLY DUE TO THE SECURITY RISK IT ADDS.
 
 
 
