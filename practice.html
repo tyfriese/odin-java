@@ -11,15 +11,21 @@
     }
   </style>
   </head>
-<body>
+  <body>
+    <h1>
+      THE TITLE OF YOUR WEBPAGE
+    </h1>
+    <div id="container"></div>
 
-  <input class="numberInput" type="text">
-  <p></p>
+    <script>
+      const container = document.querySelector('#container');
 
-  <script>
-    const input = document.querySelector('.numberInput');
-    const para = document.querySelector('p');
+const content = document.createElement('div');
+content.classList.add('content');
+content.textContent = 'This is the glorious text-content!';
 
-  </script>
-</body>
+container.appendChild(content);
+
+    </script>
+  </body>
 </html>
