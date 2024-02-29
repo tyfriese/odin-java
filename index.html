@@ -6167,6 +6167,139 @@ div.innerHTML = '<span>Hello World!</span>';
 
 
 
+//////////// EVENTS IN THE DOM
+// - EVENTS are actions that occur on your webpage such as mouse-clikcs or keypresses 
+//      and using JS we can make our page listen and react.   There are 3 primary ways to go about this
+// 1) specify function attributes directly on your HTML elements
+// 2) set properties of form on[eventType] (onclick, onmousedown, etc.) on the DOM nodes in your JS
+// 3) attach event listeners to the DOM nodes in your JS. 
+
+
+// METHOD 1:
+<button onclick="alert('Hello World')">Click Me</button>
+// NOTE that this is less than ideal because it is cluttering the HTML with JS. 
+// ALSO you can now only set one 'onclick' property per DOM element, 
+//   so we are unable to run mulitple separate functions in ressponse to a click event using this method.
+
+
+
+// METHOD 2:
+/*  the HTML file  */
+<button id="btn">Click Me</button>
+// the JavaScript file
+const btn = document.querySelector('#btn');
+btn.onclick = () => alert("Hello World");
+// Though this is better becuase the JS is moved into the JS file, but the DOM element can still only hold 1 'onclick' property
+
+
+
+// METHOD 3:
+// the HTML file
+<button id="btn">Click Me Too</button>
+// the JavaScript file:
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+  alert("Hello World");
+});
+// NOW we maintain separation of concerns, and we also allow multiple event listeners if the need arises.
+// This method is much more flexible and powerful, though it is a bit more complex to set up
+
+
+////// NOTE THAT ALL 3 OF THESE METHODS CAN BE USED WITH NAMED FUNCTIONS:
+// <!-- the HTML file -->
+// <!-- METHOD 1 -->
+<button onclick="alertFunction()">CLICK ME BABY</button>
+// the JavaScript file 
+// METHOD 1
+function alertFunction() {
+  alert("YAY! YOU DID IT!");
+}
+
+
+// <!-- the HTML file -->
+// <!-- METHODS 2 & 3 -->
+<button id="btn">CLICK ME BABY</button>
+// the JavaScript file 
+// METHODS 2 & 3
+function alertFunction() {
+  alert("YAY! YOU DID IT!");
+}
+const btn = document.querySelector('#btn')
+// METHOD 2
+btn.onclick = alertFunction;
+// METHOD 3
+btn.addEventListener('click', alertFunction);
+// Using named functions can clean up your code considerably, and is a really good idea 
+//      if the function is something that you are going to want to do in multiple places.
+
+
+
+// With all three methods we can access more information about the event by 
+//                passing a parameter to the function that we are calling.
+btn.addEventListener('click', function (e) {
+  console.log(e);
+});
+
+
+///// MORE "TRY THIS":
+btn.addEventListener('click', function (e) {
+  console.log(e.target);
+});
+
+
+btn.addEventListener('click', function (e) {
+  e.target.style.background = 'blue';
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////HTML AND JS IN THE HEAD///// METADATA
+
+
+///// REMEMBER THAT Your JavaScript, for the most part, is run whenever the JS file is run, or when the script tag is encountered in the HTML. 
+//  - If you are including your JavaScript at the top of your file, many of these DOM manipulation methods will not work 
+//  - because the JS code is being run before the nodes are created in the DOM. The simplest way to fix this is to include your 
+//  - JavaScript at the bottom of your HTML file so that it gets run after the DOM nodes are parsed and created.
+
+
+
+
+//   Alternatively, you can link the JavaScript file in the <head> of your HTML document. 
+  //  - Use the <script> tag with the src attribute containing the path to the JS file, 
+  //  - and include the defer keyword to load the file after the HTML is parsed, as such:
+<head>
+  <script src="js-file.js" defer></script>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

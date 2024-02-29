@@ -1,14 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Function library example</title>
+    <title>Practice with JS</title>
+    
   <style>
-    input {
-      font-size: 2em;
-      margin: 10px 1px 0;
-    }
   </style>
   </head>
   <body>
@@ -19,13 +15,13 @@
 
     <script>
       const container = document.querySelector('#container');
-
-const content = document.createElement('div');
-content.classList.add('content');
-content.textContent = 'This is the glorious text-content!';
-
-container.appendChild(content);
-
+      const content = document.createElement('div');
+      content.classList.add('content');
+      content.textContent = 'This is the glorious text-content!';
+      container.appendChild(content);
+      const redPara = document.createElement('p');
+      redPara.textContent = 'Hey I am red!';
+      redPara.style.color = "red";
     </script>
   </body>
 </html>
