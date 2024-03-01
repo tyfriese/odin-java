@@ -6215,7 +6215,6 @@ function alertFunction() {
   alert("YAY! YOU DID IT!");
 }
 
-
 // <!-- the HTML file -->
 // <!-- METHODS 2 & 3 -->
 <button id="btn">CLICK ME BABY</button>
@@ -6231,6 +6230,7 @@ btn.onclick = alertFunction;
 btn.addEventListener('click', alertFunction);
 // Using named functions can clean up your code considerably, and is a really good idea 
 //      if the function is something that you are going to want to do in multiple places.
+
 
 
 
@@ -6250,6 +6250,14 @@ btn.addEventListener('click', function (e) {
 btn.addEventListener('click', function (e) {
   e.target.style.background = 'blue';
 });
+
+
+
+
+
+
+//////// ATTACHING LISTENERS TO GROUPS OF NODES
+
 
 
 
