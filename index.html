@@ -6160,6 +6160,37 @@ div.innerHTML = '<span>Hello World!</span>';
 
 ////// NOTE THAT textContent IS PREFERRED FOR ADDING TEXT BUT innerHTML SHOULD BE USED SPARINGLY DUE TO THE SECURITY RISK IT ADDS.
 
+const container = document.querySelector('#container');
+      const content = document.createElement('div');
+
+      content.classList.add('content');
+      content.textContent = 'This is the glorious text-content!';
+      container.appendChild(content);
+
+      const redPara = document.createElement('p');
+      redPara.textContent = 'Hey I am red!';
+      redPara.style.color = "red";
+      container.appendChild(redPara);
+
+      const blueHeaderThree = document.createElement('h3');
+      blueHeaderThree.textContent = "I am a blue h3!";
+      blueHeaderThree.style.color = "blue";
+      container.appendChild(blueHeaderThree);
+
+      const pinkAndBlack = document.createElement('div');
+      pinkAndBlack.style.border = "1px solid black";
+      pinkAndBlack.style.backgroundColor = "pink";
+
+      const heading = document.createElement('h1');
+      heading.textContent = 'I am in a div!';
+      const paraOne = document.createElement('p');
+      paraOne.textContent = 'ME TOO!';
+
+      pinkAndBlack.appendChild(heading);
+      pinkAndBlack.appendChild(paraOne);
+      container.appendChild(pinkAndBlack);
+
+
 
 
 
