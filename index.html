@@ -6286,8 +6286,114 @@ btn.addEventListener('click', function (e) {
 
 
 
-
 //////// ATTACHING LISTENERS TO GROUPS OF NODES
+// - like above we learned we can get a NodeList of all of the items matching a specific selector with
+querySelectorAll('selector')
+
+// - in order to attach a listener to each of them, we need to iterate through the whole list.
+<div id="container">
+  <button id="1">Click Me</button>
+  <button id="2">Click Me</button>
+  <button id="3">Click Me</button>
+</div>
+
+// buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll("button");
+
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    alert(button.id);
+  });
+});
+
+/////// more events avaiable for use.
+abort //	The loading of a media is aborted	UiEvent, Event
+afterprint //	A page has started printing	Event
+animationend	// A CSS animation has completed	AnimationEvent
+animationiteration	// A CSS animation is repeated	AnimationEvent
+animationstart	// A CSS animation has started	AnimationEvent
+beforeprint	// A page is about to be printed	Event
+beforeunload	// Before a document is about to be unloaded	UiEvent, Event
+blur	// An element loses focus	FocusEvent
+canplay	// The browser can start playing a media (has buffered enough to begin)	Event
+canplaythrough	// The browser can play through a media without stopping for buffering	Event
+change	// The content of a form element has changed	Event
+click	// An element is clicked on	MouseEvent
+contextmenu	// An element is right-clicked to open a context menu	MouseEvent
+copy	// The content of an element is copied	ClipboardEvent
+cut	// The content of an element is cut	ClipboardEvent
+dblclick	// An element is double-clicked	MouseEvent
+drag	// An element is being dragged	DragEvent
+dragend	// Dragging of an element has ended	DragEvent
+dragenter	// A dragged element enters the drop target	DragEvent
+dragleave	// A dragged element leaves the drop target	DragEvent
+dragover	// A dragged element is over the drop target	DragEvent
+dragstart	// Dragging of an element has started	DragEvent
+drop	// A dragged element is dropped on the target	DragEvent
+durationchange	// The duration of a media is changed	Event
+ended	// A media has reach the end ("thanks for listening")	Event
+error	// An error has occurred while loading a file	ProgressEvent, UiEvent, Event
+focus	// An element gets focus	FocusEvent
+focusin	// An element is about to get focus	FocusEvent
+focusout	// An element is about to lose focus	FocusEvent
+fullscreenchange	// An element is displayed in fullscreen mode	Event
+fullscreenerror	// An element can not be displayed in fullscreen mode	Event
+hashchange	// There has been changes to the anchor part of a URL	HashChangeEvent
+input	// An element gets user input	InputEvent, Event
+invalid	// An element is invalid	Event
+keydown	// A key is down	KeyboardEvent
+keypress	// A key is pressed	KeyboardEvent
+keyup	// A key is released	KeyboardEvent
+load	// An object has loaded	UiEvent, Event
+loadeddata	// Media data is loaded	Event
+loadedmetadata	// Meta data (like dimensions and duration) are loaded	Event
+loadstart	// The browser starts looking for the specified media	ProgressEvent
+message	// A message is received through the event source	Event
+mousedown	// The mouse button is pressed over an element	MouseEvent
+mouseenter	// The pointer is moved onto an element	MouseEvent
+mouseleave	// The pointer is moved out of an element	MouseEvent
+mousemove	// The pointer is moved over an element	MouseEvent
+mouseover	// The pointer is moved onto an element	MouseEvent
+mouseout	// The pointer is moved out of an element	MouseEvent
+mouseup	// A user releases a mouse button over an element	MouseEvent
+mousewheel	// Deprecated. Use the wheel event instead	WheelEvent
+offline	// The browser starts working offline	Event
+online	// The browser starts working online	Event
+open	// A connection with the event source is opened	Event
+pagehide	// User navigates away from a webpage	PageTransitionEvent
+pageshow	// User navigates to a webpage	PageTransitionEvent
+paste	// Some content is pasted in an element	ClipboardEvent
+pause	// A media is paused	Event
+play	// The media has started or is no longer paused	Event
+playing	// The media is playing after being paused or buffered	Event
+popstate	// The window's history changes	PopStateEvent
+progress	// The browser is downloading media data	Event
+ratechange	// The playing speed of a media is changed	Event
+resize	// The document view is resized	UiEvent, Event
+reset	// A form is reset	Event
+scroll	// An scrollbar is being scrolled	UiEvent, Event
+search	// Something is written in a search field	Event
+seeked	// Skipping to a media position is finished	Event
+seeking	// Skipping to a media position is started	Event
+select	// User selects some text	UiEvent, Event
+show	// A <menu> element is shown as a context menu	Event
+stalled	// The browser is trying to get unavailable media data	Event
+storage	// A Web Storage area is updated	StorageEvent
+submit	// A form is submitted	Event
+suspend	// The browser is intentionally not getting media data	Event
+timeupdate	// The playing position has changed (the user moves to a different point in the media)	Event
+toggle	// The user opens or closes the <details> element	Event
+touchcancel	// The touch is interrupted	TouchEvent
+touchend	// A finger is removed from a touch screen	TouchEvent
+touchmove	// A finger is dragged across the screen	TouchEvent
+touchstart	// A finger is placed on a touch screen	TouchEvent
+transitionend	// A CSS transition has completed	TransitionEvent
+unload	// A page has unloaded	UiEvent, Event
+volumechange	// The volume of a media is changed (includes muting)	Event
+waiting	// A media is paused but is expected to resume (e.g. buffering)	Event
+wheel	// The mouse wheel rolls up or down over an element	WheelEvent
 
 
 
@@ -6297,6 +6403,393 @@ btn.addEventListener('click', function (e) {
 
 
 
+
+
+
+
+
+import './Main.css'
+import createAppointment from '@wasp/actions/createAppointment'
+import createCustomer from '@wasp/actions/createCustomer'
+import createTechnician from  '@wasp/actions/createTechnician'
+import getAppointments from '@wasp/queries/getAppointments'
+import getCustomers from '@wasp/queries/getCustomers'
+import getTechnicians from '@wasp/queries/getTechnicians'
+import { useQuery } from '@wasp/queries'
+
+const NewAppointmentForm = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const target = event.target
+      const day = target.day.value
+      const month = target.month.value
+      const year = target.year.value
+      const time = target.time.value
+      const customerRequest = target.customerRequest.value
+      target.reset()
+      await createAppointment({ day, month, year, time, customerRequest })
+    } catch (err) {
+      window.alert('Error: ' + err.message)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="day" type="text" defaultValue="day" />
+      <input name="month" type="text" defaultValue="month" />
+      <input name="year" type="number" defaultValue="2024" />
+      <input name="time" type="text" defaultValue="time" />
+      <input name="customerRequest" type="text" defaultValue="customer request" />
+      <input type="submit" value="createAppointment" />
+    </form>
+  )
+}
+
+
+const NewCustomerForm = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const target = event.target
+      const firstName = target.firstName.value
+      const lastName = target.lastName.value
+      const cityName = target.cityName.value
+      const stateName = target.stateName.value
+      const zipCode = target.zipCode.value
+      const buildingNumber = target.buildingNumber.value
+      const streetName = target.streetName.value 
+      const phoneNumber = target.phoneNumber.value
+      const emailAddress = target.emailAddress.value
+      const note = target.note.value
+      target.reset()
+      await createCustomer({ firstName, lastName, cityName, stateName, zipCode, buildingNumber, streetName, phoneNumber, emailAddress, note })
+    } catch (err) {
+      window.alert('Error: ' + err.message)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="firstName" type="text" defaultValue="First" />
+      <input name="lastName" type="text" defaultValue="Last" />
+      <input name="cityName" type="text" defaultValue="City" />
+      <input name="stateName" type="text" defaultValue="State" />
+      <input name="zipCode" type="text" defaultValue="Zip" />
+      <input name="buildingNumber" type="text" defaultValue="address" />
+      <input name="streetName" type="text" defaultValue="Street Name" />
+      <input name="phoneNumber" type="text" defaultValue="Phone#" />
+      <input name="emailAddress" type="text" defaultValue="Email" />
+      <input name="note" type="text" defaultValue="Notes" />
+      <input type="submit" value="createCustomer" />
+    </form>
+  )
+}
+
+
+const NewTechnicianForm = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const target = event.target
+      const firstName = target.firstName.value
+      const lastName = target.lastName.value
+      const phoneNumber = target.phoneNumber.value
+      const emailAddress = target.emailAddress.value
+      const jobsCompleted = target.jobsCompleted.value
+      const note = target.note.value
+      target.reset()
+      await createTechnician({ firstName, lastName, phoneNumber, emailAddress, jobsCompleted, note })
+    } catch (err) {
+      window.alert('Error: ' + err.message)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="firstName" type="text" defaultValue="First" />
+      <input name="lastName" type="text" defaultValue="Last" />
+      <input name="phoneNumber" type="text" defaultValue="Phone#" />
+      <input name="emailAddress" type="text" defaultValue="Email" />
+      <input name="jobsCompleted" type="text" defaultValue="Jobs Completed" />
+      <input name="note" type="text" defaultValue="Notes" />
+      <input type="submit" value="createTechnician" />
+    </form>
+  )
+}
+
+
+
+
+
+
+
+export const MainPage = () => {
+
+  // return (
+  //   <div>
+  //     <NewAppointmentForm />
+  //     <br />
+  //     <NewCustomerForm />
+  //     <br />
+  //     <NewTechnicianForm />
+  //   </div>
+  // )
+
+
+
+
+
+  const { data: appointments, isLoading, error } = useQuery(getAppointments)
+  return (
+        <div>
+          {appointments && <AppointmentList appointments={appointments} />}
+    
+          {isLoading && 'Loading...'}
+          {error && 'Error: ' + error}
+        </div>
+  )
+}
+
+const AppointmentView = ({ appointment }) => {
+  return (
+    <div>
+      {appointment.day}, {appointment.month}, {appointment.year}
+    </div>
+  )
+}
+
+const AppointmentList = ({ appointments }) => {
+  if (!appointments?.length) return <div>No appointments</div>
+
+  return (
+    <div>
+      {appointments.map((appointment, idx) => (
+        <AppointmentView appointment={appointment} key={idx} />
+      ))}
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+  const { data: customers, isLoading, error } = useQuery(getCustomers)
+  return (
+        <div>
+          {customers && <CustomerList customers={customers} />}
+    
+          {isLoading && 'Loading...'}
+          {error && 'Error: ' + error}
+        </div>
+  )
+}
+
+const CustomerView = ({ customer }) => {
+  return (
+    <div>
+      {customer.firstName}, {customer.lastName}, {customer.buildingNumber}, {customer.streetName}
+    </div>
+  )
+}
+
+const CustomerList = ({ customers }) => {
+  if (!customers?.length) return <div>No customers</div>
+
+  return (
+    <div>
+      {customers.map((customer, idx) => (
+        <CustomerView customer={customer} key={idx} />
+      ))}
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  const { data: technicians, isLoading, error } = useQuery(getTechnicians)
+  return (
+        <div>
+          {technicians && <TechniciansList technicians={technicians} />}
+    
+          {isLoading && 'Loading...'}
+          {error && 'Error: ' + error}
+        </div>
+  )
+}
+
+const TechnicianView = ({ technician }) => {
+  return (
+    <div>
+      {technician.firstName}; {technician.lastName}; {technician.jobsCompleted}
+    </div>
+  )
+}
+
+const TechniciansList = ({ technicians }) => {
+  if (!technicians?.length) return <div>No technicicans!</div>
+
+  return (
+    <div>
+      {technicians.map((technician, idx) => (
+        <TechnicianView technician={technician} key={idx} />
+      ))}
+    </div>
+  )
+}
+
+
+
+
+
+
+export default MainPage
+
+
+
+
+
+
+
+
+
+
+/////// REACT!!!!
+
+//- Components help us write reusable, modular, and better organzied code.
+// typescript files must always be labeled with .ts or .tsx
+// - IN REACT, USE PascalCase when creating a function every time
+//PascalCasing for functions inside react
+//PascalCasing for functions inside react
+function Message() {
+    // JSX: Javascript XML 
+    const name = '';
+    if (name) {
+        return <h1>Hello {name}</h1>;
+        return <h1> Hello World! </h1>
+    }
+}
+export default Message;
+
+
+//////
+// use getbootstrap.com to copy and paste html elements you want to use
+// IN REACT A COMPONENT CANNOT RETURN MORE THAN ONE ELEMENT
+
+function ListGroup() {
+  return (
+    <ul className="list-group">
+      <li className="list-group-item">An item</li>
+      <li className="list-group-item">A second item</li>
+      <li className="list-group-item">A third item</li>
+      <li className="list-group-item">A fourth item</li>
+      <li className="list-group-item">And a fifth one</li>
+    </ul>
+  );
+}
+
+export default ListGroup;
+
+
+////IN REACT A COMPONENT CANNOT RETURN MORE THAN ONE ELEMENT
+// BELOW: react would try to create the first element (h1)
+function ListGroup() {
+  return (
+    <h1>List</h1> // React.createElement('h1'); react cannot return more than one element
+    <ul className="list-group"> 
+      <li className="list-group-item">An item</li>
+      <li className="list-group-item">A second item</li>
+      <li className="list-group-item">A third item</li>
+      <li className="list-group-item">A fourth item</li>
+      <li className="list-group-item">And a fifth one</li>
+    </ul>
+  );
+}
+
+export default ListGroup;
+
+
+/////// TO SOLVE THIS PROBLEM:
+/// 1 ) wrap this enitre expression in a div or another element.
+
+function ListGroup() {
+  return (
+    <div>
+      <h1>List</h1> // React.createElement('h1'); react cannot return more than one element
+      <ul className="list-group">
+        <li className="list-group-item">An item</li>
+        <li className="list-group-item">A second item</li>
+        <li className="list-group-item">A third item</li>
+        <li className="list-group-item">A fourth item</li>
+        <li className="list-group-item">And a fifth one</li>
+      </ul>
+    </div>
+        );
+      }
+    
+
+export default ListGroup;
+////// THIS ISNT SUPER PRACTICAL BECUASE WEE'RE ADDING ELEMENTS JUST TO MAKE REACT HAPPY
+
+////// WAY 2 ) use a fragment
+import { Fragment } from "react";
+
+function ListGroup() {
+  return (
+    <fragment>
+      <h1>List</h1> // React.createElement('h1'); react cannot return more than one element
+      <ul className="list-group">
+        <li className="list-group-item">An item</li>
+        <li className="list-group-item">A second item</li>
+        <li className="list-group-item">A third item</li>
+        <li className="list-group-item">A fourth item</li>
+        <li className="list-group-item">And a fifth one</li>
+      </ul>
+    </fragment>
+        );
+      }
+    
+
+export default ListGroup;
+// NOW when this component is rendered on screen, there is no additional element in the DOM
+// empty angle brackets <> tells react to use fragment to wrap all the children.
+
+
+////
+////WAY 3 ) shorter syntax...remove the import and fragment tags. 
+
+function ListGroup() {
+  return (
+    <>
+      <h1>List</h1> // React.createElement('h1'); react cannot return more than one element
+      <ul className="list-group">
+        <li className="list-group-item">An item</li>
+        <li className="list-group-item">A second item</li>
+        <li className="list-group-item">A third item</li>
+        <li className="list-group-item">A fourth item</li>
+        <li className="list-group-item">And a fifth one</li>
+      </ul>
+    </>
+        );
+      }
+
+export default ListGroup;
 
 
 
