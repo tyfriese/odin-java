@@ -6401,6 +6401,361 @@ wheel	// The mouse wheel rolls up or down over an element	WheelEvent
 
 
 
+////// IMPORTANT PARTS OF A WEB BROWSER
+// 1) NAVIGATOR
+//   -  Represents the state and identity of the browser (the user agent) as it exists on the web. In JS this is represented by the 'navigator' object.
+//        You can use this object to retrieve things like the user's preferred language, a media stream from the user's webcam, etc. 
+// 2) WINDOW
+// 3) DOCUMENT
+
+
+
+// - THE DOM IS THE MODULE FOR WHATEVER PAGE IS LOADED..
+// The document currently loaded in each one of your browser tabs is represented by a document object model. 
+
+// This is a "tree structure" representation created by the browser that enables the HTML structure to be easily accessed by programming languages 
+// — for example the browser itself uses it to apply styling and other information to the correct elements as it renders a page, 
+// and developers like you can manipulate the DOM with JavaScript after the page has been rendered.
+
+// Root node: The top node in the tree, which in the case of HTML is always the HTML node (other markup vocabularies like SVG and custom XML will have different root elements).
+// Child node: A node directly inside another node. For example, IMG is a child of SECTION in the above example.
+// Descendant node: A node anywhere inside another node. For example, IMG is a child of SECTION in the above example, and it is also a descendant. IMG is not a child of BODY, as it is two levels below it in the tree, but it is a descendant of BODY.
+// Parent node: A node which has another node inside it. For example, BODY is the parent node of SECTION in the above example.
+// Sibling nodes: Nodes that sit on the same level in the DOM tree. For example, IMG and P are siblings in the above example.
+
+Document.getElementById(); //  which selects an element with a given id attribute value, e.g. <p id="myId">My paragraph</p>. The ID is passed to the function as a parameter, i.e. const elementRef = document.getElementById('myId').
+Document.getElementsByTagName(); // which returns an array-like object containing all the elements on the page of a given type, for example <p>s, <a>s, etc. The element type is passed to the function as a parameter, i.e. const elementRefArray = document.getElementsByTagName('p').
+
+  /*
+      <section>
+        <img src="dinosaur.png" alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">
+        <p>Here we will add a link to the <a href="https://www.mozilla.org/">Mozilla homepage</a></p>
+      </section>
+      <p>
+        
+      </p>
+      <script>
+        const link = document.querySelector("a");
+        link.textContent = "Mozilla Developer Network";
+        link.href = "https://developer.mozilla.org";
+        const sect = document.querySelector("section");
+        const para = document.createElement("p");
+        para.textContent = "We hope you enjoyed the ride.";
+        sect.appendChild(para);
+        const text = document.createTextNode(
+          " - the premier source for web development knowledge.",
+        );
+        const linkPara = document.querySelector("p");
+        linkPara.appendChild(text);
+        // sect.removeChild(linkPara); <-- removing is easy when you have a reference to the node to be removed and its parent. 
+        // linkPara.remove(); <-- when you want to remove a node based only on a reference to itself, which is fairly common, you can use Element.remove();
+        // ^^^^ the above: This method is not supported in older browsers. They have no method to tell a node to remove itself, so you'd have to do the following.
+        // linkPara.parentNode.removeChild(linkPara);
+
+        /////manipulating styles below.
+        para.style.color = "white";
+        para.style.backgroundColor = "black";
+        para.style.padding = "10px";
+        para.style.width = "250px";
+
+      </script>
+      */
+
+
+
+
+
+alert();  //<--- function to create pop ups
+window.alert('Hello, and welcome!') // <--- specifically targetting the window to alert to...'hold what you want the alert text to be'
+
+
+
+<button id="btn">Click Me!</button> // <--- button on the page with the ID 'btn'
+// in order to register the button to an event. you must attach it with addEventListener
+
+let btn = document.querySelector('#btn');
+function display() {
+    alert('It was clicked!');
+}
+btn.addEventListener('click',display);
+// First, select the button with the id btn by using the querySelector() method.
+// Then, define a function called display() as an event handler.
+// Finally, register an event handler using the addEventListener() so that when users click the button, the display() function will be executed.
+
+
+// A shorter way to register an event handler is to put it in one big annonymous function like this:
+let btn = document.querySelector('#btn');
+btn.addEventListener('click',function() {
+    alert('It was clicked!');
+}); 
+
+
+////////
+// EXAMPLE: //
+<head>
+    <title>JS Event Demo</title>
+</head>
+<body>
+    <div id="container">
+        <button id='btn'>Click Me!</button>
+    </div>
+</body>
+// When you click the button, you’re clicking not only the button but also the button’s container, the div, and the whole webpage.
+// Event flow explains the order in which events are received on the page from the element where the event occurs and propagated through the DOM tree.
+// There are two main event models: event bubbling and event capturing.
+
+// EVENT BUBBLING
+In the event bubble model, the event starts at the most specific element and flows upward toward the least specific element. (the `document` or the `window`)
+// When you click the button, the click event occurs in the following order:
+// 1 - button
+// 2 - div with the id container
+// 3 - body
+// 4 - html
+// 5 - document
+// EVENT WORKS ITS WAY UP TO DOM TREE FROM WHERE IT BEGINS. (SHOWN ABOVE)
+
+// EVENT CAPTURING
+In the event capturing model, an event starts at the least specific element and flows downward toward the most specific element.
+// When you click the button, the 'click' event occurs in this order:
+/*
+1 - Document
+2 - HTML
+3 - <body>
+4 - Div with the id container
+5 - button
+
+This event flow has 3 phases:
+- Event capturing occurs, which provides the opportunity to intercept the event. 
+- Then, the actual target receives the event
+- Last, event bubbling occurs, which allows a final response to the event. 
+*/
+
+CAPTURING WORKS DOWN THE TREE TOWARD THE THE SPECIFIC ELEMENT. BUBBLING WORKS UP THE TREE TOWARD THE LEAST SPECIFIC ELEMENT.
+// BELOW are the most popular methods involved with the 'event' object.
+
+// bubbles -	true if the event bubbles
+// cancelable -	true if the default behavior of the event can be canceled
+// currentTarget -	the current element on which the event is firing
+// defaultPrevented -	return true if the preventDefault() has been called.
+// detail -	more information about the event
+// eventPhase -	1 for capturing phase, 2 for target, 3 for bubbling
+// preventDefault() -	cancel the default behavior for the event. This method is only effective if the cancelable property is true
+// stopPropagation() -	cancel any further event capturing or bubbling. This method only can be used if the bubbles property is true.
+// target -	the target element of the event
+// type -	the type of event that was fired
+
+// **!!Note!!** that the event object is only accessible inside the event handler. 
+// Once all the event handlers have been executed, the event object is automatically destroyed.
+
+// To prevent the default behavior of an event, you use the preventDefault() method.
+preventDefault()
+///////EXAMPLE////////
+<a href="https://www.javascripttutorial.net/">JS Tutorial</a>
+// you can prevent it with
+let link = document.querySelector('a');
+
+link.addEventListener('click',function(event) {
+    console.log('clicked');
+    event.preventDefault();
+});
+
+//NOTE!!!! That the preventDefault() method does not stop the event from bubbling up the DOM. An event can be canceled when its 'cancelable' property is 'true'
+
+//// stopPropagation()
+stopPropagation() // method immediately stops the flow of an event through the DOM tree. However, it does not stop the browser’s default behavior.   ex:
+let btn = document.querySelector('#btn');
+
+btn.addEventListener('click', function(event) {
+    console.log('The button was clicked!');
+    event.stopPropagation();
+});
+
+document.body.addEventListener('click',function(event) {
+    console.log('The body was clicked!');
+});
+
+/// If you did not use stopPropagation() above, two messages would have popped up in console log(event click and body click). The 'click' never reaches the body due to stopPropagation()
+
+/*
+// !!!!!! SUMMARY !!!!!
+- An event is an action that occurs in the web browser e.g., a mouse click.
+- Event flow has two main models: event bubbling and event capturing.
+- DOM Level 2 Event specifies that the event flow has three phases: event bubbling, the event occurring at the exact element, and event capturing.
+- Use addEventListener() to register an event that connects an event to an event listener
+- The event object is accessible only within the event listener.
+- Use preventDefault() method to prevent the default behavior of an event, but does not stop the event flow.
+- Use stopPropagation() method to stop the flow of an event through the DOM tree, but does not cancel the browser default behavior.
+*/
+
+
+//!!!!!!!! PAGE LOAD EVENTS !!!!!!
+
+// ! When you open a page, the following events occur in sequence:
+//  1) DOMContentLoaded – the browser fully loaded HTML and completed building the DOM tree. However, it hasn’t loaded external resources like stylesheets and images. 
+//            In this event, you can start selecting DOM nodes or initialize the interface.
+// 2) load – the browser fully loaded the HTML and also external resources like images and stylesheets.
+
+// When you leave the page, the following events fire in sequence:
+// 1 -beforeunload – fires before the page and resources are unloaded. You can use this event to show a confirmation dialog to confirm if you really want to leave the page. 
+//            By doing this, you can prevent data loss in case you are filling out a form and accidentally click a link to navigate to another page.
+// 2 -unload – fires when the page has completely unloaded. You can use this event to send the analytic data or to clean up resources.
+
+
+
+
+// To handle the page events, you can call the 'addEventListener()' method on the 'document' object:
+document.addEventListener('DOMContentLoaded',() => {
+    // handle DOMContentLoaded event
+});
+
+document.addEventListener('load',() => {
+    // handle load event
+});
+
+document.addEventListener('beforeunload',() => {
+    // handle beforeunload event
+});
+
+document.addEventListener('unload',() => {
+    // handle unload event
+});
+
+
+
+///!!!!! HOW TO HANDLE PAGE LOAD EVENTS!!
+<script>
+        addEventListener('DOMContentLoaded', (event) => {
+            console.log('The DOM is fully loaded.');
+        });
+
+        addEventListener('load', (event) => {
+            console.log('The page is fully loaded.');
+        });
+
+        addEventListener('beforeunload', (event) => {
+            // show the confirmation dialog
+            event.preventDefault();
+            // Google Chrome requires returnValue to be set.
+            event.returnValue = '';
+        });
+
+        addEventListener('unload', (event) => {
+            // send analytic data
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+!*!* CLICK AND MOUSE EVENTS !*!*!
+~ When you click an element, there are no less than three mouse events fire in the following sequence:
+
+1) The mousedown fires when you depress the mouse button on the element.
+2) The mouseup fires when you release the mouse button on the element.
+3) The click fires when one mousedown and one mouseup detected on the element.
+ If you depress the mouse button on an element and move your mouse off the element, and then release the mouse button. The only mousedown event fires on the element.
+Likewise, if you depress the mouse button, move the mouse over the element, and release the mouse button, the only mouseup event fires on the element.
+In both cases, the click event never fires.
+
+
+It takes two click events to cause a dblclick event to fire. The dblclick event has four events fired in the following order:
+
+ mousedown
+ mouseup
+ click
+ mousedown
+ mouseup
+ click
+ dblclick
+
+ The mousemove event fires repeatedly when you move the mouse cursor around an element. Even when you move the mouse one pixel, the mousemove event still fires. 
+ It will cause the page slow, therefore, you only register mousemove event handler only when you need it 
+ and immediately remove the event handler as soon as it is no longer used, like this:
+
+ element.onmousemove = mouseMoveEventHandler;
+// ...
+//  later, no longer use
+element.onmousemove = null;
+---------------------------------
+
+//////mouseover / mouseout
+The 'mouseover' fires when the mouse cursor is outside of the element and then move to inside the boundaries of the element.
+
+The 'mouseout' fires when the mouse cursor is over an element and then moves another element.
+
+mouseenter / mouseleave
+The 'mouseenter' fires when the mouse cursor is outside of an element and then moves to inside the boundaries of the element.
+
+The 'mouseleave' fires when the mouse cursor is over an element and then moves to the outside of the element’s boundaries.
+
+Both 'mouseenter' and 'mouseleave' does not bubble and does not fire when the mouse cursor moves over descendant elements.
+*/
+
+////////// REGISTER MOUSE EVENTS
+1) select the element by using querySelector() or getElementById() method.
+2) register the mouse event using the addEventListener() method.
+// example::
+<button id="btn">Click Me!</button>
+// to register it
+let btn = document.querySelector('#btn');
+
+btn.addEventListener('click',(event) => {
+    console.log('clicked');
+});
+
+///we can also assign a mouse event handler to the element's property
+let btn = document.querySelector('#btn');
+
+btn.onclick = (event) => {
+    console.log('clicked');
+};
+
+///////DETECTING MOUSE BUTTONS
+// The event object passed to the mouse event handler has a property called button that indicates which mouse button was pressed on the mouse to trigger the event.
+// The mouse button is represented by a number:
+0: the main mouse button is pressed, usually the left button.
+1: the auxiliary button is pressed, usually the middle button or the wheel button.
+2: the secondary button is pressed, usually the right button.
+3: the fourth button is pressed, usually the Browser Back button.
+4: the fifth button is pressed, usually the Browser Forward button.
+///EXAMPLE:
+<button id="btn">Click me with any mouse button: left, right, middle, ...</button>
+    <p id="message"></p>
+//    <script>
+        let btn = document.querySelector('#btn');
+
+        // disable context menu when right-mouse clicked
+        btn.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+        });
+
+        // show the mouse event message
+        btn.addEventListener('mouseup', (e) => {
+            let msg = document.querySelector('#message');
+            switch (e.button) {
+                case 0:
+                    msg.textContent = 'Left mouse button clicked.';
+                    break;
+                case 1:
+                    msg.textContent = 'Middle mouse button clicked.';
+                    break;
+                case 2:
+                    msg.textContent = 'Right mouse button clicked.';
+                    break;
+                default:
+                    msg.textContent = `Unknown mouse button code: ${event.button}`;
+            }
+        });
+
+
+
 
 
 

@@ -1,27 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Practice with JS</title>
-    
-  <style>
-  </style>
-  </head>
-  <body>
-    <h1>
-      THE TITLE OF YOUR WEBPAGE
-    </h1>
-    <div id="container"></div>
+<head>
+    <meta charset="UTF-8">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <h1>Rock Paper Scissors</h1>
+    <div id="game-container">
+        <div id="score">
+            <p>Player: <span id="player-score">0</span></p>
+            <p>Computer: <span id="computer-score">0</span></p>
+        </div>
+        <div id="results"></div>
+    </div>
 
     <script>
-      const container = document.querySelector('#container');
-      const content = document.createElement('div');
-      content.classList.add('content');
-      content.textContent = 'This is the glorious text-content!';
-      container.appendChild(content);
-      const redPara = document.createElement('p');
-      redPara.textContent = 'Hey I am red!';
-      redPara.style.color = "red";
+        function getComputerChoice() {
+            const moves = ["Rock", "Paper", "Scissors"];
+            const randomIndex = Math.floor(Math.random() * moves.length);
+            return moves[randomIndex];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            const playerMove = playerSelection.toLowerCase();
+            const computerMove = computerSelection.toLowerCase();
+
+            if (playerMove === computerMove) {
+                return "It's a draw!";
+            } else if (
+                (playerMove === "rock" && computerMove === "scissors") ||
+                (playerMove === "paper" && computerMove === "rock") ||
+                (playerMove === "scissors" && computerMove === "paper")
+            ) {
+                return `You win! ${playerSelection} beats ${computerSelection}!`;
+            } else {
+                return `You lose! ${computerSelection} beats ${playerSelection}!`;
+            }
+        }
+
+        function game() {
+            let playerScore = 0;
+            let computerScore = 0;
+            const rounds = 5;
+
+            for (let round = 0; round < rounds; round++) {
+                const playerSelection = prompt("Please choose one of the following: Rock, Paper, or Scissors?");
+                const computerSelection = getComputerChoice();
+                const result = playRound(playerSelection, computerSelection);
+
+                if (result.includes("win")) {
+                    playerScore++;
+                } else if (result.includes("lose")) {
+                    computerScore++;
+                }
+
+                updateUI(result, playerScore, computerScore);
+            }
+
+            declareWinner(playerScore, computerScore);
+        }
+
+        function updateUI(result, playerScore, computerScore) {
+            const resultsDiv = document.getElementById("results");
+            const scorePlayer = document.getElementById("player-score");
+            const scoreComputer = document.getElementById("computer-score");
+
+            resultsDiv.innerHTML += `<p>${result}</p>`;
+            scorePlayer.textContent = playerScore;
+            scoreComputer.textContent = computerScore;
+        }
+
+        function declareWinner(playerScore, computerScore) {
+            const resultsDiv = document.getElementById("results");
+            let winner;
+
+            if (playerScore > computerScore) {
+                winner = "Player";
+            } else if (playerScore < computerScore) {
+                winner = "Computer";
+            } else {
+                winner = "It's a tie";
+            }
+
+            resultsDiv.innerHTML += `<p>Game over! ${winner} wins!</p>`;
+        }
+
+        game();
     </script>
-  </body>
+</body>
 </html>
