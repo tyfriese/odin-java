@@ -6756,12 +6756,164 @@ btn.onclick = (event) => {
 
 
 
+/////////////////// 
+//// MODIFIER KEYS
+
+        <button id="btnKeys">Click me with Alt, Shift, Ctrl pressed</button>
+    <p id="messageKeys"></p>
+
+    //<script>
+        let btnKeys = document.querySelector('#btnKeys');
+
+        btnKeys.addEventListener('click', (e) => {
+            let keys = [];
+
+            if (e.shiftKey) keys.push('shift');
+            if (e.ctrlKey) keys.push('ctrl');
+            if (e.altKey) keys.push('alt');
+            if (e.metaKey) keys.push('meta');
+
+            let msg = document.querySelector('#messageKeys');
+            msg.textContent = `Keys: ${keys.join('+')}`;
+        });
+    //</script>
+ 
+// *****Note the Meta key is the Windows key on Windows keyboards and the Command key on the Apple keyboard.
+//  To detect if these modifier keys have been pressed, you can use the event object passed to the mouse event handler.
+//  The event object has four Boolean properties, where each is set to true if the key is being held down or false if the key is not pressed.
+
+///////////// SCREEN COORDINATE LOCATIONS
+// - The 'screenX' and 'screenY' properties of the event passed to the mouse event handler 
+//        return the screen coordinates of the location of the mouse in relation to the entire screen.
+// - On the other hand, the clientX and clientY properties provide the horizontal and vertical coordinates within the application’s client area at which the mouse event occurred:
 
 
 
 
 
+// //////////////// MOUSE COORDINATES
+// Summary
+// DOM Level 3 defines nine mouse events.
+// Use addEventListener() method to register a mouse event handler.
+// The event.button indicates which mouse button was pressed to trigger the mouse event.
+// The modifier keys: alt, shift, ctrl, and meta (Mac) can be obtained via properties of the event object passed to the mouse event handler.
+// The screenX and screenY properties return the horizontal and vertical coordinates of the mouse pointer in screen coordinates.
+// The clientX and clientY properties of the event object return horizontal and vertical coordinates within the application’s client area at which the mouse event occurred.
 
+
+///////////////--------------------//////////////////////--------------
+// keyboard events 
+// any interaction with the keyboard, the keyboard events are fired. There are three main keyboard events:
+
+keydown // – fires when you press a key on the keyboard and fires repeatedly while you’re holding down the key.
+keyup // - fires when you release a key on the keyboard.
+keypress // – fires when you press a character keyboard like a,b, or c, not the left arrow key, home, or end keyboard, … The keypress also fires repeatedly while you hold down the key on the keyboard.
+
+// NOTE that its just like the mouse order of events (mousedown, mouseup, click)
+
+
+
+// To handle keyboard events:
+1) select the element on which the keyboard event will fire. (typically a text box)
+2) element.addEventListener() // use this to register an event handler
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Summary: This specific lesson is about  JavaScript event delegation that adds a single event handler to the parent element instead of having to register multiple event handlers to the child elements.
+
+// example html:
+<ul id="menu">
+    <li><a id="home">home</a></li>
+    <li><a id="dashboard">Dashboard</a></li>
+    <li><a id="report">report</a></li>
+</ul>
+
+// To handle the click event of each menu item, you may add the corresponding click event handlers:
+let home = document.querySelector('#home');
+home.addEventListener('click',(event) => {
+    console.log('Home menu item was clicked');
+});
+
+let dashboard = document.querySelector('#dashboard');
+dashboard.addEventListener('click',(event) => {
+    console.log('Dashboard menu item was clicked');
+});
+
+let report = document.querySelector('#report');
+report.addEventListener('click',(event) => {
+    console.log('Report menu item was clicked');
+});
+
+// In JS, if you have a large number of event handlers on a page,  they will impact the performace because of :
+// - Each event handler is a function which is also an object that takes up memory. The more objects in the memory the slower the performance,
+// - second, it takes time to assign all the event handlers, which causes a delay in the interactivity of the page. 
+// SOLVE THIS: you must leverage the 'event bubbling'
+
+// EVENT BUBBLING : is one of two 'main event models' along with "event capturing",. In the event bubbling model, an event starts at the most specific element and then flows upward toward the least specific('document' or 'window')
+
+// NOTE ! When you click a button, the 'click' event occurs in the following order:
+1. Button
+2. div with the id container
+3. body
+4. html
+5. document 
+// The click event first occurs on the button which is the element that was clicked.
+//    Then the click event goes up the DOM tree, firing on each node along its way until it reaches the document object.
+
+document  // 5         }
+  element html // 4       } -- event bubbling
+    element body // 3     }
+      element div  // 2   }
+        element button//1  }
+// NOTE that modern web browsers bubble the event up to the 'window' object.
+---------------------------------------------------------------
+ EVENT CAPTURING:
+ // In the event capturing model, an event starts at the least specific element and flows downward toawrd the most specific
+/* 1 - document
+ 2 - html
+ 3 -  body
+ 4 - div with id container
+ 5 - button
+*/
+document    // 1 
+  Element html // 2 
+    Element body  // 3
+      Element Div    // 4
+        Element Button  // 5
+
+// NOTE!! THE FLOW FROM 1-5 AND 5-1 
+
+/* DOM LEVEL 2 EVENT FLOW
+DOM LEVEL 2 EVENTS SPECIFY THAT EVENT FLOW HAS 3 PHASES:
+- First, event capturing ovvurs, which provides the opportunity to intercept the event
+- Then, the actual target receives the event.
+- Finally, event bubbling occurs, which allows a final response to the event
+*/
+
+
+
+
+/* BACK TO MULTIPLE EVENT HANDLERS !!
+Instead of having multiple event handlers, you can assign a single event handler to handle all the 'click' events. */
+let menu = document.querySelector('#menu');
+
+menu.addEventListener('click', (event) => {
+    let target = event.target;
+
+    switch(target.id) {
+        case 'home':
+            console.log('Home menu item was clicked');
+            break;
+        case 'dashboard':
+            console.log('Dashboard menu item was clicked');
+            break;
+        case 'report':
+            console.log('Report menu item was clicked');
+            break;
+    }
+});
+
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
 
 import './Main.css'
 import createAppointment from '@wasp/actions/createAppointment'
