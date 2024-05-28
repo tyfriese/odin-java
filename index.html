@@ -6519,9 +6519,9 @@ In the event capturing model, an event starts at the least specific element and 
 // When you click the button, the 'click' event occurs in this order:
 /*
 1 - Document
-2 - HTML
-3 - <body>
-4 - Div with the id container
+2 - html 
+3 - body
+4 - div with the id container
 5 - button
 
 This event flow has 3 phases:
@@ -6913,6 +6913,105 @@ menu.addEventListener('click', (event) => {
     }
 });
 
+
+
+
+
+
+/* //////// 
+
+First, create a new Event object using Event constructor.
+Then, trigger the event using element.dispatchEvent() method.
+Event constructor
+To create a new event, you use the Event constructor like this:
+
+let event = new Event(type, [,options]);
+Code language: JavaScript (javascript)
+The Event constructor accepts two parameters:
+
+type
+is a string that specifies the event type such as 'click'.
+
+options
+is an object with two optional properties:
+
+bubbles: is a boolean value that determines if the event bubbles or not. If it is true then the event is bubbled and vice versa.
+cancelable: is also a boolean value that specifies whether the event is cancelable when it is true.
+By default, the options object is:
+
+{ bubbles: false, cancelable: false}
+Code language: CSS (css)
+For example, the following creates a new click event with the default options object:
+
+let clickEvent = new Event('click');*/
+
+// REAL LIFE EXAMPLES:
+
+// 1: CREATING A CLICK EVENT: 
+// when you want to programmatically trigger a click event on a button
+
+let clickEvent = new Event('click');
+let button = document.getElementById('myButton');
+button.dispatchEvent(clickEvent);
+
+// 2: CREATING A CUSTOM EVENT WITH OPTIONS: 
+// if you have a custom event, `userLogin` that should bubble up the DOM and be cancelable
+
+let loginEvent = new Event('userLogin', {
+  bubbles: true,
+  cancelable: true
+});
+document.dispatchEvent(loginEvent);
+
+// 3: CREATING AN EVENT FOR FORM SUBMISSION:
+// if you want to programmatically submit a form
+
+let submitEvent = new Event('submit', {
+  bubbles: true,
+  cancelable: true
+});
+let form = document.getElementById('myForm');
+form.dispatchEvent(submitEvent);
+
+// 4: SIMULATING A KEYBOARD EVENT: 
+// if you want to trigger a keypress event to simulate a user typing
+
+let keypressEvent = new Event('keypress', {
+  bubbles: true,
+  cancelable: true
+});
+let input = document.getElementById('myInput');
+input.dispatchEvent(keypressEvent);
+
+// 5: CUSTOM EVENT FOR DATA UPDATE: 
+// if you create a custom event `dataUpdate` to notify other parts of your app when data is updated
+
+let dataUpdateEvent = new Event('dataUpdate', {
+  bubbles: true,
+  cancelable: false
+});
+document.dispatchEvent(dataUpdateEvent);
+
+
+
+
+
+
+
+
+
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
+////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
 ////////////////////////////-------------------////////////////////////////-------------------////////////////////////////-------------------
 
 import './Main.css'
@@ -7182,6 +7281,10 @@ export default MainPage
 //- Components help us write reusable, modular, and better organzied code.
 // typescript files must always be labeled with .ts or .tsx
 // - IN REACT, USE PascalCase when creating a function every time
+//PascalCasing for functions inside react
+//PascalCasing for functions inside react
+//PascalCasing for functions inside react
+//PascalCasing for functions inside react
 //PascalCasing for functions inside react
 //PascalCasing for functions inside react
 function Message() {
